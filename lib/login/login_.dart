@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import '../constants.dart';
+import '../homepage_screens/homepage.dart';
 import 'login_tf.dart';
 
 void main() => runApp(const LoginC());
@@ -40,8 +41,7 @@ class Login extends StatelessWidget {
             'Login',
             textAlign: TextAlign.right,
             style: TextStyle(
-                fontWeight: FontWeightManager.w800,
-                fontSize: FontSizeManager.x40),
+                fontWeight: FontWeightManager.w800, fontSize: FontSize.s40),
           ),
           const SizedBox(
             height: 10, // <-- SEE HERE
@@ -53,32 +53,29 @@ class Login extends StatelessWidget {
                   text: 'Still new here? ',
                   style: TextStyle(
                       color: ColorManager.black,
-                      fontSize: FontSizeManager.x20,
+                      fontSize: FontSize.s20,
                       fontWeight: FontWeightManager.bold),
                 ),
-                TextSpan(
-                  text: 'Create new account',
-                  style: TextStyle(
-                      color: ColorManager.lightblue,
-                      fontSize: FontSizeManager.x15),
-                  // recognizer: TapGestureRecognizer()
-                  // ..onTap = () async {
-                  //   var url =
-                  //       "https://stackoverflow.com/questions/48914775/gesture-detection-in-flutter-textspan";
-                  //   if (await canLaunchUrl(Uri.parse(url))) {
-                  //     await launchUrl(Uri.parse(url));
-                  //   } else {
-                  //     throw "sorry! cannot load";
-                  //   }
-                  // },
-                  onEnter: (event) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginC()),
-                    );
-                  },
-                ),
               ],
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            },
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Create new account',
+                    style: TextStyle(
+                        color: ColorManager.lightblue, fontSize: FontSize.s15),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(
@@ -91,8 +88,7 @@ class Login extends StatelessWidget {
               textAlign: TextAlign.right,
               // alignment: Alignment.topRight,
               style: TextStyle(
-                  fontWeight: FontWeightManager.w800,
-                  fontSize: FontSizeManager.x18),
+                  fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
             ),
           ),
           TextFieldX(
@@ -107,49 +103,49 @@ class Login extends StatelessWidget {
               'PASSWORD',
               textAlign: TextAlign.right,
               style: TextStyle(
-                  fontWeight: FontWeightManager.w800,
-                  fontSize: FontSizeManager.x18),
+                  fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
             ),
           ),
           TextFieldX(
             button: () {},
           ),
-          Align(
-            alignment: const FractionalOffset(0.8, 0.9),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  // new TextSpan(
-                  //   text: 'Still new here? ',
-                  //   style: new TextStyle(
-                  //       color: Colors.black,
-                  //       fontSize: 20,
-                  //       fontWeight: FontWeight.bold),
-                  // ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            },
+            child: Align(
+              alignment: const FractionalOffset(0.8, 0.9),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    // new TextSpan(
+                    //   text: 'Still new here? ',
+                    //   style: new TextStyle(
+                    //       color: Colors.black,
+                    //       fontSize: 20,
+                    //       fontWeight: FontWeight.bold),
+                    // ),
 
-                  TextSpan(
-                    text: 'Forgot password?',
-                    style: TextStyle(
-                        color: ColorManager.black,
-                        fontSize: FontSizeManager.x15),
-                    // recognizer: TapGestureRecognizer()
-                    // ..onTap : () async {
-                    //   var url =
-                    //       "https://stackoverflow.com/questions/48914775/gesture-detection-in-flutter-textspan";
-                    //   if (await canLaunchUrl(Uri.parse(url))) {
-                    //     await launchUrl(Uri.parse(url));
-                    //   } else {
-                    //     throw "sorry! cannot load";
-                    //   }
-                    // },
-                    onEnter: (event) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LoginC()),
-                      );
-                    },
-                  ),
-                ],
+                    TextSpan(
+                      text: 'Forgot password?',
+                      style: TextStyle(
+                          color: ColorManager.black, fontSize: FontSize.s15),
+                      // recognizer: TapGestureRecognizer()
+                      //   ..onTap = () async {
+                      //     var url =
+                      //         "D:/Ahmed Bassem/MIU/Year 4/Semester 7/Mobile Device Programming/Project/inmy_head/lib/homepage_screens/homepage.dart";
+                      //     if (await canLaunchUrl(Uri.parse(url))) {
+                      //       await launchUrl(Uri.parse(url));
+                      //     } else {
+                      //       throw "sorry! cannot load";
+                      //     }
+                      //   },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -182,7 +178,7 @@ class Login extends StatelessWidget {
                     textAlign: TextAlign.right,
                     style: TextStyle(
                         fontWeight: FontWeightManager.bold,
-                        fontSize: FontSizeManager.x15),
+                        fontSize: FontSize.s15),
                   ))),
           Container(
             height: 221.42,
@@ -199,31 +195,3 @@ class Login extends StatelessWidget {
     );
   }
 }
-
-// class TextFieldX extends StatelessWidget {
-//   // final Function() button;
-//   final VoidCallback? button;
-//   const TextFieldX({
-//     required this.button,
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-//       child: TextField(
-//         onTap: button,
-//         decoration: const InputDecoration(
-//           // labelText: 'Email',
-//           border: OutlineInputBorder(
-//             borderSide:
-//                 BorderSide(width: 10, color: Color.fromARGB(255, 192, 42, 164)),
-//             // borderRadius: BorderRadius.circular(20),
-//           ),
-//           // labelText: 'Email',
-//         ),
-//       ),
-//     );
-//   }
-// }
