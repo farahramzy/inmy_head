@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/login/login_.dart';
+// import 'homepage_screens/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
