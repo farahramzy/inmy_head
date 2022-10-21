@@ -20,7 +20,9 @@ class ColorManager {
   static Color pinkShadow600 = Colors.pink.shade600;
   static Color yellowShdow600 = Colors.yellow.shade600;
   static Color purple2 = const Color.fromARGB(255, 155, 123, 210);
-
+  static Color purple3 = const Color(0xFF565797);
+  static Color beige = const Color(0xFFECE3DD);
+  static Color purple4 = const Color(0xFF837eb1);
 }
 
 class FontWeightManager {

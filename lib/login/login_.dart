@@ -121,12 +121,11 @@ class Login extends StatelessWidget {
               alignment: const FractionalOffset(0.8, 0.9),
               child: RichText(
                 text: TextSpan(
-                  children: [         
+                  children: [
                     TextSpan(
                       text: 'Forgot password?',
                       style: TextStyle(
                           color: ColorManager.black, fontSize: FontSize.s15),
-                  
                     ),
                   ],
                 ),

@@ -41,22 +41,22 @@ class SignUp extends StatelessWidget {
             'Create New Account',
             textAlign: TextAlign.right,
             style: TextStyle(
-                fontWeight: FontWeightManager.w800,
-                fontSize: FontSize.s40),
+                fontWeight: FontWeightManager.w800, fontSize: FontSize.s40),
           ),
           const SizedBox(
             height: 5, // <-- SEE HERE
           ),
           RichText(
-              text: TextSpan(
-                    text: 'Already have one? ',
-                    style: TextStyle(
-                        color: ColorManager.black,
-                        fontSize: FontSize.s20,
-                        fontWeight: FontWeightManager.bold),
-                  ),),
+            text: TextSpan(
+              text: 'Already have one? ',
+              style: TextStyle(
+                  color: ColorManager.black,
+                  fontSize: FontSize.s20,
+                  fontWeight: FontWeightManager.bold),
+            ),
+          ),
           InkWell(
-             onTap: () {
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginC()),
@@ -68,8 +68,7 @@ class SignUp extends StatelessWidget {
                   TextSpan(
                     text: 'Log in here',
                     style: TextStyle(
-                        color: ColorManager.lightblue,
-                        fontSize: FontSize.s15),
+                        color: ColorManager.lightblue, fontSize: FontSize.s15),
                   ),
                 ],
               ),
@@ -85,8 +84,7 @@ class SignUp extends StatelessWidget {
               textAlign: TextAlign.right,
               // alignment: Alignment.topRight,
               style: TextStyle(
-                  fontWeight: FontWeightManager.w800,
-                  fontSize: FontSize.s18),
+                  fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
             ),
           ),
           TextFieldX(
@@ -102,8 +100,7 @@ class SignUp extends StatelessWidget {
               textAlign: TextAlign.right,
               // alignment: Alignment.topRight,
               style: TextStyle(
-                  fontWeight: FontWeightManager.w800,
-                  fontSize: FontSize.s18),
+                  fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
             ),
           ),
           TextFieldX(
@@ -118,8 +115,7 @@ class SignUp extends StatelessWidget {
               'PASSWORD',
               textAlign: TextAlign.right,
               style: TextStyle(
-                  fontWeight: FontWeightManager.w800,
-                  fontSize: FontSize.s18),
+                  fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
             ),
           ),
           TextFieldX(
@@ -137,15 +133,14 @@ class SignUp extends StatelessWidget {
                       //background color of button
                       side: BorderSide(
                           width: 3,
-                          color:
-                          ColorManager.purple2), //border width and color
+                          color: ColorManager.purple2), //border width and color
                       // elevation: 3, //elevation of button
                       shape: RoundedRectangleBorder(
-                        //to set border radius to button
+                          //to set border radius to button
                           borderRadius: BorderRadius.circular(20)),
                       padding: const EdgeInsets.all(
                           10) //content padding inside button
-                  ),
+                      ),
                   onPressed: () {
                     //code to execute when this button is pressed.
                   },
@@ -171,4 +166,3 @@ class SignUp extends StatelessWidget {
     );
   }
 }
-
