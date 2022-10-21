@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static Color purple = const Color(0xffD1E5FF);
+  //static Color purple = const Color(0xffD1E5FF);
   static Color darkblue = const Color.fromARGB(255, 84, 18, 182);
   static Color black = const Color.fromARGB(255, 6, 6, 6);
   static Color lightblue = const Color.fromRGBO(33, 150, 243, 1);
@@ -19,6 +19,8 @@ class ColorManager {
   static Color orange = Colors.orange;
   static Color pinkShadow600 = Colors.pink.shade600;
   static Color yellowShdow600 = Colors.yellow.shade600;
+  static Color purple2 = const Color.fromARGB(255, 155, 123, 210);
+
 }
 
 class FontWeightManager {
@@ -26,11 +28,6 @@ class FontWeightManager {
   static const FontWeight bold = FontWeight.bold;
   static const FontWeight bold2 = FontWeight.w900;
 }
-
-// class FontSizeManager {
-//   // static const double x40 = 40;
-
-// }
 
 class FontSize {
   static const double s20 = 20;
@@ -41,7 +38,3 @@ class FontSize {
   static const double s40 = 40.0;
   static const double s70 = 70.0;
 }
-
-// class FontWeightManager {
-//   static const FontWeight bold = FontWeight.w900;
-// }

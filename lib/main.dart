@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:inmy_head/login/login_.dart';
 // import 'homepage_screens/homepage.dart';
 
+import 'package:inmy_head/signup/signup_.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/gestures.dart';
+import '../constants.dart';
+import 'signup/signup_tf.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -27,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Hanien'),
     );
   }
 }
@@ -101,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const LoginC()),
+            MaterialPageRoute(builder: (context) => const SignUpC()),
           );
         },
         tooltip: 'Increment',
