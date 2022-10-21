@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/homepage_screens/homepage.dart';
 import 'package:inmy_head/login/login_.dart';
-// import 'homepage_screens/homepage.dart';
-
 import 'package:inmy_head/signup/signup_.dart';
-import 'package:inmy_head/welcome.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/gestures.dart';
-import '../constants.dart';
-import 'signup/signup_tf.dart';
+import 'package:inmy_head/Welcome%20Screen/welcome.dart';
 
 void main() {
   runApp(const MyApp());

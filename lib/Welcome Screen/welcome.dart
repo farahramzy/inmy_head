@@ -14,7 +14,7 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 199, 230, 255),
+      backgroundColor: const Color.fromARGB(255, 199, 230, 255),
       body: SafeArea(
         child: Stack(
           children: [
@@ -46,9 +46,9 @@ class _WelcomeState extends State<Welcome> {
             ),
             Welcomebutton(
               text: 'Login',
-              top: 500,
+              top: 520,
               left: 80,
-              colorButton: ColorManager.white,
+              colorButton: ColorManager.beige,
               colorText: ColorManager.purple3,
               welcomeButton2: () {
                 Navigator.pushNamed(context, 'login');
@@ -56,13 +56,35 @@ class _WelcomeState extends State<Welcome> {
             ),
             Welcomebutton(
               text: 'Sign Up',
-              top: 570,
+              top: 582,
               left: 80,
               colorButton: ColorManager.purple4,
               colorText: ColorManager.white,
               welcomeButton2: () {
                 Navigator.pushNamed(context, 'signup');
               },
+            ),
+            Positioned(
+              top: 460,
+              left: 155,
+              child: Text(
+                'In My Head',
+                style: TextStyle(
+                    fontWeight: FontWeightManager.w800,
+                    fontSize: FontSize.s18,
+                    color: ColorManager.beige),
+              ),
+            ),
+            Positioned(
+              top: 480,
+              left: 85,
+              child: Text(
+                ' Your Digital Anxiety Journal',
+                style: TextStyle(
+                    fontWeight: FontWeightManager.w800,
+                    fontSize: FontSize.s18,
+                    color: ColorManager.beige),
+              ),
             ),
           ],
         ),
