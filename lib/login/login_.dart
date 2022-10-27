@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/signup/signup_.dart';
 import '../constants.dart';
-import '../homepage_screens/homepage.dart';
 import '../signup/forget_.dart';
+import '../logindata.dart';
 import 'login_tf.dart';
 
 class LoginC extends StatefulWidget {
+  // user= new User;
+
+  // final Globalkey;
   const LoginC({super.key});
 
   @override
   State<LoginC> createState() => _LoginCState();
 }
 
+// final _formKey = GlobalKey<FormState>();
+
 class _LoginCState extends State<LoginC> {
+  final loginData = LoginData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +63,7 @@ class _LoginCState extends State<LoginC> {
               height: 30, // <-- SEE HERE
             ),
             const Align(
-              alignment: FractionalOffset(0.15, 0.9),
+              alignment: FractionalOffset(0.10, 0.9),
               child: Text(
                 'EMAIL',
                 textAlign: TextAlign.right,
@@ -67,13 +73,15 @@ class _LoginCState extends State<LoginC> {
               ),
             ),
             TextFieldX(
-              button: () {},
+              button: () {
+                // setState(() => loginData.username = value);
+              },
             ),
             const SizedBox(
               height: 20, // <-- SEE HERE
             ),
             const Align(
-              alignment: FractionalOffset(0.17, 0.9),
+              alignment: FractionalOffset(0.10, 0.9),
               child: Text(
                 'PASSWORD',
                 textAlign: TextAlign.right,
@@ -92,7 +100,7 @@ class _LoginCState extends State<LoginC> {
                 );
               },
               child: Align(
-                alignment: const FractionalOffset(0.8, 0.9),
+                alignment: const FractionalOffset(0.9, 0.9),
                 child: Text(
                   'Forgot password?',
                   textAlign: TextAlign.right,
@@ -126,7 +134,27 @@ class _LoginCState extends State<LoginC> {
                         ),
                     onPressed: () {
                       //code to execute when this button is pressed.
+                      // if (Globalkey.currentState!.validate()) {
+                      //   // If the form is valid, display a snackbar. In the real world,
+                      //   // you'd often call a server or save the information in a database.
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //     const SnackBar(content: Text('Processing Data')),
+                      //   );
+                      // }
                     },
+                    // onPressed: () {
+
+                    //   final snackBar = SnackBar(
+                    //     content: const Text('Yay! A SnackBar!'),
+                    //     action: SnackBarAction(
+                    //       label: 'Undo',
+                    //       onPressed: () {
+                    //         // Some code to undo the change.
+                    //       },
+                    //     ),
+                    //   );
+                    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    // },
                     child: const Text(
                       'Login',
                       textAlign: TextAlign.right,

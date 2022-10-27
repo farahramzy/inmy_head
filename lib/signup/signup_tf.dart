@@ -45,8 +45,8 @@ class _TextFieldXState extends State<TextFieldX> {
               decoration: const InputDecoration(
                 // labelText: 'Email',
                 border: OutlineInputBorder(
-                borderSide: BorderSide(
-                width: 10, color: Color.fromARGB(255, 12, 12, 12)),
+                  borderSide: BorderSide(
+                      width: 10, color: Color.fromARGB(255, 12, 12, 12)),
                   // borderRadius: BorderRadius.circular(20),
                 ),
                 // labelText: 'Email',
