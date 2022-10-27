@@ -2,15 +2,14 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  //static Color purple = const Color(0xffD1E5FF);
+  //#8280D6
+  static Color purple1 = const Color(0xff8280D6);
   static Color darkblue = const Color.fromARGB(255, 84, 18, 182);
   static Color black = const Color.fromARGB(255, 6, 6, 6);
   static Color lightblue = const Color.fromRGBO(33, 150, 243, 1);
   static Color white = const Color.fromARGB(255, 255, 255, 255);
   static Color lightBlue = const Color(0xffD1E5FF);
-  // static Color darkpurple = const Color.fromARGB(255, 46, 45, 104);
   static Color darkPurple = const Color.fromARGB(255, 81, 83, 161);
-  // static Color black = const Color.fromARGB(255, 8, 7, 7);
   static Color beigYellow = const Color(0xffefc7af);
   static Color red = Colors.red;
   static Color blue = Colors.blue;

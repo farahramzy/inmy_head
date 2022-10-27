@@ -23,11 +23,11 @@ class _HomePageState extends State<HomePage> {
           children: [
             Positioned(
               top: -430,
-              left: -350,
+              left: -330,
               right: -300,
               child: Container(
-                height: 900,
-                width: 900,
+                height: 930,
+                width: 1050,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
@@ -56,17 +56,20 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                 height: 180,
                 width: 200,
-                child: Text(
-                  'How are you\nfeeling today?',
-                  style: TextStyle(
-                      fontSize: FontSize.s30,
-                      fontWeight: FontWeightManager.bold),
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20, left: 10),
+                  child: Text(
+                    'How are you\nfeeling today?',
+                    style: TextStyle(
+                        fontSize: FontSize.s30,
+                        fontWeight: FontWeightManager.bold),
+                  ),
                 ),
               ),
             ),
             Positioned(
-              top: 70,
-              left: 20,
+              top: 90,
+              left: 22,
               child: SizedBox(
                 height: 180,
                 width: 350,
@@ -85,8 +88,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-              top: -20,
-              left: 235,
+              top: 30,
+              left: 290,
               child: Container(
                 height: 180,
                 width: 180,
@@ -102,8 +105,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-              top: 150,
-              left: 80,
+              top: 190,
+              left: 100,
               child: Container(
                 height: 180,
                 width: 180,
@@ -118,8 +121,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-              top: 270,
-              left: 45,
+              top: 305,
+              left: 70,
               child: Stack(
                 children: <Widget>[
                   Container(
@@ -173,8 +176,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-              top: 400,
-              left: 45,
+              top: 450,
+              left: 70,
               child: Column(
                 children: [
                   ElevatedButtonTheme(

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.inmy_head">
+    package="com.technical.inmyheadapp">
    <application
         android:label="In My Head"
         android:name="${applicationName}"

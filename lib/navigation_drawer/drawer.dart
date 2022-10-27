@@ -43,7 +43,7 @@ class NavigationDrawer extends StatelessWidget {
               text: 'Mood tracker',
               icon: Icons.check_box_rounded,
               iconColor: ColorManager.green,
-              // onClicked: () => selectedItem(context, 3),
+              onClicked: () => selectedItem(context, 3),
             ),
             const SizedBox(height: 15),
             Divider(color: ColorManager.white),
