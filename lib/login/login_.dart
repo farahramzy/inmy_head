@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inmy_head/signup/signup_.dart';
 import '../constants.dart';
 import '../homepage_screens/homepage.dart';
+import '../signup/forget_.dart';
 import 'login_tf.dart';
 
 class LoginC extends StatefulWidget {
@@ -87,7 +88,7 @@ class _LoginCState extends State<LoginC> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) => const Forgetpass()),
                 );
               },
               child: Align(
