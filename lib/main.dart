@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/homepage_screens/homepage.dart';
 import 'package:inmy_head/login/login_.dart';
+import 'package:inmy_head/signup/forget_.dart';
 import 'package:inmy_head/signup/signup_.dart';
 import 'package:inmy_head/Welcome%20Screen/welcome.dart';
-
 import 'gratitude/gratitude.dart';
 
 void main() {
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           'signup': (context) => const SignUpC(),
           'homePage': (context) => const HomePage(),
           'gratitude': (context) => const Gratitude(),
+          'forgetpass': (context) => const Forgetpass(),
         });
   }
 }
