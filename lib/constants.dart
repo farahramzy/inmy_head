@@ -23,6 +23,8 @@ class ColorManager {
   static Color purple3 = const Color(0xFF565797);
   static Color beige = const Color(0xFFECE3DD);
   static Color purple4 = const Color(0xFF837eb1);
+
+  ColorManager(Color purple2);
 }
 
 class FontWeightManager {

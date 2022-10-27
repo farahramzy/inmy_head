@@ -4,6 +4,8 @@ import 'package:inmy_head/login/login_.dart';
 import 'package:inmy_head/signup/signup_.dart';
 import 'package:inmy_head/Welcome%20Screen/welcome.dart';
 
+import 'gratitude/gratitude.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
           'login': (context) => const LoginC(),
           'signup': (context) => const SignUpC(),
           'homePage': (context) => const HomePage(),
+          'gratitude': (context) => const Gratitude(),
         });
   }
 }

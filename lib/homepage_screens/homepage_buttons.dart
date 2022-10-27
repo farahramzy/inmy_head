@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inmy_head/gratitude/gratitude.dart';
 import '../constants.dart';
 
 class HomePageButtons extends StatefulWidget {
@@ -31,7 +32,10 @@ class _HomePageButtonsState extends State<HomePageButtons> {
           ),
           InkWell(
             onTap: () {
-              //Go to the Log a worry page
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Gratitude()),
+              );
             },
             child: Container(
               height: 60,
