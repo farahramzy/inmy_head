@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:inmy_head/reflections2.dart';
+import 'package:inmy_head/reflections/reflections2.dart';
+import 'constants.dart';
+import 'navigation_drawer/drawer.dart';
 
 class Worry extends StatefulWidget {
   const Worry({super.key});
@@ -9,6 +10,7 @@ class Worry extends StatefulWidget {
 }
 
 class _WorrysState extends State<Worry> {
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,9 +19,33 @@ class _WorrysState extends State<Worry> {
             image: DecorationImage(
                 image: AssetImage("images/reflect.png"), fit: BoxFit.cover)),
         child: Scaffold(
+          key: _globalKey,
+          drawer: const NavigationDrawer(),
           backgroundColor: Colors.transparent,
           body: PageView(
             children: <Widget>[
+              // Padding(
+              //   padding: const EdgeInsets.all(15.0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       IconButton(
+              //         onPressed: () {
+              //           _globalKey.currentState?.openDrawer();
+              //         },
+              //         icon: const Icon(Icons.menu, size: FontSize.s40),
+              //         color: ColorManager.white,
+              //       ),
+              //       IconButton(
+              //         onPressed: () {
+              //           Navigator.pushNamed(context, 'homePage');
+              //         },
+              //         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
+              //         color: ColorManager.white,
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Stack(
                 children: const <Widget>[
                   Cont1(),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:inmy_head/reflections2.dart';
+import 'package:inmy_head/reflections/reflections2.dart';
 
 class Reflections extends StatefulWidget {
   const Reflections({super.key});

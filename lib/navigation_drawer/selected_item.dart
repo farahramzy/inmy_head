@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import '../homepage_screens/homepage.dart';
-import '../mood_tracker_screen.dart';
 
 selectedItem(BuildContext context, int index) {
   Navigator.of(context).pop();
   switch (index) {
     case 0:
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ));
+      Navigator.pushNamed(context, 'worry');
+      break;
+    case 1:
+      Navigator.pushNamed(context, 'gratitude');
+      break;
+    case 2:
+      Navigator.pushNamed(context, 'reflections');
       break;
     case 3:
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const MoodTracker(),
-      ));
+      Navigator.pushNamed(context, 'moodTracker');
+      break;
+    case 8:
+      Navigator.pushNamed(context, 'homePage');
       break;
   }
 }

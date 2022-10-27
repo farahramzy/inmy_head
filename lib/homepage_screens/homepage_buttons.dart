@@ -4,7 +4,9 @@ import '../constants.dart';
 
 class HomePageButtons extends StatefulWidget {
   final String text;
-  const HomePageButtons(this.text, {Key? key}) : super(key: key);
+  final Function()? onPressed;
+  const HomePageButtons(this.text, {Key? key, required this.onPressed})
+      : super(key: key);
 
   @override
   State<HomePageButtons> createState() => _HomePageButtonsState();
@@ -31,12 +33,7 @@ class _HomePageButtonsState extends State<HomePageButtons> {
             ),
           ),
           InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Gratitude()),
-              );
-            },
+            onTap: widget.onPressed,
             child: Container(
               height: 60,
               width: 250,

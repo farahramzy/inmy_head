@@ -20,6 +20,7 @@ class NavigationDrawer extends StatelessWidget {
             const SizedBox(height: 5),
             buildHeader(
               title: title,
+              onClicked: () => selectedItem(context, 8),
             ),
             buildMenuItem(
               text: 'Log a worry',
@@ -31,13 +32,13 @@ class NavigationDrawer extends StatelessWidget {
               text: 'Add a gratitude',
               icon: Icons.draw,
               iconColor: ColorManager.grey,
-              // onClicked: () => selectedItem(context, 1),
+              onClicked: () => selectedItem(context, 1),
             ),
             buildMenuItem(
               text: 'Reflect',
               icon: Icons.emoji_objects_outlined,
               iconColor: ColorManager.white,
-              // onClicked: () => selectedItem(context, 2),
+              onClicked: () => selectedItem(context, 2),
             ),
             buildMenuItem(
               text: 'Mood tracker',

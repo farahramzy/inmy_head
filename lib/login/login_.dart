@@ -133,14 +133,7 @@ class _LoginCState extends State<LoginC> {
                             10) //content padding inside button
                         ),
                     onPressed: () {
-                      //code to execute when this button is pressed.
-                      // if (Globalkey.currentState!.validate()) {
-                      //   // If the form is valid, display a snackbar. In the real world,
-                      //   // you'd often call a server or save the information in a database.
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //     const SnackBar(content: Text('Processing Data')),
-                      //   );
-                      // }
+                      Navigator.pushNamed(context, 'homePage');
                     },
                     // onPressed: () {
 

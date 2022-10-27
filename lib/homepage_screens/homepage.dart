@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   InkWell(
                     onTap: () {
-                      //Button
+                      Navigator.pushNamed(context, 'affirmations');
                     },
                     child: Container(
                       width: 250,
@@ -186,12 +186,22 @@ class _HomePageState extends State<HomePage> {
                             minimumSize: const Size(240, 52))),
                     child: Column(
                       // mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        HomePageButtons('Log a worry'),
-                        SizedBox(
+                      children: [
+                        HomePageButtons(
+                          'Log a worry',
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'worry');
+                          },
+                        ),
+                        const SizedBox(
                           height: 25.0,
                         ),
-                        HomePageButtons('Add a gratitude'),
+                        HomePageButtons(
+                          'Add a gratitude',
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'gratitude');
+                          },
+                        ),
                       ],
                     ),
                   ),
