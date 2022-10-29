@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _globalKey,
       drawer: const NavigationDrawer(),
-      backgroundColor: ColorManager.lightBlue,
+      backgroundColor: Color.fromARGB(255, 211, 208, 217),
       body: SafeArea(
         child: Stack(
           children: [
