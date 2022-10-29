@@ -5,7 +5,7 @@ import 'package:inmy_head/reflections/reflections.dart';
 import 'package:inmy_head/signup/forget_.dart';
 import 'package:inmy_head/signup/signup_.dart';
 import 'package:inmy_head/Welcome%20Screen/welcome.dart';
-import 'package:inmy_head/worry.dart';
+import 'package:inmy_head/worry/worry.dart';
 import 'affirmations/affirmations_.dart';
 import 'gratitude/gratitude.dart';
 import 'mood_tracker_screen.dart';
