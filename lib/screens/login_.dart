@@ -5,6 +5,7 @@ import 'forget_.dart';
 import '../data/logindata.dart';
 import '../widgets/login_tf.dart';
 import '../admin/admin.dart';
+
 class LoginC extends StatefulWidget {
   // user= new User;
 
@@ -119,7 +120,7 @@ class _LoginCState extends State<LoginC> {
                 width: 220, //width of button
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorManager.darkblue,
+                        primary: ColorManager.darkblue,
                         //background color of button
                         side: BorderSide(
                             width: 3,
