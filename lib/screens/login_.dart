@@ -4,7 +4,7 @@ import '../constants/constants.dart';
 import 'forget_.dart';
 import '../data/logindata.dart';
 import '../widgets/login_tf.dart';
-
+import '../admin/admin.dart';
 class LoginC extends StatefulWidget {
   // user= new User;
 
@@ -96,7 +96,7 @@ class _LoginCState extends State<LoginC> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Forgetpass()),
+                  MaterialPageRoute(builder: (context) => const Admin()),
                 );
               },
               child: Align(
@@ -135,19 +135,6 @@ class _LoginCState extends State<LoginC> {
                     onPressed: () {
                       Navigator.pushNamed(context, 'homePage');
                     },
-                    // onPressed: () {
-
-                    //   final snackBar = SnackBar(
-                    //     content: const Text('Yay! A SnackBar!'),
-                    //     action: SnackBarAction(
-                    //       label: 'Undo',
-                    //       onPressed: () {
-                    //         // Some code to undo the change.
-                    //       },
-                    //     ),
-                    //   );
-                    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    // },
                     child: const Text(
                       'Login',
                       textAlign: TextAlign.right,
