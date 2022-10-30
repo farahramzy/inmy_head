@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
-import 'affirmations_box.dart';
+import '../widgets/affirmations_box.dart';
+
 
 class Affirmations extends StatelessWidget {
   const Affirmations({super.key});
@@ -13,7 +14,7 @@ class Affirmations extends StatelessWidget {
             image: DecorationImage(
             image: AssetImage("images/orangeBackground.png"), fit: BoxFit.cover,)),
         child: Scaffold(
-          backgroundColor: Color.fromARGB(196, 187, 160, 222), 
+          backgroundColor: const Color.fromARGB(196, 187, 160, 222), 
       // backgroundColor: ColorManager.beige,
       body: SingleChildScrollView(
         child: Column(

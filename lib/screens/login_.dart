@@ -96,7 +96,7 @@ class _LoginCState extends State<LoginC> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Admin()),
+                  MaterialPageRoute(builder: (context) => const Forgetpass()),
                 );
               },
               child: Align(

@@ -53,7 +53,7 @@ class _ForgetpassState extends State<Forgetpass> {
             const Align(
               alignment: FractionalOffset(0.15, 0.9),
               child: Text(
-                'EMAIL',
+                'Password',
                 textAlign: TextAlign.right,
                 // alignment: Alignment.topRight,
                 style: TextStyle(
