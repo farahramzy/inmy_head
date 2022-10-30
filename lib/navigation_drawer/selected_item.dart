@@ -16,7 +16,7 @@ selectedItem(BuildContext context, int index) {
       Navigator.pushNamed(context, 'moodTracker');
       break;
     case 8:
-      Navigator.pushNamed(context, 'homePage');
+      Navigator.pushNamed(context, 'affirmations');
       break;
   }
 }
