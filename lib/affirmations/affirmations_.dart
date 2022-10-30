@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import '../constants/constants.dart';
 import 'affirmations_box.dart';
 
 class Affirmations extends StatelessWidget {
