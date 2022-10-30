@@ -106,7 +106,7 @@ class _WorrysState extends State<Worry> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/reflect.png"), fit: BoxFit.cover),
+                image: AssetImage("images/3.png"), fit: BoxFit.cover),
           ),
           child: Form(
             child: Column(
@@ -138,8 +138,16 @@ class _WorrysState extends State<Worry> {
                   child: Text(
                     'Log a Worry',
                     style: TextStyle(
-                        fontSize: FontSize.s40,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s40,
+                      fontWeight: FontWeightManager.bold,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 9.0,
+                          color: Colors.grey,
+                          offset: Offset(3.0, 3.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 60.0),
@@ -160,7 +168,7 @@ class _WorrysState extends State<Worry> {
                               width: 350,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
-                                color: const Color.fromARGB(255, 174, 153, 223),
+                                color: ColorManager.purple3,
                               ),
                               padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(
@@ -172,7 +180,8 @@ class _WorrysState extends State<Worry> {
                                     child: Center(
                                       child: Text(
                                         worryData.worryList![index],
-                                        style: const TextStyle(
+                                        style: TextStyle(
+                                            color: ColorManager.white,
                                             fontSize: FontSize.s20,
                                             fontWeight:
                                                 FontWeightManager.bold2),
@@ -183,18 +192,23 @@ class _WorrysState extends State<Worry> {
                                     height: 20,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(15.0),
+                                    padding: const EdgeInsets.all(20),
                                     child: TextFormField(
                                       onTap: () {},
                                       maxLines: 9,
                                       decoration: InputDecoration(
-                                        fillColor: Colors.white,
-                                        border: OutlineInputBorder(
-                                          // borderSide: BorderSide(
-                                          //   color: Colors.red,
-                                          // ),
+                                        fillColor: ColorManager.white,
+                                        labelText:
+                                            'Dive deep into your worries...',
+                                        alignLabelWithHint: true,
+                                        labelStyle: TextStyle(
+                                          color: ColorManager.white,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30.0),
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(
+                                              color: ColorManager.white),
                                         ),
                                         hintText: 'Type your answer...',
                                       ),

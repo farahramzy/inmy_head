@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, 'affirmations');
+                      Navigator.pushNamed(context, 'reflections');
                     },
                     child: Container(
                       width: 250,
