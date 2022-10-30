@@ -16,8 +16,8 @@ class AdminBox extends StatelessWidget {
       width: 220, //width of button
             child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              primary: ColorManager.purple2,
-              side: BorderSide(width: 7, color:ColorManager.purple2), //border width and color
+              primary: ColorManager.darkPurple,
+              side: BorderSide(width: 7, color:ColorManager.darkPurple), //border width and color
               // elevation: 3, //elevation of button
               shape: RoundedRectangleBorder(
                   //to set border radius to button
