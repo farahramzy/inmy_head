@@ -3,7 +3,6 @@ import 'package:inmy_head/login/login_.dart';
 import '../constants.dart';
 import '../login/login_tf.dart';
 
-
 class Forgetpass extends StatefulWidget {
   const Forgetpass({super.key});
 
@@ -27,7 +26,7 @@ class _ForgetpassState extends State<Forgetpass> {
               style: TextStyle(
                   fontWeight: FontWeightManager.w800, fontSize: FontSize.s40),
             ),
-              const SizedBox(
+            const SizedBox(
               height: 10, // <-- SEE HERE
             ),
             RichText(
@@ -39,7 +38,7 @@ class _ForgetpassState extends State<Forgetpass> {
                     fontWeight: FontWeightManager.bold),
               ),
             ),
-             RichText(
+            RichText(
               text: TextSpan(
                 text: 'account here',
                 style: TextStyle(
@@ -64,36 +63,39 @@ class _ForgetpassState extends State<Forgetpass> {
             TextFieldX(
               button: () {},
             ),
-        
+            const SizedBox(
+              height: 30.0,
+            ),
             SizedBox(
-                height: 40, //height of button
-                width: 220, //width of button
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: ColorManager.purple2,
-                        //background color of button
-                        side: BorderSide(
-                            width: 3,
-                            color:ColorManager.purple2), 
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        padding: const EdgeInsets.all(
-                            10) 
-                        ),
-                    onPressed: () {
-                       Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginC()),
-                );
-                    },
-                    child: const Text(
-                      'Login',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                          fontWeight: FontWeightManager.bold,
-                          fontSize: FontSize.s15),
-                    ))),
-           Container(
+              height: 40, //height of button
+              width: 220, //width of button
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: ColorManager.purple2,
+                    //background color of button
+                    side: BorderSide(width: 3, color: ColorManager.purple2),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.all(10)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginC()),
+                  );
+                },
+                child: const Text(
+                  'Login',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                      fontWeight: FontWeightManager.bold,
+                      fontSize: FontSize.s15),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30.0,
+            ),
+            Container(
               height: 290.42,
               width: 360.0,
               decoration: const BoxDecoration(
