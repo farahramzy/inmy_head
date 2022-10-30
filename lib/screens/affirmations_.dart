@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/constants/constants.dart';
-
+import '../data/affirmations_data.dart';
 import 'drawer.dart';
 import '../widgets/affirmations_box.dart';
 
