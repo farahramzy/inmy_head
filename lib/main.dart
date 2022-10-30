@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/admin/admin.dart';
 import 'package:inmy_head/admin/admin_edit.dart';
 import 'package:inmy_head/screens/homepage.dart';
 import 'package:inmy_head/screens/login_.dart';

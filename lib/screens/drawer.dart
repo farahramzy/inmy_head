@@ -102,7 +102,7 @@ class NavigationDrawer extends StatelessWidget {
                 text: 'Affirmations',
                 icon: Icons.star_border,
                 iconColor: ColorManager.beigYellow,
-                onClicked: () => selectedItem(context, 8),
+                onClicked: () => selectedItem(context, 9),
               ),
             ],
           ),
