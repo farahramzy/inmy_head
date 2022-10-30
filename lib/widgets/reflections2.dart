@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import 'package:inmy_head/constants/constants.dart';
 
-import '../homepage_screens/homepage.dart';
+import '../screens/homepage.dart';
 
 class TextPage extends StatelessWidget {
   final String text;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import 'package:inmy_head/constants/constants.dart';
 
-import 'buttons_welcome.dart';
+import '../widgets/buttons_welcome.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -44,7 +44,7 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
             ),
-            Welcomebutton(
+            WelcomeButton(
               text: 'Login',
               top: 520,
               left: 80,
@@ -54,7 +54,7 @@ class _WelcomeState extends State<Welcome> {
                 Navigator.pushNamed(context, 'login');
               },
             ),
-            Welcomebutton(
+            WelcomeButton(
               text: 'Sign Up',
               top: 582,
               left: 80,

@@ -1,61 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:inmy_head/data/worry_data.dart';
 
-import 'package:inmy_head/reflections/reflections2.dart';
+import '../constants/constants.dart';
+import 'drawer.dart';
+// import 'package:inmy_head/reflections/reflections2.dart';
+// import 'constants.dart';
+// import 'navigation_drawer/drawer.dart';
 
-import '../constants.dart';
-import '../navigation_drawer/drawer.dart';
-import 'reflection_data.dart';
-
-class Reflections extends StatefulWidget {
-  const Reflections({super.key});
+class Worry extends StatefulWidget {
+  const Worry({super.key});
   @override
-  State<Reflections> createState() => _ReflectionsState();
+  State<Worry> createState() => _WorrysState();
 }
 
-// class _ReflectionsState extends State<Reflections> {
+// class _WorrysState extends State<Worry> {
+//   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 //   @override
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
 //       home: Container(
 //         decoration: const BoxDecoration(
 //             image: DecorationImage(
-//                 image: AssetImage("images/reflect2.jpg"), fit: BoxFit.cover)),
+//                 image: AssetImage("images/reflect.png"), fit: BoxFit.cover)),
 //         child: Scaffold(
+//           key: _globalKey,
+//           drawer: const NavigationDrawer(),
 //           backgroundColor: Colors.transparent,
 //           body: PageView(
 //             children: <Widget>[
+//               // Padding(
+//               //   padding: const EdgeInsets.all(15.0),
+//               //   child: Row(
+//               //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               //     children: [
+//               //       IconButton(
+//               //         onPressed: () {
+//               //           _globalKey.currentState?.openDrawer();
+//               //         },
+//               //         icon: const Icon(Icons.menu, size: FontSize.s40),
+//               //         color: ColorManager.white,
+//               //       ),
+//               //       IconButton(
+//               //         onPressed: () {
+//               //           Navigator.pushNamed(context, 'homePage');
+//               //         },
+//               //         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
+//               //         color: ColorManager.white,
+//               //       ),
+//               //     ],
+//               //   ),
+//               // ),
 //               Stack(
 //                 children: const <Widget>[
-//                   Cont2(),
+//                   Cont1(),
+//                   TextPage(text: "Is it that serious?"),
+//                 ],
+//               ),
+//               Stack(
+//                 children: const <Widget>[
+//                   Cont1(),
+//                   TextPage(text: "Is there a solution?"),
+//                 ],
+//               ),
+//               Stack(
+//                 children: const <Widget>[
+//                   Cont1(),
+//                   TextPage(text: "Is it out of your control?"),
+//                 ],
+//               ),
+//               Stack(
+//                 children: const <Widget>[
+//                   Cont1(),
+//                   TextPage(text: "Have you overcome worse?"),
+//                 ],
+//               ),
+//               Stack(
+//                 children: const <Widget>[
+//                   Cont1(),
 //                   TextPage(
 //                       text:
-//                           "What is the most interesting \n thing you learned today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What inpspired you today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What are your goals for tommorow?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(
-//                       text:
-//                           "What is the one thing you could've \n done better today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What was your favorite part of the day?"),
+//                           "What are the tools to help you get \n through this?"),
 //                   Button(),
 //                 ],
 //               ),
@@ -68,20 +92,21 @@ class Reflections extends StatefulWidget {
 //   }
 // }
 
-class _ReflectionsState extends State<Reflections> {
+class _WorrysState extends State<Worry> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  final reflectionData = Reflectionata();
+  final worryData = WorryData();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: _globalKey,
       drawer: const NavigationDrawer(),
-      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/123.jpg"), fit: BoxFit.cover),
+                image: AssetImage("images/reflect.png"), fit: BoxFit.cover),
           ),
           child: Form(
             child: Column(
@@ -96,24 +121,23 @@ class _ReflectionsState extends State<Reflections> {
                           _globalKey.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.white,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, 'homePage');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.white,
                       ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15, bottom: 15),
+                const Padding(
+                  padding: EdgeInsets.only(top: 15, bottom: 15),
                   child: Text(
-                    'Reflections',
+                    'Log a Worry',
                     style: TextStyle(
-                        color: ColorManager.black,
                         fontSize: FontSize.s40,
                         fontWeight: FontWeightManager.bold),
                   ),
@@ -123,7 +147,7 @@ class _ReflectionsState extends State<Reflections> {
                   // height: 320,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: reflectionData.reflectionList!.length,
+                    itemCount: worryData.worryList!.length,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return SizedBox(
@@ -136,7 +160,7 @@ class _ReflectionsState extends State<Reflections> {
                               width: 350,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
-                                color: ColorManager.beigYellow,
+                                color: const Color.fromARGB(255, 174, 153, 223),
                               ),
                               padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(
@@ -147,7 +171,7 @@ class _ReflectionsState extends State<Reflections> {
                                         top: 15, left: 10, right: 5),
                                     child: Center(
                                       child: Text(
-                                        reflectionData.reflectionList![index],
+                                        worryData.worryList![index],
                                         style: const TextStyle(
                                             fontSize: FontSize.s20,
                                             fontWeight:

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import 'package:inmy_head/constants/constants.dart';
 
-class Welcomebutton extends StatelessWidget {
+class WelcomeButton extends StatelessWidget {
   final String text;
   final double top;
   final double left;
   final Color colorText;
   final Color colorButton;
-  VoidCallback? welcomeButton2;
+  final VoidCallback? welcomeButton2;
 
-  Welcomebutton(
+  const WelcomeButton(
       {Key? key,
       required this.text,
       required this.top,
@@ -28,7 +28,7 @@ class Welcomebutton extends StatelessWidget {
       width: 250, //width of button
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: colorButton,
+            backgroundColor: colorButton,
             //background color of button
             side: BorderSide(
                 width: 3, color: colorButton), //border width and color

@@ -1,4 +1,4 @@
-import 'package:inmy_head/user%20profile/user.dart';
+import 'package:inmy_head/model/user.dart';
 
 class UserData {
   static const myUser = User(

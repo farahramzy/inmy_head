@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import 'package:inmy_head/constants/constants.dart';
 
-import '../navigation_drawer/drawer.dart';
-import 'affirmations_box.dart';
+import 'drawer.dart';
+import '../widgets/affirmations_box.dart';
 
 class Affirmations extends StatelessWidget {
   const Affirmations({super.key});

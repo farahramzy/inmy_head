@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import 'package:inmy_head/constants/constants.dart';
 
-import '../homepage_screens/homepage.dart';
+import '../screens/homepage.dart';
 
 class TextPage extends StatelessWidget {
   final String text;
@@ -173,14 +173,3 @@ class Button extends StatelessWidget {
 //     );
 //   }
 // }
-
-
-// It only shows Image from assets
-// class ImagePage extends StatelessWidget {
-//   final String image;
-//   const ImagePage({required this.image});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Image.asset(image);
-//   }

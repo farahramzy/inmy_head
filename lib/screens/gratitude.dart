@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'gratitude_data.dart';
+import '../constants/constants.dart';
+import '../data/gratitude_data.dart';
 
 class Gratitude extends StatefulWidget {
   const Gratitude({super.key});

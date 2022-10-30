@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'build_header.dart';
-import 'build_menu_item.dart';
-import 'selected_item.dart';
+import '../constants/constants.dart';
+import '../widgets/build_header.dart';
+import '../widgets/build_menu_item.dart';
+import '../widgets/selected_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({super.key});

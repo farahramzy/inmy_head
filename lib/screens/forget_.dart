@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/login/login_.dart';
-import '../constants.dart';
-import '../login/login_tf.dart';
+import 'package:inmy_head/screens/login_.dart';
+import '../constants/constants.dart';
+import '../widgets/login_tf.dart';
 
 class Forgetpass extends StatefulWidget {
   const Forgetpass({super.key});

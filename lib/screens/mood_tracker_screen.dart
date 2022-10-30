@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'mood_tracker_data.dart';
-import '../navigation_drawer/drawer.dart';
+import '../constants/constants.dart';
+import '../data/mood_tracker_data.dart';
+import 'drawer.dart';
 
 class MoodTracker extends StatefulWidget {
   const MoodTracker({super.key});

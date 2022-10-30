@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/gratitude/gratitude.dart';
-import '../constants.dart';
+import 'package:inmy_head/screens/gratitude.dart';
+import '../constants/constants.dart';
 
 class HomePageButtons extends StatefulWidget {
   final String text;

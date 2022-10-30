@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants.dart';
+import 'package:inmy_head/constants/constants.dart';
 
 class Gratitudebutton extends StatelessWidget {
   final String text;
@@ -7,9 +7,9 @@ class Gratitudebutton extends StatelessWidget {
   final double left;
   final Color colorText;
   final Color colorButton;
-  VoidCallback? Gratitudebutton2;
+  final VoidCallback? Gratitudebutton2;
 
-  Gratitudebutton(
+  const Gratitudebutton(
       {Key? key,
       required this.text,
       required this.top,

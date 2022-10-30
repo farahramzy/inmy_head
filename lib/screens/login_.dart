@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/signup/signup_.dart';
-import '../constants.dart';
-import '../signup/forget_.dart';
-import '../logindata.dart';
-import 'login_tf.dart';
+import 'package:inmy_head/screens/signup_.dart';
+import '../constants/constants.dart';
+import 'forget_.dart';
+import '../data/logindata.dart';
+import '../widgets/login_tf.dart';
 
 class LoginC extends StatefulWidget {
   // user= new User;
@@ -119,7 +119,7 @@ class _LoginCState extends State<LoginC> {
                 width: 220, //width of button
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: ColorManager.darkblue,
+                        backgroundColor: ColorManager.darkblue,
                         //background color of button
                         side: BorderSide(
                             width: 3,

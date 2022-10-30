@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/homepage_screens/homepage.dart';
-import 'package:inmy_head/login/login_.dart';
-import 'package:inmy_head/reflections/reflections.dart';
-import 'package:inmy_head/signup/forget_.dart';
-import 'package:inmy_head/signup/signup_.dart';
-import 'package:inmy_head/Welcome%20Screen/welcome.dart';
-import 'package:inmy_head/worry/worry.dart';
-import 'affirmations/affirmations_.dart';
-import 'user profile/edit_profile.dart';
-import 'gratitude/gratitude.dart';
-import 'mood_tracker/mood_tracker_screen.dart';
-import 'user profile/user_profile.dart';
+import 'package:inmy_head/screens/homepage.dart';
+import 'package:inmy_head/screens/login_.dart';
+import 'package:inmy_head/screens/reflections.dart';
+import 'package:inmy_head/screens/forget_.dart';
+import 'package:inmy_head/screens/signup_.dart';
+import 'package:inmy_head/screens/welcome.dart';
+import 'package:inmy_head/screens/worry.dart';
+import 'screens/affirmations_.dart';
+import 'screens/edit_profile.dart';
+import 'screens/gratitude.dart';
+import 'screens/mood_tracker_screen.dart';
+import 'screens/user_profile.dart';
 
 void main() {
   runApp(const MyApp());

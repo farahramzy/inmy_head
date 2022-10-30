@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../logindata.dart';
+import '../data/logindata.dart';
 
 class TextFieldX extends StatefulWidget {
-  // final Function() button;
   final VoidCallback? button;
-  // final String button;
   const TextFieldX({
     required this.button,
     Key? key,

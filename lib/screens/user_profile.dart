@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/user%20profile/user.dart';
-import 'package:inmy_head/user%20profile/user_data.dart';
-import '../constants.dart';
-import '../navigation_drawer/drawer.dart';
-import 'user_profile_widget.dart';
+import 'package:inmy_head/model/user.dart';
+import 'package:inmy_head/data/user_data.dart';
+import '../constants/constants.dart';
+import 'drawer.dart';
+import '../widgets/user_profile_widget.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});

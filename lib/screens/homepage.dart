@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../navigation_drawer/drawer.dart';
-import 'homepage_buttons.dart';
+import '../constants/constants.dart';
+import '../widgets/homepage_buttons.dart';
+import 'drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/login/login_.dart';
-import 'package:inmy_head/signup/forget_.dart';
-import '../../constants.dart';
-import '../signup/signup_tf.dart';
-import '../affirmations/affirmations_.dart';
+import 'package:inmy_head/screens/login_.dart';
+import 'package:inmy_head/screens/forget_.dart';
+import '../constants/constants.dart';
+import '../widgets/signup_tf.dart';
+import 'affirmations_.dart';
 // void main() => runApp(const SignUpC());
 
 // class SignUpC extends StatelessWidget {
@@ -166,17 +166,16 @@ import '../affirmations/affirmations_.dart';
 //   }
 // }
 
-
 class SignUpC extends StatefulWidget {
-  const SignUpC({super.key,  this.restorationId});
- final String? restorationId;
+  const SignUpC({super.key, this.restorationId});
+  final String? restorationId;
   @override
   State<SignUpC> createState() => _SignUpCState();
 }
 
-class _SignUpCState extends State<SignUpC>  with RestorationMixin{
+class _SignUpCState extends State<SignUpC> with RestorationMixin {
   @override
-    String? get restorationId => widget.restorationId;
+  String? get restorationId => widget.restorationId;
 
   final RestorableDateTime _selectedDate =
       RestorableDateTime(DateTime(2021, 7, 25));
@@ -324,15 +323,13 @@ class _SignUpCState extends State<SignUpC>  with RestorationMixin{
             const SizedBox(
               height: 20,
             ),
-
-
-        OutlinedButton(     //BIRTHDATE
-          onPressed: () {
-            _restorableDatePickerRouteFuture.present();
-          },
-          child: const Text('Pick Your Birthdate'),
-        ),
-
+            OutlinedButton(
+              //BIRTHDATE
+              onPressed: () {
+                _restorableDatePickerRouteFuture.present();
+              },
+              child: const Text('Pick Your Birthdate'),
+            ),
             SizedBox(
                 height: 40, //height of button
                 width: 220, //width of button
@@ -353,10 +350,11 @@ class _SignUpCState extends State<SignUpC>  with RestorationMixin{
                         ),
                     onPressed: () {
                       //code to execute when this button is pressed.
-                       Navigator.push(
-                  context,
-                   MaterialPageRoute(builder: (context) => const Affirmations()),
-                );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Affirmations()),
+                      );
                     },
                     child: const Text(
                       'Signup',

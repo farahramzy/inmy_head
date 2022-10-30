@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../navigation_drawer/drawer.dart';
-import 'edit_profile_widget.dart';
-import 'user_profile_widget.dart';
+import '../constants/constants.dart';
+import 'drawer.dart';
+import '../widgets/edit_profile_widget.dart';
+import '../widgets/user_profile_widget.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
