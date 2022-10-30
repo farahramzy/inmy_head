@@ -106,7 +106,7 @@ class _LoginCState extends State<LoginC> {
                             Navigator.pushNamed(context, 'homePage');
                             return null;
                           } else {
-                            return 'Please enter Email';
+                            return 'Please enter Password';
                           }
                         },
                         decoration: const InputDecoration(

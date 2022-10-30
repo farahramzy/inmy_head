@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class MoodTrackerData {
   List<String>? moodTexts = [
-    'VERY BAD',
-    'BAD',
-    'GOOD',
-    'VERY GOOD',
+    'REALLY TERRIBLE',
+    'SOMEWHAT BAD',
+    'COMPLETLY OKAY',
+    'PRETTY GOOD',
     'SUPER AWESOME'
   ];
   List iconTypes = [
