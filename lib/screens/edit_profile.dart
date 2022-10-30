@@ -21,11 +21,7 @@ class _EditProfileState extends State<EditProfile> {
       key: _globalKey,
       drawer: const NavigationDrawer(),
       body: SafeArea(
-        child: Container(
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //       image: AssetImage("images/125.jpg"), fit: BoxFit.cover),
-          // ),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
