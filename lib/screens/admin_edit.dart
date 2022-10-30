@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import '../data/reflection_data.dart';
 
-
 class AdminEdit extends StatelessWidget {
- AdminEdit({super.key});
- Reflectionata reflectionData = Reflectionata();
+  AdminEdit({super.key});
+  Reflectionata reflectionData = Reflectionata();
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/3.png"),
-                fit: BoxFit.cover),
+                image: AssetImage("images/3.png"), fit: BoxFit.cover),
           ),
           child: Form(
             child: Column(
@@ -74,7 +72,8 @@ class AdminEdit extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 15, left: 5, right: 5),
+                                    padding: const EdgeInsets.only(
+                                        top: 15, left: 5, right: 5),
                                     child: Center(
                                       child: Text(
                                         reflectionData.reflectionList![index],
@@ -102,5 +101,3 @@ class AdminEdit extends StatelessWidget {
     );
   }
 }
-
-

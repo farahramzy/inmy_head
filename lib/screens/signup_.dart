@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/admin/admin.dart';
-import 'package:inmy_head/screens/login_.dart';
-import 'package:inmy_head/screens/forget_.dart';
+import 'package:inmy_head/screens/admin.dart';
 import '../constants/constants.dart';
 import '../widgets/signup_tf.dart';
 import 'affirmations_.dart';
