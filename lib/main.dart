@@ -7,8 +7,10 @@ import 'package:inmy_head/signup/signup_.dart';
 import 'package:inmy_head/Welcome%20Screen/welcome.dart';
 import 'package:inmy_head/worry/worry.dart';
 import 'affirmations/affirmations_.dart';
+import 'user profile/edit_profile.dart';
 import 'gratitude/gratitude.dart';
-import 'mood_tracker_screen.dart';
+import 'mood_tracker/mood_tracker_screen.dart';
+import 'user profile/user_profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
           'reflections': (context) => const Reflections(),
           'forgetpass': (context) => const Forgetpass(),
           'affirmations': (context) => const Affirmations(),
+          'userProfile': (context) => const UserProfile(),
+          'editProfile': (context) => const EditProfile(),
         });
   }
 }
