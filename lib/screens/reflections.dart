@@ -79,8 +79,7 @@ class _ReflectionsState extends State<Reflections> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/Aff-background1.png"),
-                fit: BoxFit.cover),
+                image: AssetImage("images/4.png"), fit: BoxFit.cover),
           ),
           child: Form(
             child: Column(
@@ -112,9 +111,17 @@ class _ReflectionsState extends State<Reflections> {
                   child: Text(
                     'Reflections',
                     style: TextStyle(
-                        color: ColorManager.black,
-                        fontSize: FontSize.s40,
-                        fontWeight: FontWeightManager.bold),
+                      color: ColorManager.black,
+                      fontSize: FontSize.s40,
+                      fontWeight: FontWeightManager.bold,
+                      shadows: const [
+                        Shadow(
+                          blurRadius: 9.0,
+                          color: Colors.grey,
+                          offset: Offset(3.0, 3.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 60.0),
@@ -134,7 +141,7 @@ class _ReflectionsState extends State<Reflections> {
                               width: 350,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
-                                color: ColorManager.beigYellow,
+                                color: ColorManager.purple3,
                               ),
                               padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(
@@ -145,10 +152,11 @@ class _ReflectionsState extends State<Reflections> {
                                     child: Center(
                                       child: Text(
                                         reflectionData.reflectionList![index],
-                                        style: const TextStyle(
-                                            fontSize: FontSize.s20,
-                                            fontWeight:
-                                                FontWeightManager.bold2),
+                                        style: TextStyle(
+                                          color: ColorManager.white,
+                                          fontSize: FontSize.s20,
+                                          fontWeight: FontWeightManager.bold2,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -156,15 +164,23 @@ class _ReflectionsState extends State<Reflections> {
                                     height: 20,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(15.0),
+                                    padding: const EdgeInsets.all(20),
                                     child: TextFormField(
                                       onTap: () {},
                                       maxLines: 9,
                                       decoration: InputDecoration(
-                                        fillColor: Colors.white,
-                                        border: OutlineInputBorder(
+                                        fillColor: ColorManager.white,
+                                        labelText:
+                                            'Take a few moments reflect...',
+                                        alignLabelWithHint: true,
+                                        labelStyle: TextStyle(
+                                          color: ColorManager.white,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30.0),
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(
+                                              color: ColorManager.white),
                                         ),
                                         hintText: 'Type your answer...',
                                       ),

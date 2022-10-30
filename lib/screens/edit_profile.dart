@@ -87,7 +87,7 @@ class _EditProfileState extends State<EditProfile> {
                         width: 100.0,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorManager.darkPurple,
+                            primary: ColorManager.darkPurple,
                             // side: BorderSide(
                             //     width: 3, color: ColorManager.darkblue),
                             shape: RoundedRectangleBorder(

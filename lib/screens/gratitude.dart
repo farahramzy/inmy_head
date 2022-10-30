@@ -122,7 +122,6 @@ class _GratitudeState extends State<Gratitude> {
                 ),
                 const SizedBox(height: 60.0),
                 Expanded(
-                  // height: 320,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: gratitudeData.gratitudeList!.length,

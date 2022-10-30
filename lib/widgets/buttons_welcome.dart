@@ -28,7 +28,7 @@ class WelcomeButton extends StatelessWidget {
       width: 250, //width of button
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: colorButton,
+            primary: colorButton,
             //background color of button
             side: BorderSide(
                 width: 3, color: colorButton), //border width and color

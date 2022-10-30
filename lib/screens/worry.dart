@@ -106,7 +106,7 @@ class _WorrysState extends State<Worry> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/3.png"), fit: BoxFit.cover),
+                image: AssetImage("images/5.png"), fit: BoxFit.cover),
           ),
           child: Form(
             child: Column(
@@ -121,14 +121,14 @@ class _WorrysState extends State<Worry> {
                           _globalKey.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu, size: FontSize.s40),
-                        color: ColorManager.white,
+                        color: ColorManager.black,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, 'homePage');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.white,
+                        color: ColorManager.black,
                       ),
                     ],
                   ),
