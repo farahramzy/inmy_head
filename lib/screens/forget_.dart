@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/login_.dart';
 import '../constants/constants.dart';
-import '../widgets/login_tf.dart';
 
 class Forgetpass extends StatefulWidget {
   const Forgetpass({super.key});
@@ -48,20 +47,36 @@ class _ForgetpassState extends State<Forgetpass> {
               ),
             ),
             const SizedBox(
-              height: 30, // <-- SEE HERE
+              height: 30,
             ),
             const Align(
               alignment: FractionalOffset(0.15, 0.9),
               child: Text(
                 'Password',
                 textAlign: TextAlign.right,
-                // alignment: Alignment.topRight,
                 style: TextStyle(
                     fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
               ),
             ),
-            TextFieldX(
-              button: () {},
+            Form(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 350,
+                    child: TextFormField(
+                      onSaved: (button) => button,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 10,
+                              color: Color.fromARGB(255, 12, 12, 12)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               height: 30.0,
