@@ -21,5 +21,15 @@ selectedItem(BuildContext context, int index) {
     case 9:
       Navigator.pushNamed(context, 'affirmations');
       break;
+
+    case 10:
+      Navigator.pushNamed(context, 'day');
+      break;
+    case 11:
+      Navigator.pushNamed(context, 'welcome');
+      break;
+    case 12:
+      Navigator.pushNamed(context, 'journal');
+      break;
   }
 }

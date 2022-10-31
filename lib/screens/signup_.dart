@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin.dart';
+import 'package:inmy_head/screens/journal.dart';
 import '../constants/constants.dart';
 import '../widgets/signup_tf.dart';
 import 'affirmations_.dart';
@@ -191,7 +192,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Affirmations()),
+                            builder: (context) => const Journal()),
                       );
                     },
                     child: const Text(

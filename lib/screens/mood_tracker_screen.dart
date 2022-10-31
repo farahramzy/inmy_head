@@ -41,7 +41,7 @@ class _MoodTrackerState extends State<MoodTracker> {
                     ),
                     IconButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, 'homePage');
+                        Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
                       color: ColorManager.white,
@@ -101,7 +101,7 @@ class _MoodTrackerState extends State<MoodTracker> {
               const SizedBox(height: 130),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'homePage');
+                  Navigator.pushNamed(context, 'journal');
                 },
                 child: Material(
                   borderRadius: BorderRadius.circular(100.0),

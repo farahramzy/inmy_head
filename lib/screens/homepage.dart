@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _globalKey,
       drawer: const NavigationDrawer(),
-      backgroundColor: ColorManager.beige,
+      backgroundColor: ColorManager.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(5.0),
                       // alignment: Alignment.bottomCenter,
                       decoration: BoxDecoration(
-                        color: ColorManager.white,
+                        color: ColorManager.beige,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(16),
                         ),

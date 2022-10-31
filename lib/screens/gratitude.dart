@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import '../data/gratitude_data.dart';
+import 'drawer.dart';
 
 class Gratitude extends StatefulWidget {
   const Gratitude({super.key});
@@ -71,6 +72,8 @@ class _GratitudeState extends State<Gratitude> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
+      drawer: const NavigationDrawer(),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
@@ -95,7 +98,7 @@ class _GratitudeState extends State<Gratitude> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'homePage');
+                          Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
                         color: ColorManager.black,

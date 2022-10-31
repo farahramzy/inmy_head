@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin_edit.dart';
+import 'package:inmy_head/screens/day.dart';
 import 'package:inmy_head/screens/homepage.dart';
+import 'package:inmy_head/screens/journal.dart';
 import 'package:inmy_head/screens/login_.dart';
 import 'package:inmy_head/screens/reflections.dart';
 import 'package:inmy_head/screens/forget_.dart';
@@ -28,8 +30,10 @@ class MyApp extends StatelessWidget {
         initialRoute: 'welcome',
         routes: {
           'welcome': (context) => const Welcome(),
+          'journal': (context) => const Journal(),
           'login': (context) => const LoginC(),
           'signup': (context) => const SignUpC(),
+          'day': (context) => const Day(),
           'homePage': (context) => const HomePage(),
           'gratitude': (context) => const Gratitude(),
           'worry': (context) => const Worry(),

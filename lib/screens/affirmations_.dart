@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/constants/constants.dart';
-import '../data/affirmations_data.dart';
 import 'drawer.dart';
 import '../widgets/affirmations_box.dart';
 
@@ -42,7 +41,7 @@ class Affirmations extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, 'homePage');
+                        Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
                       color: ColorManager.black,

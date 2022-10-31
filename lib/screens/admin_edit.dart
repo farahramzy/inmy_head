@@ -32,7 +32,7 @@ class AdminEdit extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'homePage');
+                          Navigator.pushNamed(context, 'welcome');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
                         color: ColorManager.black,

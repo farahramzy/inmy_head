@@ -75,7 +75,7 @@ class _LoginCState extends State<LoginC> {
                           if (emailController != null &&
                               emailController.isNotEmpty &&
                               emailController == loginModel.username) {
-                            Navigator.pushNamed(context, 'homePage');
+                            Navigator.pushNamed(context, 'journal');
                             return null;
                           } else {
                             return 'Please enter Email';
@@ -103,7 +103,7 @@ class _LoginCState extends State<LoginC> {
                           if (passwordController != null &&
                               passwordController.isNotEmpty &&
                               passwordController == loginModel.password) {
-                            Navigator.pushNamed(context, 'homePage');
+                            Navigator.pushNamed(context, 'journal');
                             return null;
                           } else {
                             return 'Please enter Password';

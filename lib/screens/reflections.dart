@@ -98,7 +98,7 @@ class _ReflectionsState extends State<Reflections> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'homePage');
+                          Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
                         color: ColorManager.black,

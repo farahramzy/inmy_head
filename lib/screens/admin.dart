@@ -41,7 +41,7 @@ class _AdminState extends State<Admin> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'homePage');
+                          Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
                         color: ColorManager.black,
@@ -66,7 +66,7 @@ class _AdminState extends State<Admin> {
                     width: 350,
                     decoration: BoxDecoration(
                         color: ColorManager.lightBlue,
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(40.0),
                         )),
                     alignment: Alignment.center,
