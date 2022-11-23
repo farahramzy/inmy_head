@@ -4,7 +4,7 @@ import '../data/reflection_data.dart';
 
 class AdminEdit extends StatelessWidget {
   AdminEdit({super.key});
-  Reflectionata reflectionData = Reflectionata();
+  final Reflectionata reflectionData = Reflectionata();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
