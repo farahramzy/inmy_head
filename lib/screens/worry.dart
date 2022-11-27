@@ -13,85 +13,6 @@ class Worry extends StatefulWidget {
   State<Worry> createState() => _WorrysState();
 }
 
-// class _WorrysState extends State<Worry> {
-//   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Container(
-//         decoration: const BoxDecoration(
-//             image: DecorationImage(
-//                 image: AssetImage("images/reflect.png"), fit: BoxFit.cover)),
-//         child: Scaffold(
-//           key: _globalKey,
-//           drawer: const NavigationDrawer(),
-//           backgroundColor: Colors.transparent,
-//           body: PageView(
-//             children: <Widget>[
-//               // Padding(
-//               //   padding: const EdgeInsets.all(15.0),
-//               //   child: Row(
-//               //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               //     children: [
-//               //       IconButton(
-//               //         onPressed: () {
-//               //           _globalKey.currentState?.openDrawer();
-//               //         },
-//               //         icon: const Icon(Icons.menu, size: FontSize.s40),
-//               //         color: ColorManager.white,
-//               //       ),
-//               //       IconButton(
-//               //         onPressed: () {
-//               //           Navigator.pushNamed(context, 'homePage');
-//               //         },
-//               //         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-//               //         color: ColorManager.white,
-//               //       ),
-//               //     ],
-//               //   ),
-//               // ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont1(),
-//                   TextPage(text: "Is it that serious?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont1(),
-//                   TextPage(text: "Is there a solution?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont1(),
-//                   TextPage(text: "Is it out of your control?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont1(),
-//                   TextPage(text: "Have you overcome worse?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont1(),
-//                   TextPage(
-//                       text:
-//                           "What are the tools to help you get \n through this?"),
-//                   Button(),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//       debugShowCheckedModeBanner: false,
-//     );
-//   }
-// }
-
 class _WorrysState extends State<Worry> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final worryData = WorryData();
@@ -152,7 +73,6 @@ class _WorrysState extends State<Worry> {
                 ),
                 const SizedBox(height: 60.0),
                 Expanded(
-                  // height: 320,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: worryData.worryList!.length,
@@ -164,7 +84,6 @@ class _WorrysState extends State<Worry> {
                           title: SizedBox(
                             height: 350,
                             child: Container(
-                              // color: ColorManager.black,
                               width: 350,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
@@ -172,7 +91,6 @@ class _WorrysState extends State<Worry> {
                               ),
                               padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(
-                                // crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -222,6 +140,32 @@ class _WorrysState extends State<Worry> {
                       );
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 40, //height of button
+                  width: 100, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: ColorManager.darkPurple,
+                        side: BorderSide(
+                            width: 3, color: ColorManager.darkPurple),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        padding: const EdgeInsets.all(10)),
+                    onPressed: () {
+                      //save to firebase and go to journal page
+                    },
+                    child: const Text(
+                      'Save',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontWeight: FontWeightManager.bold,
+                          fontSize: FontSize.s15),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
                 ),
               ],
             ),
