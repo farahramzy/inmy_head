@@ -10,62 +10,6 @@ class Reflections extends StatefulWidget {
   State<Reflections> createState() => _ReflectionsState();
 }
 
-// class _ReflectionsState extends State<Reflections> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Container(
-//         decoration: const BoxDecoration(
-//             image: DecorationImage(
-//                 image: AssetImage("images/reflect2.jpg"), fit: BoxFit.cover)),
-//         child: Scaffold(
-//           backgroundColor: Colors.transparent,
-//           body: PageView(
-//             children: <Widget>[
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(
-//                       text:
-//                           "What is the most interesting \n thing you learned today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What inpspired you today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What are your goals for tommorow?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(
-//                       text:
-//                           "What is the one thing you could've \n done better today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What was your favorite part of the day?"),
-//                   Button(),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//       debugShowCheckedModeBanner: false,
-//     );
-//   }
-// }
-
 class _ReflectionsState extends State<Reflections> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final reflectionData = Reflectionata();
@@ -194,6 +138,32 @@ class _ReflectionsState extends State<Reflections> {
                       );
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 40, //height of button
+                  width: 100, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: ColorManager.darkPurple,
+                        side: BorderSide(
+                            width: 3, color: ColorManager.darkPurple),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        padding: const EdgeInsets.all(10)),
+                    onPressed: () {
+                      //save to firebase and go to journal page
+                    },
+                    child: const Text(
+                      'Save',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontWeight: FontWeightManager.bold,
+                          fontSize: FontSize.s15),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
                 ),
               ],
             ),
