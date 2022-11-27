@@ -10,61 +10,6 @@ class Gratitude extends StatefulWidget {
   State<Gratitude> createState() => _GratitudeState();
 }
 
-// class _GratitudeState extends State<Gratitude> {
-//   get canvas => null;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Container(
-//         decoration: const BoxDecoration(
-//             image: DecorationImage(
-//                 image: AssetImage("images/wallpapergratitude.png"),
-//                 fit: BoxFit.cover)),
-//         child: Scaffold(
-//           backgroundColor: Colors.transparent,
-//           body: PageView(
-//             children: <Widget>[
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "Today I am grateful for..."),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What was the best part of your day?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What made you laugh or smile today?"),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "Write about a beautiful thing you saw..."),
-//                 ],
-//               ),
-//               Stack(
-//                 children: const <Widget>[
-//                   Cont2(),
-//                   TextPage(text: "What is your favorite moment today?"),
-//                   Button(),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//       debugShowCheckedModeBanner: false,
-//     );
-//   }
-// }
-
 class _GratitudeState extends State<Gratitude> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final gratitudeData = GratitudeData();
@@ -192,9 +137,32 @@ class _GratitudeState extends State<Gratitude> {
                       );
                     },
                   ),
-                  //    child: const ElevatedButton(
-                  //                       onPressed: null, child: Text('Submit')),
-                  //
+                ),
+                SizedBox(
+                  height: 40, //height of button
+                  width: 100, //width of button
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: ColorManager.darkPurple,
+                        side: BorderSide(
+                            width: 3, color: ColorManager.darkPurple),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        padding: const EdgeInsets.all(10)),
+                    onPressed: () {
+                      //save to firebase and go to journal page
+                    },
+                    child: const Text(
+                      'Save',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontWeight: FontWeightManager.bold,
+                          fontSize: FontSize.s15),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
                 ),
               ],
             ),
