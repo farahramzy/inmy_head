@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/constants/constants.dart';
-
 import '../widgets/buttons_welcome.dart';
 
 class Welcome extends StatefulWidget {
@@ -9,33 +8,30 @@ class Welcome extends StatefulWidget {
   @override
   State<Welcome> createState() => _WelcomeState();
 }
+const double width = 90;
+const double height = 60;
 
 class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 199, 230, 255),
       body: SafeArea(
         child: Stack(
           children: [
             Positioned(
-              right: 60,
-              bottom: 90,
               child: Container(
-                height: 600.42,
-                width: 300.0,
+                  height: MediaQuery.of(context).size.height / 1.5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage('images/13.png'),
+                    image: AssetImage('images/welcome.png'),
                   ),
                 ),
               ),
             ),
             Positioned(
               child: Container(
-                height: 900.42,
-                width: 500.0,
+                  height: MediaQuery.of(context).size.height / 0.5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
@@ -46,8 +42,8 @@ class _WelcomeState extends State<Welcome> {
             ),
             WelcomeButton(
               text: 'Login',
-              top: 520,
-              left: 80,
+              top: MediaQuery.of(context).size.height / 1.33,
+              left: MediaQuery.of(context).size.width / 5,
               colorButton: ColorManager.beige,
               colorText: ColorManager.purple3,
               welcomeButton2: () {
@@ -56,8 +52,8 @@ class _WelcomeState extends State<Welcome> {
             ),
             WelcomeButton(
               text: 'Sign Up',
-              top: 582,
-              left: 80,
+              top: MediaQuery.of(context).size.height / 1.2,
+              left: MediaQuery.of(context).size.width / 5,
               colorButton: ColorManager.purple4,
               colorText: ColorManager.white,
               welcomeButton2: () {
@@ -65,24 +61,13 @@ class _WelcomeState extends State<Welcome> {
               },
             ),
             Positioned(
-              top: 460,
-              left: 155,
-              child: Text(
-                'In My Head',
-                style: TextStyle(
-                    fontWeight: FontWeightManager.w800,
-                    fontSize: FontSize.s18,
-                    color: ColorManager.beige),
-              ),
-            ),
-            Positioned(
-              top: 480,
-              left: 85,
+              top: MediaQuery.of(context).size.height / 1.47,
+              left: MediaQuery.of(context).size.width / 10.6,
               child: Text(
                 ' Your Digital Anxiety Journal',
                 style: TextStyle(
                     fontWeight: FontWeightManager.w800,
-                    fontSize: FontSize.s18,
+                    fontSize: FontSize.s25,
                     color: ColorManager.beige),
               ),
             ),
