@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin.dart';
-import 'package:inmy_head/screens/journal.dart';
 import '../constants/constants.dart';
 import '../widgets/signup_tf.dart';
-import 'affirmations_.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpC extends StatefulWidget {
   const SignUpC({super.key, this.restorationId});
@@ -56,33 +56,66 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
 
   void _selectDate(DateTime? newSelectedDate) {
     if (newSelectedDate != null) {
-      setState(() {
-        _selectedDate.value = newSelectedDate;
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),
-        ));
-      });
+      setState(
+        () {
+          _selectedDate.value = newSelectedDate;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),
+            ),
+          );
+        },
+      );
     }
   }
 
+  @override
   Widget build(BuildContext context) {
+    String? name;
+    String? email;
+    String? password;
+
+    //////////FIREBASE//////////
+    //User Details
+    Future addUserDetails(
+        String userName, String userEmail, String userPassword) async {
+      await FirebaseFirestore.instance.collection('users').add({
+        'Name': userName,
+        'Email': userEmail,
+        'Password': userPassword,
+      });
+    }
+
+    Future signUp() async {
+      //Create User with email and Password
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email!, password: password!);
+
+      //Add User Details
+      addUserDetails(
+        name!,
+        email!,
+        password!,
+      );
+    }
+    //////////FIREBASE//////////
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(
-              height: 30, // <-- SEE HERE
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.only(top: 30.0),
+              child: Text(
+                'Create New Account',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                    fontWeight: FontWeightManager.w800, fontSize: FontSize.s35),
+              ),
             ),
-            const Text(
-              'Create New Account',
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                  fontWeight: FontWeightManager.w800, fontSize: FontSize.s40),
-            ),
-            const SizedBox(
-              height: 5, // <-- SEE HERE
-            ),
+            const SizedBox(height: 20),
             RichText(
               text: TextSpan(
                 text: 'Already have one? ',
@@ -112,56 +145,31 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 15, // <-- SEE HERE
-            ),
-            const Align(
-              alignment: FractionalOffset(0.10, 0.9),
-              child: Text(
-                'Name',
-                textAlign: TextAlign.right,
-                // alignment: Alignment.topRight,
-                style: TextStyle(
-                    fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
-              ),
-            ),
+            const SizedBox(height: 15),
             TextFieldX(
-              button: () {},
+              onChanged: (val) {
+                name = val;
+              },
+              labelText: 'Name',
+              obscureText: false,
             ),
-            const SizedBox(
-              height: 10, // <-- SEE HERE
-            ),
-            const Align(
-              alignment: FractionalOffset(0.10, 0.9),
-              child: Text(
-                'Email',
-                textAlign: TextAlign.right,
-                // alignment: Alignment.topRight,
-                style: TextStyle(
-                    fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
-              ),
-            ),
+            const SizedBox(height: 15),
             TextFieldX(
-              button: () {},
+              onChanged: (val) {
+                email = val;
+              },
+              labelText: 'Email',
+              obscureText: false,
             ),
-            const SizedBox(
-              height: 10, // <-- SEE HERE
-            ),
-            const Align(
-              alignment: FractionalOffset(0.10, 0.9),
-              child: Text(
-                'Password',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                    fontWeight: FontWeightManager.w800, fontSize: FontSize.s18),
-              ),
-            ),
+            const SizedBox(height: 15),
             TextFieldX(
-              button: () {},
+              onChanged: (val) {
+                password = val;
+              },
+              labelText: 'Password',
+              obscureText: true,
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             OutlinedButton(
               //BIRTHDATE
               onPressed: () {
@@ -169,39 +177,33 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
               },
               child: const Text('Pick Your Birthdate'),
             ),
+            const SizedBox(height: 30),
             SizedBox(
-                height: 40, //height of button
-                width: 220, //width of button
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: ColorManager.purple2,
-                        //background color of button
-                        side: BorderSide(
-                            width: 3,
-                            color:
-                                ColorManager.purple2), //border width and color
-                        // elevation: 3, //elevation of button
-                        shape: RoundedRectangleBorder(
-                            //to set border radius to button
-                            borderRadius: BorderRadius.circular(20)),
-                        padding: const EdgeInsets.all(
-                            10) //content padding inside button
-                        ),
-                    onPressed: () {
-                      //code to execute when this button is pressed.
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Journal()),
-                      );
-                    },
-                    child: const Text(
-                      'Signup',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                          fontWeight: FontWeightManager.bold,
-                          fontSize: FontSize.s15),
-                    ))),
+              height: 40, //height of button
+              width: 220, //width of button
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorManager.purple2,
+                  side: BorderSide(width: 3, color: ColorManager.purple2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                ),
+                onPressed: () async {
+                  await signUp();
+                  // ignore: use_build_context_synchronously
+                  Navigator.pushNamed(context, 'journal');
+                },
+                child: const Text(
+                  'Signup',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                      fontWeight: FontWeightManager.bold,
+                      fontSize: FontSize.s15),
+                ),
+              ),
+            ),
             Container(
               height: 185.42,
               width: 290.0,
