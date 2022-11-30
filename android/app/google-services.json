@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "236383923157",
+    "project_id": "in-my-head-22f03",
+    "storage_bucket": "in-my-head-22f03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236383923157:android:1c8d916fd2c18adfaeab5c",
+        "android_client_info": {
+          "package_name": "bassem.inmyhead"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236383923157-a3d632199pkcdatf6rsjghs5s29p02sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOnqBQYipipo5zuhZX2BnERe7SkSk3Wrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236383923157-a3d632199pkcdatf6rsjghs5s29p02sa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
