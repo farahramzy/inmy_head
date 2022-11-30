@@ -24,19 +24,16 @@ class WelcomeButton extends StatelessWidget {
     return Positioned(
       top: top,
       left: left,
-      height: 50, //height of button
-      width: 250, //width of button
+      height: 50, 
+      width: 250, 
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: colorButton,
-            //background color of button
+            backgroundColor: colorButton,
             side: BorderSide(
-                width: 3, color: colorButton), //border width and color
-            // elevation: 3, //elevation of button
+                width: 3, color: colorButton), 
             shape: RoundedRectangleBorder(
-                //to set border radius to button
                 borderRadius: BorderRadius.circular(20)),
-            padding: const EdgeInsets.all(10) //content padding inside button
+            padding: const EdgeInsets.all(10) 
             ),
         onPressed: welcomeButton2,
         child: Text(
