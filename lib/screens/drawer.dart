@@ -104,6 +104,16 @@ class NavigationDrawer extends StatelessWidget {
                 iconColor: ColorManager.beigYellow,
                 onClicked: () => selectedItem(context, 9),
               ),
+              Divider(color: ColorManager.white),
+              const SizedBox(
+                height: 110,
+              ),
+              buildMenuItem(
+                text: 'Sign Out',
+                icon: Icons.logout_rounded,
+                iconColor: ColorManager.red,
+                onClicked: () => selectedItem(context, 13),
+              ),
             ],
           ),
         ),

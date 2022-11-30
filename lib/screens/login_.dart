@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/signup_.dart';
 import '../constants/constants.dart';
+import '../widgets/login_textformfield.dart';
 import 'forget_.dart';
 import '../model/login_model.dart';
-// import '../admin/admin.dart';
 
 class LoginC extends StatefulWidget {
   const LoginC({super.key});
@@ -14,8 +15,26 @@ class LoginC extends StatefulWidget {
 
 class _LoginCState extends State<LoginC> {
   final _formKey = GlobalKey<FormState>();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  //////////FIREBASE//////////
+  //Login with Email and Password
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+  }
+  //////////FIREBASE//////////
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   final loginModel = LoginModel();
   @override
@@ -67,57 +86,18 @@ class _LoginCState extends State<LoginC> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: 350,
-                      child: TextFormField(
-                        controller: emailController,
-                        validator: (emailController) {
-                          if (emailController != null &&
-                              emailController.isNotEmpty &&
-                              emailController == loginModel.username) {
-                            Navigator.pushNamed(context, 'journal');
-                            return null;
-                          } else {
-                            return 'Please enter Email';
-                          }
-                        },
-                        decoration: const InputDecoration(
-                          labelText: 'Email',
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 10,
-                                color: Color.fromARGB(255, 12, 12, 12)),
-                          ),
-                        ),
-                      ),
+                    LoginTextFormFiled(
+                      controller: emailController,
+                      labelText: 'Email',
+                      obscureText: false,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    SizedBox(
-                      width: 350,
-                      child: TextFormField(
-                        obscureText: true,
-                        obscuringCharacter: "*",
-                        validator: (passwordController) {
-                          if (passwordController != null &&
-                              passwordController.isNotEmpty &&
-                              passwordController == loginModel.password) {
-                            Navigator.pushNamed(context, 'journal');
-                            return null;
-                          } else {
-                            return 'Please enter Password';
-                          }
-                        },
-                        decoration: const InputDecoration(
-                          labelText: 'Password',
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 10,
-                                color: Color.fromARGB(255, 12, 12, 12)),
-                          ),
-                        ),
-                      ),
+                    LoginTextFormFiled(
+                      controller: passwordController,
+                      labelText: 'Password',
+                      obscureText: true,
                     ),
                   ],
                 ),
@@ -150,17 +130,20 @@ class _LoginCState extends State<LoginC> {
               width: 220, //width of button
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: ColorManager.darkblue,
+                    backgroundColor: ColorManager.darkblue,
                     side: BorderSide(width: 3, color: ColorManager.darkblue),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     padding: const EdgeInsets.all(10)),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')));
-                    _formKey.currentState!.save();
-                  }
+                onPressed: () async {
+                  await signIn();
+                  // ignore: use_build_context_synchronously
+                  Navigator.pushNamed(context, 'journal');
+                  // if (_formKey.currentState!.validate()) {
+                  //   ScaffoldMessenger.of(context).showSnackBar(
+                  //       const SnackBar(content: Text('Processing Data')));
+                  //   _formKey.currentState!.save();
+                  // }
                 },
                 child: const Text(
                   'Login',

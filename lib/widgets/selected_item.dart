@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 selectedItem(BuildContext context, int index) {
@@ -30,6 +31,10 @@ selectedItem(BuildContext context, int index) {
       break;
     case 12:
       Navigator.pushNamed(context, 'journal');
+      break;
+    case 13:
+      FirebaseAuth.instance.signOut();
+      Navigator.pushNamed(context, 'welcome');
       break;
   }
 }

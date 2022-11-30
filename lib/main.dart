@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin_edit.dart';
 import 'package:inmy_head/screens/day.dart';
@@ -15,7 +16,9 @@ import 'screens/gratitude.dart';
 import 'screens/mood_tracker_screen.dart';
 import 'screens/user_profile.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
