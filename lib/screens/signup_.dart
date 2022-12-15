@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin.dart';
@@ -218,18 +220,28 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                   padding: const EdgeInsets.all(10),
                 ),
                 onPressed: () async {
-                  await createUserWithEmailAndPassword(email!, password!);
+                  try {
+                    await createUserWithEmailAndPassword(email!, password!);
 
-                  addUserDetails(
-                    user.uid,
-                    name!,
-                    email!,
-                    password!,
-                    phoneNumber!,
-                    downloadURL,
-                  );
-                  // ignore: use_build_context_synchronously
-                  Navigator.pushNamed(context, 'journal');
+                    addUserDetails(
+                      user.uid,
+                      name!,
+                      email!,
+                      password!,
+                      phoneNumber!,
+                      downloadURL,
+                    );
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushNamed(context, 'journal');
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'weak-password') {
+                      print('The password provided is too weak.');
+                    } else if (e.code == 'email-already-in-use') {
+                      print('The account already exists for that email.');
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
                 },
                 child: const Text(
                   'Signup',
@@ -240,18 +252,6 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 ),
               ),
             ),
-            //////////ES2ALHOM LAU YENFA3 ASHELHA//////////
-            Container(
-              height: 185.42,
-              width: 290.0,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage('images/signup.png'),
-                ),
-              ),
-            ),
-            //////////ES2ALHOM LAU YENFA3 ASHELHA//////////
           ],
         ),
       ),
