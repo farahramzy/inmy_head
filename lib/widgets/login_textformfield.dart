@@ -1,6 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class LoginTextFormFiled extends StatelessWidget {
+  // String? validateEmail(String? formEmail) {
+  //   if (formEmail == null || formEmail.isEmpty) {
+  //     return 'This field is required.';
+  //   }
+
+  //   return null;
+  // }
+
   final TextEditingController controller;
   final String labelText;
   final bool obscureText;
@@ -20,16 +30,7 @@ class LoginTextFormFiled extends StatelessWidget {
         textAlign: TextAlign.center,
         controller: controller,
         obscureText: obscureText,
-        // validator: (emailController) {
-        //   if (emailController != null &&
-        //       emailController.isNotEmpty &&
-        //       emailController == loginModel.username) {
-        //     Navigator.pushNamed(context, 'journal');
-        //     return null;
-        //   } else {
-        //     return 'Please enter Email';
-        //   }
-        // },
+        // validator: validateEmail,
         decoration: InputDecoration(
           labelText: labelText,
           border: const OutlineInputBorder(

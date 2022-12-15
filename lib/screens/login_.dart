@@ -1,3 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/signup_.dart';
 import '../constants/constants.dart';
@@ -128,10 +131,17 @@ class _LoginCState extends State<LoginC> {
                   padding: const EdgeInsets.all(10),
                 ),
                 onPressed: () async {
-                  await signInWithEmailAndPassword(
-                      emailController.text, passwordController.text);
-                  // ignore: use_build_context_synchronously
-                  Navigator.pushNamed(context, 'journal');
+                  try {
+                    await signInWithEmailAndPassword(
+                        emailController.text, passwordController.text);
+                    Navigator.pushNamed(context, 'journal');
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'user-not-found') {
+                      print('No user found for that email.');
+                    } else if (e.code == 'wrong-password') {
+                      print('Wrong password provided for that user.');
+                    }
+                  }
                 },
                 child: const Text(
                   'Login',
