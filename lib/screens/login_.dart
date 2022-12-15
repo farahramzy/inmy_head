@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/signup_.dart';
 import '../constants/constants.dart';
+import '../data/repositories/user.dart';
 import '../widgets/login_textformfield.dart';
 import 'forget_.dart';
 import '../model/login_model.dart';
@@ -18,16 +18,6 @@ class _LoginCState extends State<LoginC> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  //////////FIREBASE//////////
-  //Login with Email and Password
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
-  }
-  //////////FIREBASE//////////
 
   @override
   void dispose() {
@@ -126,24 +116,22 @@ class _LoginCState extends State<LoginC> {
               height: 50,
             ),
             SizedBox(
-              height: 40, //height of button
-              width: 220, //width of button
+              height: 40,
+              width: 220,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorManager.darkblue,
-                    side: BorderSide(width: 3, color: ColorManager.darkblue),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    padding: const EdgeInsets.all(10)),
+                  backgroundColor: ColorManager.darkblue,
+                  side: BorderSide(width: 3, color: ColorManager.darkblue),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                ),
                 onPressed: () async {
-                  await signIn();
+                  await signInWithEmailAndPassword(
+                      emailController.text, passwordController.text);
                   // ignore: use_build_context_synchronously
                   Navigator.pushNamed(context, 'journal');
-                  // if (_formKey.currentState!.validate()) {
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //       const SnackBar(content: Text('Processing Data')));
-                  //   _formKey.currentState!.save();
-                  // }
                 },
                 child: const Text(
                   'Login',

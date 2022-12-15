@@ -1,9 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin.dart';
 import '../constants/constants.dart';
+import '../data/repositories/user.dart';
 import '../widgets/signup_tf.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SignUpC extends StatefulWidget {
   const SignUpC({super.key, this.restorationId});
@@ -28,7 +30,6 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
       );
     },
   );
-
   static Route<DateTime> _datePickerRoute(
     BuildContext context,
     Object? arguments,
@@ -70,36 +71,42 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
     }
   }
 
+  File? _image;
+  String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
+  String downloadURL = '';
+  Future getImage() async {
+    XFile? selectedImage;
+    selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    //Get a refrence to storage root
+    Reference referenceRoot = FirebaseStorage.instance.ref();
+    Reference referenceDirImage = referenceRoot.child('images');
+
+    //Create a reference for the image to be stored
+    Reference referenceImageToUpload = referenceDirImage.child(uniqueFileName);
+
+    try {
+      //Store the file in the storage
+      await referenceImageToUpload.putFile(File(selectedImage!.path));
+      //Success: get the download URL for the image
+      downloadURL = await referenceImageToUpload.getDownloadURL();
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+    }
+
+    setState(() {
+      _image = File(selectedImage!.path);
+    });
+    // print('Image Path: $_image');
+  }
+
   @override
   Widget build(BuildContext context) {
     String? name;
     String? email;
     String? password;
-
-    //////////FIREBASE//////////
-    //User Details
-    Future addUserDetails(
-        String userName, String userEmail, String userPassword) async {
-      await FirebaseFirestore.instance.collection('users').add({
-        'Name': userName,
-        'Email': userEmail,
-        'Password': userPassword,
-      });
-    }
-
-    Future signUp() async {
-      //Create User with email and Password
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email!, password: password!);
-
-      //Add User Details
-      addUserDetails(
-        name!,
-        email!,
-        password!,
-      );
-    }
-    //////////FIREBASE//////////
+    String? phoneNumber;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -145,7 +152,19 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 ),
               ),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 10),
+            GestureDetector(
+              onTap: () {
+                getImage();
+              },
+              child: CircleAvatar(
+                radius: 40,
+                backgroundImage: _image == null
+                    ? const AssetImage('images/300.png')
+                    : FileImage(_image!) as ImageProvider,
+              ),
+            ),
+            const SizedBox(height: 10),
             TextFieldX(
               onChanged: (val) {
                 name = val;
@@ -159,6 +178,14 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 email = val;
               },
               labelText: 'Email',
+              obscureText: false,
+            ),
+            const SizedBox(height: 15),
+            TextFieldX(
+              onChanged: (val) {
+                phoneNumber = val;
+              },
+              labelText: 'Phone Number',
               obscureText: false,
             ),
             const SizedBox(height: 15),
@@ -179,8 +206,8 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
             ),
             const SizedBox(height: 30),
             SizedBox(
-              height: 40, //height of button
-              width: 220, //width of button
+              height: 40,
+              width: 220,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorManager.purple2,
@@ -191,7 +218,16 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                   padding: const EdgeInsets.all(10),
                 ),
                 onPressed: () async {
-                  await signUp();
+                  await createUserWithEmailAndPassword(email!, password!);
+
+                  addUserDetails(
+                    user.uid,
+                    name!,
+                    email!,
+                    password!,
+                    phoneNumber!,
+                    downloadURL,
+                  );
                   // ignore: use_build_context_synchronously
                   Navigator.pushNamed(context, 'journal');
                 },
@@ -204,6 +240,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 ),
               ),
             ),
+            //////////ES2ALHOM LAU YENFA3 ASHELHA//////////
             Container(
               height: 185.42,
               width: 290.0,
@@ -214,6 +251,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 ),
               ),
             ),
+            //////////ES2ALHOM LAU YENFA3 ASHELHA//////////
           ],
         ),
       ),
