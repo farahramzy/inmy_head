@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:inmy_head/model/user.dart';
-import 'package:inmy_head/data/user_data.dart';
 import '../constants/constants.dart';
-import 'drawer.dart';
+import '../data/repositories/user.dart';
 import '../widgets/user_profile_widget.dart';
+import 'drawer.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
@@ -13,9 +13,13 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  TextEditingController nameController = TextEditingController();
+
   final GlobalKey<ScaffoldState> _globalKeys = GlobalKey<ScaffoldState>();
 
-  final user = UserData.myUser;
+  CollectionReference usersCollection =
+      FirebaseFirestore.instance.collection('users');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,96 +27,130 @@ class _UserProfileState extends State<UserProfile> {
       drawer: const NavigationDrawer(),
       backgroundColor: ColorManager.white,
       body: SafeArea(
-        child: Container(
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //       image: AssetImage("images/124.jpg"), fit: BoxFit.cover),
-          // ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        _globalKeys.currentState?.openDrawer();
-                      },
-                      icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'homePage');
-                      },
-                      icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      color: ColorManager.black,
-                    ),
-                  ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _globalKeys.currentState?.openDrawer();
+                    },
+                    icon: const Icon(Icons.menu, size: FontSize.s40),
+                    color: ColorManager.black,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'journal');
+                    },
+                    icon: const Icon(Icons.close_sharp, size: FontSize.s40),
+                    color: ColorManager.black,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .where('id', isEqualTo: userId)
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: snapshot.data!.docs.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          var data = snapshot.data!.docs[index];
+                          return Center(
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Hero(
+                                    tag: 'profilePicture',
+                                    child: CircleAvatar(
+                                      radius: 60,
+                                      backgroundImage:
+                                          NetworkImage("${data['Image']}"),
+                                    ),
+                                  ),
+                                ),
+                                ProfileText(
+                                    profileText: 'Name',
+                                    color: ColorManager.darkblue),
+                                ProfileData(
+                                  profileData: "${data['Name']}",
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ProfileText(
+                                    profileText: 'Email',
+                                    color: ColorManager.darkblue),
+                                ProfileData(
+                                  profileData: "${data['Email']}",
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ProfileText(
+                                    profileText: 'Password',
+                                    color: ColorManager.darkblue),
+                                ProfileData(
+                                  profileData: "${data['Password']}",
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ProfileText(
+                                    profileText: 'Phone Number',
+                                    color: ColorManager.darkblue),
+                                ProfileData(
+                                  profileData: "${data['Phone Number']}",
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ProfileText(
+                                    profileText: 'Birthdate',
+                                    color: ColorManager.darkblue),
+                                const ProfileData(
+                                  profileData: '22/7/2001',
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: ProfileHeader(profileName: 'Your Profile'),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Hero(
-                    tag: 'profilePicture',
-                    child: CircleAvatar(
-                      radius: 70,
-                      backgroundImage: AssetImage("images/reflect.png"),
+              ),
+
+              ///////////////////////////////////
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 50),
+                    child: IconButton(
+                      icon: Icon(Icons.keyboard_arrow_right,
+                          size: 50, color: ColorManager.darkblue),
+                      tooltip: 'Edit your profile',
+                      onPressed: () {
+                        // Go to edit Profile Page
+                        // updateUserDetails();
+                        Navigator.pushNamed(context, 'editProfile');
+                      },
                     ),
                   ),
-                ),
-                ProfileText(profileText: 'Name', color: ColorManager.darkblue),
-                ProfileData(
-                  profileData: user.name!,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ProfileText(profileText: 'Email', color: ColorManager.darkblue),
-                ProfileData(
-                  profileData: user.email!,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ProfileText(
-                    profileText: 'Phone Number', color: ColorManager.darkblue),
-                ProfileData(
-                  profileData: user.phone!,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ProfileText(
-                    profileText: 'Birthdate', color: ColorManager.darkblue),
-                ProfileData(
-                  profileData: user.birthdate!,
-                ),
-                // const SizedBox(
-                //   height: 20,
-                // ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 50),
-                      child: IconButton(
-                        icon: Icon(Icons.keyboard_arrow_right,
-                            size: 50, color: ColorManager.darkblue),
-                        tooltip: 'Edit your profile',
-                        onPressed: () {
-                          // Go to edit Profile Page
-                          Navigator.pushNamed(context, 'editProfile');
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
