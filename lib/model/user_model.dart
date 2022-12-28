@@ -2,11 +2,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-////////CONNECTION WITH FIREBASE////////
+/// *********************CONNECTION WITH FIREBASE******************************/
 final user = FirebaseAuth.instance.currentUser!;
 String userId = user.uid;
 
-/// **************************SIGN IN*****************************************/
+/// *********************CONNECTION WITH FIREBASE******************************/
+
+class UserData {
+  Future<Object> getUserDetails() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    String userIds = user.uid;
+    final DocumentSnapshot documentSnapshot =
+        await FirebaseFirestore.instance.collection('users').doc(userIds).get();
+    return documentSnapshot;
+  }
+}
+
+/// **************************SIGN IN******************************************/
 Future signInWithEmailAndPassword(String email, String password) async {
   final User? user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
     email: email.trim(),
@@ -15,10 +27,10 @@ Future signInWithEmailAndPassword(String email, String password) async {
       .user;
 
   userId = user!.uid;
-  print('LOG IN WITH USER ID:  $userId');
+  // print('LOG IN WITH USER ID:  $userId');
 }
 
-/// **************************SIGN UP*****************************************/
+/// **************************SIGN UP******************************************/
 Future createUserWithEmailAndPassword(String email, String password) async {
   User? newUser = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
     email: email.trim(),
@@ -30,7 +42,7 @@ Future createUserWithEmailAndPassword(String email, String password) async {
       'phoneNumberHere', 'imageUrlHere');
 }
 
-/// **************************ADD USER DETAILS*****************************************/
+/// **************************ADD USER DETAILS*********************************/
 Future addUserDetails(String userId, String userName, String userEmail,
     String userPassword, String userPhoneNumber, String userImage) async {
   //2. ADD USER DOC IN "USERS" COLLECTION AND UPDATE THE USER ID***************/
@@ -43,17 +55,17 @@ Future addUserDetails(String userId, String userName, String userEmail,
     'Image': userImage,
   });
 
-  print('NEW USER REGISTERED WITH ID: $userId');
+  // print('NEW USER REGISTERED WITH ID: $userId');
 
   //3. OPTIONAL: SAVE USER ID LOCALLY FOR LATER USE****************************/
   final prefs = await SharedPreferences.getInstance();
   await prefs.setString('USER_ID', userId);
 }
 
-/// **************************UPDATE USER DETAILS*****************************************/
+/// **************************UPDATE USER DETAILS******************************/
 Future updateUserDetails(String userName, String userEmail,
     String userPhoneNumber, String userImage) async {
-  print('TRYING TO UPDATE USER DETAILS WITH ID: $userId');
+  // print('TRYING TO UPDATE USER DETAILS WITH ID: $userId');
 
   final updateUser = FirebaseFirestore.instance.collection('users').doc(userId);
   updateUser.update(

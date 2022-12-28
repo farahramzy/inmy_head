@@ -3,7 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../constants/constants.dart';
-import '../data/repositories/user.dart';
+import '../model/user_model.dart';
 import 'drawer.dart';
 import '../widgets/edit_profile_widget.dart';
 import '../widgets/user_profile_widget.dart';

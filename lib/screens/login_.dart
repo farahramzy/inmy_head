@@ -2,25 +2,28 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/screens/signup_.dart';
 import '../constants/constants.dart';
-import '../data/repositories/user.dart';
+import '../data/repositories/user_provider.dart';
+import '../model/user_model.dart';
 import '../widgets/login_textformfield.dart';
 import 'forget_.dart';
 import '../model/login_model.dart';
 
-class LoginC extends StatefulWidget {
+class LoginC extends ConsumerStatefulWidget {
   const LoginC({super.key});
 
   @override
-  State<LoginC> createState() => _LoginCState();
+  ConsumerState<LoginC> createState() => _LoginCState();
 }
 
-class _LoginCState extends State<LoginC> {
+class _LoginCState extends ConsumerState<LoginC> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final userData = UserData();
 
   @override
   void dispose() {
@@ -134,6 +137,8 @@ class _LoginCState extends State<LoginC> {
                   try {
                     await signInWithEmailAndPassword(
                         emailController.text, passwordController.text);
+                    ref.read(userDataProviderRepository.notifier).state =
+                        userData.getUserDetails();
                     Navigator.pushNamed(context, 'journal');
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
