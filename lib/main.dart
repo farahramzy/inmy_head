@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/screens/admin_edit.dart';
 import 'package:inmy_head/screens/day.dart';
 import 'package:inmy_head/screens/homepage.dart';
@@ -19,7 +20,7 @@ import 'screens/user_profile.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,24 +30,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: 'welcome',
-        routes: {
-          'welcome': (context) => const Welcome(),
-          'journal': (context) => const Journal(),
-          'login': (context) => const LoginC(),
-          'signup': (context) => const SignUpC(),
-          'day': (context) => const Day(),
-          'homePage': (context) => const HomePage(),
-          'gratitude': (context) => const Gratitude(),
-          'worry': (context) => const Worry(),
-          'moodTracker': (context) => const MoodTracker(),
-          'reflections': (context) => const Reflections(),
-          'forgetpass': (context) => const Forgetpass(),
-          'affirmations': (context) => const Affirmations(),
-          'userProfile': (context) => const UserProfile(),
-          'editProfile': (context) => const EditProfile(),
-          'adminedtit': (context) => AdminEdit(),
-        });
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'welcome',
+      routes: {
+        'welcome': (context) => const Welcome(),
+        'journal': (context) => const Journal(),
+        'login': (context) => const LoginC(),
+        'signup': (context) => const SignUpC(),
+        'day': (context) => const Day(),
+        'homePage': (context) => const HomePage(),
+        'gratitude': (context) => const Gratitude(),
+        'worry': (context) => const Worry(),
+        'moodTracker': (context) => const MoodTracker(),
+        'reflections': (context) => const Reflections(),
+        'forgetpass': (context) => const Forgetpass(),
+        'affirmations': (context) => const Affirmations(),
+        'userProfile': (context) => const UserProfile(),
+        'editProfile': (context) => const EditProfile(),
+        'adminedtit': (context) => AdminEdit(),
+      },
+    );
   }
 }
