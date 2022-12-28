@@ -1,8 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/data/journal_data.dart';
 import '../constants/constants.dart';
+import '../data/repositories/user_provider.dart';
 import 'drawer.dart';
 
 class Journal extends StatefulWidget {
@@ -73,41 +74,30 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
               /////////////////////ES2AL FARAH KHALED////////////////////////////
 
               ///////////////To get Name of the Loged in User///////////////
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('users')
-                      .where('Email', isEqualTo: user.email)
-                      .snapshots(),
-                  builder: (context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        itemCount: snapshot.data!.docs.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          var data = snapshot.data!.docs[index];
-                          return Center(
-                            child: Text(
-                              "Welcome ${data['Name']}",
-                              style: TextStyle(
-                                color: ColorManager.darkblue,
-                                fontSize: FontSize.s25,
-                                fontWeight: FontWeightManager.bold,
-                              ),
+              Consumer(
+                builder: (_, ref, __) {
+                  return ref.watch(userDataProvider).when(
+                    data: (value) {
+                      return Center(
+                        child: Text('Welcome, ${value.get('Name')}',
+                            style: TextStyle(
+                              color: ColorManager.darkblue,
+                              fontSize: FontSize.s25,
+                              fontWeight: FontWeightManager.bold,
                             ),
-                          );
-                        },
+                            textAlign: TextAlign.center),
                       );
-                    } else {
+                    },
+                    error: (Object error, StackTrace err) {
+                      return const Text("Error loading your name");
+                    },
+                    loading: () {
                       return const CircularProgressIndicator();
-                    }
-                  },
-                ),
+                    },
+                  );
+                },
               ),
-              ///////////////To get Name of the Logged in User///////////////
-              const Padding(
-                padding: EdgeInsets.only(left: 20),
+              const Center(
                 child: Text(
                   'Your Happy days',
                   style: TextStyle(
@@ -123,27 +113,25 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
               // tabbar
               // in the tabbar, I MUST PROVIDE A TABBAR CONTROLLER
               // step 1 in controller:  "with TickerProviderStateMixin"
-              Container(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TabBar(
-                    labelPadding: const EdgeInsets.only(left: 20, right: 20),
-                    controller: tabController,
-                    labelColor: ColorManager.black,
-                    unselectedLabelColor: ColorManager.grey,
-                    isScrollable: true,
-                    indicatorColor: ColorManager.purple2,
-                    //tabs take children
-                    tabs: const [
-                      Tab(
-                        text: "Today's log",
-                      ),
-                      Tab(text: "Your reflections"),
-                      Tab(text: "Your blessings"),
-                      Tab(text: "Your worries"),
-                      Tab(text: "Your emotions"),
-                    ],
-                  ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TabBar(
+                  labelPadding: const EdgeInsets.only(left: 20, right: 20),
+                  controller: tabController,
+                  labelColor: ColorManager.black,
+                  unselectedLabelColor: ColorManager.grey,
+                  isScrollable: true,
+                  indicatorColor: ColorManager.purple2,
+                  //tabs take children
+                  tabs: const [
+                    Tab(
+                      text: "Today's log",
+                    ),
+                    Tab(text: "Your reflections"),
+                    Tab(text: "Your blessings"),
+                    Tab(text: "Your worries"),
+                    Tab(text: "Your emotions"),
+                  ],
                 ),
               ),
               Container(
@@ -256,9 +244,6 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
               //how to make a clickable
               Container(
                 height: 90,

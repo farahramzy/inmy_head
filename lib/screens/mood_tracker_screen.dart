@@ -1,6 +1,11 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/constants.dart';
 import '../data/mood_tracker_data.dart';
+import '../data/repositories/user_provider.dart';
+import '../model/mood_tracker_model.dart';
+import '../model/user_model.dart';
 import 'drawer.dart';
 
 class MoodTracker extends StatefulWidget {
@@ -16,6 +21,9 @@ class _MoodTrackerState extends State<MoodTracker> {
   static double minVal = 0;
   static double maxVal = 4;
   static int valueChange = 0;
+
+  var time = DateTime.now();
+  final moodTracker = MoodTrackers();
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +60,26 @@ class _MoodTrackerState extends State<MoodTracker> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Hey, Ahmed . How are you\n this evening?',
-                    style: TextStyle(
-                      color: ColorManager.white,
-                      fontSize: FontSize.s20,
-                    ),
-                    textAlign: TextAlign.center,
+                  Consumer(
+                    builder: (_, ref, __) {
+                      return ref.watch(userDataProvider).when(
+                        data: (value) {
+                          return Text(
+                              'Hey, ${value.get('Name')} . How are you\n this evening?',
+                              style: TextStyle(
+                                color: ColorManager.white,
+                                fontSize: FontSize.s20,
+                              ),
+                              textAlign: TextAlign.center);
+                        },
+                        error: (Object error, StackTrace err) {
+                          return const Text("Error loading your name");
+                        },
+                        loading: () {
+                          return const CircularProgressIndicator();
+                        },
+                      );
+                    },
                   ),
                 ],
               ),
@@ -68,7 +89,6 @@ class _MoodTrackerState extends State<MoodTracker> {
                 size: 100,
                 color: ColorManager.white,
               ),
-              // const SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(
@@ -77,7 +97,6 @@ class _MoodTrackerState extends State<MoodTracker> {
                       fontSize: FontSize.s40, color: ColorManager.white),
                 ),
               ),
-              // const SizedBox(height: 25),
               SliderTheme(
                 data: SliderTheme.of(context).copyWith(
                   trackHeight: 5,
@@ -85,7 +104,6 @@ class _MoodTrackerState extends State<MoodTracker> {
                 child: Slider(
                   activeColor: ColorManager.white,
                   inactiveColor: ColorManager.grey,
-                  // divisions: 5,
                   min: minVal,
                   max: maxVal,
                   value: valueChange.toDouble(),
@@ -101,7 +119,33 @@ class _MoodTrackerState extends State<MoodTracker> {
               const SizedBox(height: 130),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'journal');
+                  setState(() {
+                    time = DateTime.now();
+                  });
+                  moodTracker.addMoodTracker(
+                    userId,
+                    _moodTracker.moodTexts![valueChange],
+                    '${time.day}:${time.month}:${time.year}  ${time.hour}:${time.minute}:${time.second}',
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content:
+                          const Text('Your mood has been saved successfully!'),
+                      duration: const Duration(milliseconds: 3000),
+                      width: 300.0,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0,
+                        vertical: 10.0,
+                      ),
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  );
+                  Timer(const Duration(seconds: 3), () {
+                    Navigator.pushNamed(context, 'journal');
+                  });
                 },
                 child: Material(
                   borderRadius: BorderRadius.circular(100.0),
