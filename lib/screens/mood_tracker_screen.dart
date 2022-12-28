@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/constants.dart';
@@ -21,8 +22,6 @@ class _MoodTrackerState extends State<MoodTracker> {
   static double minVal = 0;
   static double maxVal = 4;
   static int valueChange = 0;
-
-  var time = DateTime.now();
   final moodTracker = MoodTrackers();
 
   @override
@@ -119,13 +118,10 @@ class _MoodTrackerState extends State<MoodTracker> {
               const SizedBox(height: 130),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    time = DateTime.now();
-                  });
                   moodTracker.addMoodTracker(
                     userId,
                     _moodTracker.moodTexts![valueChange],
-                    '${time.day}:${time.month}:${time.year}  ${time.hour}:${time.minute}:${time.second}',
+                    Timestamp.now().toDate(),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
