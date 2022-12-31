@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/screens/journal.dart';
-import '../constants/constants.dart';
+import '../../constants/constants.dart';
 
 class JournalButton extends StatefulWidget {
   final String text;
