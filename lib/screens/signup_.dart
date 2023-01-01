@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -222,14 +224,8 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                   try {
                     await createUserWithEmailAndPassword(email!, password!);
 
-                    addUserDetails(
-                      userId,
-                      name!,
-                      email!,
-                      password!,
-                      phoneNumber!,
-                      downloadURL,
-                    );
+                    addUserDetails(userId, name!, email!, password!,
+                        phoneNumber!, downloadURL, 'user');
                     // ignore: use_build_context_synchronously
                     Navigator.pushNamed(context, 'journal');
                   } on FirebaseAuthException catch (e) {

@@ -1,13 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/screens/signup_.dart';
 import '../constants/constants.dart';
-import '../data/repositories/user_provider.dart';
 import '../model/user_model.dart';
-import '../widgets/login_textformfield.dart';
+import '../widgets/Login/login_check.dart';
+import '../widgets/Login/login_textformfield.dart';
 import 'forget_.dart';
 import '../model/login_model.dart';
 
@@ -121,42 +120,12 @@ class _LoginCState extends ConsumerState<LoginC> {
             const SizedBox(
               height: 50,
             ),
-            SizedBox(
-              height: 40,
-              width: 220,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorManager.darkblue,
-                  side: BorderSide(width: 3, color: ColorManager.darkblue),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.all(10),
-                ),
-                onPressed: () async {
-                  try {
-                    await signInWithEmailAndPassword(
-                        emailController.text, passwordController.text);
-                    ref.read(userDataProviderRepository.notifier).state =
-                        userData.getUserDetails();
-                    Navigator.pushNamed(context, 'journal');
-                  } on FirebaseAuthException catch (e) {
-                    if (e.code == 'user-not-found') {
-                      print('No user found for that email.');
-                    } else if (e.code == 'wrong-password') {
-                      print('Wrong password provided for that user.');
-                    }
-                  }
-                },
-                child: const Text(
-                  'Login',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontWeight: FontWeightManager.bold,
-                      fontSize: FontSize.s15),
-                ),
-              ),
-            ),
+            //Checks whether the logged in user is an Admin or a User.
+            LoginCheck(
+                emailController: emailController,
+                passwordController: passwordController,
+                ref: ref,
+                userData: userData),
             const SizedBox(
               height: 40,
             ),

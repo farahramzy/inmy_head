@@ -1,28 +1,30 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import '../constants/constants.dart';
+import '../data/repositories/user_provider.dart';
 import '../model/user_model.dart';
 import 'drawer.dart';
 import '../widgets/edit_profile_widget.dart';
 import '../widgets/user_profile_widget.dart';
 
-class EditProfile extends StatefulWidget {
+class EditProfile extends ConsumerStatefulWidget {
   const EditProfile({super.key});
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  ConsumerState<EditProfile> createState() => _EditProfileState();
 }
 
-TextEditingController nameController = TextEditingController();
-TextEditingController emailController = TextEditingController();
-TextEditingController phoneController = TextEditingController();
-
-class _EditProfileState extends State<EditProfile> {
+class _EditProfileState extends ConsumerState<EditProfile> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
   File? _image;
+  late TextEditingController nameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneController;
+  String? imageController;
   String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
   String downloadURL = '';
   Future getImage() async {
@@ -52,7 +54,20 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    final watchValue = ref.read(userDataProvider).value;
+    imageController = watchValue.get('Image');
+    nameController = TextEditingController(text: watchValue.get('Name'));
+    emailController = TextEditingController(text: watchValue.get('Email'));
+    phoneController =
+        TextEditingController(text: watchValue.get('Phone Number').toString());
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // print(ref.read(userDataProvider).value.get('Name'));
+
     return Scaffold(
       backgroundColor: ColorManager.white,
       key: _globalKey,
@@ -97,12 +112,17 @@ class _EditProfileState extends State<EditProfile> {
                         onTap: () {
                           getImage();
                         },
-                        child: CircleAvatar(
-                          radius: 40,
-                          backgroundImage: _image == null
-                              ? const AssetImage('images/300.png')
-                              : FileImage(_image!) as ImageProvider,
-                        ),
+                        child: imageController != null &&
+                                imageController!.isNotEmpty
+                            ? CircleAvatar(
+                                radius: 40,
+                                backgroundImage: NetworkImage(imageController!))
+                            : CircleAvatar(
+                                radius: 40,
+                                backgroundImage: _image == null
+                                    ? const AssetImage('images/300.png')
+                                    : FileImage(_image!) as ImageProvider,
+                              ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,

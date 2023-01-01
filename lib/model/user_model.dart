@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,8 +26,10 @@ Future signInWithEmailAndPassword(String email, String password) async {
     password: password.trim(),
   ))
       .user;
+  if (user != null) {
+    userId = user.uid;
+  }
 
-  userId = user!.uid;
   // print('LOG IN WITH USER ID:  $userId');
 }
 
@@ -39,12 +42,12 @@ Future createUserWithEmailAndPassword(String email, String password) async {
       .user;
 
   addUserDetails(newUser!.uid, 'usernameHere', email.trim(), password.trim(),
-      'phoneNumberHere', 'imageUrlHere');
+      'phoneNumberHere', 'imageUrlHere','user');
 }
 
 /// **************************ADD USER DETAILS*********************************/
 Future addUserDetails(String userId, String userName, String userEmail,
-    String userPassword, String userPhoneNumber, String userImage) async {
+    String userPassword, String userPhoneNumber, String userImage,String userRole) async {
   //2. ADD USER DOC IN "USERS" COLLECTION AND UPDATE THE USER ID***************/
   await FirebaseFirestore.instance.collection('users').doc(userId).set({
     'id': userId,
@@ -53,6 +56,7 @@ Future addUserDetails(String userId, String userName, String userEmail,
     'Password': userPassword,
     'Phone Number': int.parse(userPhoneNumber),
     'Image': userImage,
+    'userRole': userRole
   });
 
   // print('NEW USER REGISTERED WITH ID: $userId');
