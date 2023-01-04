@@ -82,7 +82,9 @@ class _ReflectionsState extends State<Reflections> {
                   ),
                 ),
                 const SizedBox(height: 60.0),
-                add_reflection_listview(controllerList: controllerList, reflectionData: reflectionData),
+                AddReflectionListView(
+                    controllerList: controllerList,
+                    reflectionData: reflectionData),
                 SizedBox(
                   height: 40, //height of button
                   width: 100, //width of button
@@ -137,4 +139,3 @@ class _ReflectionsState extends State<Reflections> {
     );
   }
 }
-

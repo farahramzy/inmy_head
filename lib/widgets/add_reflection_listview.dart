@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/constants/constants.dart';
 import 'package:inmy_head/data/reflection_data.dart';
 
-
-class add_reflection_listview extends StatelessWidget {
-  const add_reflection_listview({
+class AddReflectionListView extends StatelessWidget {
+  const AddReflectionListView({
     Key? key,
     required this.controllerList,
     required this.reflectionData,
@@ -37,8 +35,8 @@ class add_reflection_listview extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(
-                            top: 15, left: 10, right: 5),
+                        padding:
+                            const EdgeInsets.only(top: 15, left: 10, right: 5),
                         child: Center(
                           child: Text(
                             reflectionData.reflectionList![index],
@@ -60,17 +58,14 @@ class add_reflection_listview extends StatelessWidget {
                           maxLines: 9,
                           decoration: InputDecoration(
                             fillColor: ColorManager.white,
-                            labelText:
-                                'Take a few moments reflect...',
+                            labelText: 'Take a few moments reflect...',
                             alignLabelWithHint: true,
                             labelStyle: TextStyle(
                               color: ColorManager.white,
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: ColorManager.white),
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(color: ColorManager.white),
                             ),
                             hintText: 'Type your answer...',
                           ),
