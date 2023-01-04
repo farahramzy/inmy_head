@@ -76,17 +76,17 @@ class _AdminState extends State<Admin> {
                         AdminBox(
                             text: 'Reflect',
                             button: () {
-                              Navigator.pushNamed(context, 'adminedit');
+                              Navigator.pushNamed(context, 'editReflect');
                             }),
                         AdminBox(
                             text: 'Worries',
                             button: () {
-                              Navigator.pushNamed(context, 'worry');
+                              Navigator.pushNamed(context, 'editWorry');
                             }),
                         AdminBox(
                             text: 'Gratitude',
                             button: () {
-                              Navigator.pushNamed(context, 'gratitude');
+                              Navigator.pushNamed(context, 'editGratitude');
                             }),
                       ],
                     ),

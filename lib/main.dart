@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/screens/admin.dart';
-import 'package:inmy_head/screens/admin_edit.dart';
+import 'package:inmy_head/screens/edit_gratitude.dart';
+import 'package:inmy_head/screens/edit_reflect.dart';
 import 'package:inmy_head/screens/day.dart';
+import 'package:inmy_head/screens/edit_worry.dart';
 import 'package:inmy_head/screens/homepage.dart';
 import 'package:inmy_head/screens/journal.dart';
 import 'package:inmy_head/screens/login_.dart';
@@ -48,8 +50,10 @@ class MyApp extends StatelessWidget {
         'affirmations': (context) => const Affirmations(),
         'userProfile': (context) => const UserProfile(),
         'editProfile': (context) => const EditProfile(),
-        'adminedit': (context) => AdminEdit(),
         'admin': (context) => const Admin(),
+        'editReflect': (context) => const EditReflection(),
+        'editWorry': (context) => const EditWorry(),
+        'editGratitude': (context) => const EditGratitude(),
       },
     );
   }
