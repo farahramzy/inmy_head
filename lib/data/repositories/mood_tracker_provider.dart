@@ -14,18 +14,3 @@ final moodTrackerProviderRepository =
 
 final moodTrackerProvider =
     StreamProvider(((ref) => ref.watch(moodTrackerProviderRepository)));
- 
-
-// Stream moodTrackerData = MoodTrackers().getMoodTracker();
-// final moodTrackerProviderRepository = StateProvider.autoDispose<Stream>((ref) {
-//   ref.onDispose(() {
-//     ref.controller.dispose();
-//   });
-//   return moodTrackerData;
-// });
-
-// final moodTrackerProvider = StreamProvider.autoDispose(
-//     ((ref) => ref.watch(moodTrackerProviderRepository)));
-
-
-//agarab el controller =null
