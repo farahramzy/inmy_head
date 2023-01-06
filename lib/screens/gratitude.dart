@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:inmy_head/model/add_gratitude.dart';
+import 'package:inmy_head/model/user_model.dart';
+import 'package:inmy_head/widgets/add_gratitude_listview.dart';
 import '../constants/constants.dart';
 import '../data/gratitude_data.dart';
 import 'drawer.dart';
@@ -13,7 +18,14 @@ class Gratitude extends StatefulWidget {
 class _GratitudeState extends State<Gratitude> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final gratitudeData = GratitudeData();
-
+  final addGratitude = AddGratitude();
+  List<TextEditingController> controllerList = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,88 +81,42 @@ class _GratitudeState extends State<Gratitude> {
                   ),
                 ),
                 const SizedBox(height: 60.0),
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: gratitudeData.gratitudeList!.length,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 400,
-                        child: ListTile(
-                          title: SizedBox(
-                            height: 350,
-                            child: Container(
-                              width: 350,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30.0),
-                                color: ColorManager.purple3,
-                              ),
-                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 15, left: 10, right: 5),
-                                    child: Center(
-                                      child: Text(
-                                        gratitudeData.gratitudeList![index],
-                                        style: TextStyle(
-                                            color: ColorManager.white,
-                                            fontSize: FontSize.s20,
-                                            fontWeight:
-                                                FontWeightManager.bold2),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(20),
-                                    child: TextFormField(
-                                      onTap: () {},
-                                      maxLines: 9,
-                                      decoration: InputDecoration(
-                                        fillColor: ColorManager.white,
-                                        labelText:
-                                            'Take a few moments to be grateful',
-                                        alignLabelWithHint: true,
-                                        labelStyle: TextStyle(
-                                          color: ColorManager.white,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          borderSide: BorderSide(
-                                              color: ColorManager.white),
-                                        ),
-                                        hintText: 'Type your answer...',
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                add_gratitude_listview(
+                    controllerList: controllerList,
+                    gratitudeData: gratitudeData),
                 SizedBox(
                   height: 40, //height of button
                   width: 100, //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: ColorManager.darkPurple,
+                        backgroundColor: ColorManager.darkPurple,
                         side: BorderSide(
                             width: 3, color: ColorManager.darkPurple),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.all(10)),
                     onPressed: () {
-                      //save to firebase and go to journal page
+                      addGratitude.addGratitude(
+                          userId, controllerList.map((e) => e.text).toList());
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text(
+                              'Your gratitude has been saved successfully!'),
+                          duration: const Duration(milliseconds: 3000),
+                          width: 300.0,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15.0,
+                            vertical: 10.0,
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      );
+                      Timer(const Duration(seconds: 3), () {
+                        Navigator.pushNamed(context, 'journal');
+                      });
                     },
                     child: const Text(
                       'Save',
