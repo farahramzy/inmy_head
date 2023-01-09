@@ -50,9 +50,35 @@ class LoginCheck extends StatelessWidget {
             }
           } on FirebaseAuthException catch (e) {
             if (e.code == 'user-not-found') {
-              print('No user found for that email.');
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('No user found for that email.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+              );
             } else if (e.code == 'wrong-password') {
-              print('Wrong password provided for that user.');
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Wrong password provided for that user.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+              );
             }
           }
         },
