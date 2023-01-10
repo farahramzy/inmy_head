@@ -92,28 +92,36 @@ class _EditReflectionState extends State<EditReflection> {
                                                 vertical: 8.0,
                                                 horizontal: 10.0),
                                             child: TextFormField(
-                                              maxLines: 2,
-                                              initialValue:
-                                                  value.docs[index].get('text'),
-                                              decoration: InputDecoration(
-                                                hintText:
-                                                    'Enter your reflection',
-                                                hintStyle: TextStyle(
+                                                maxLines: 2,
+                                                initialValue: value.docs[index]
+                                                    .get('text'),
+                                                decoration: InputDecoration(
+                                                  hintText:
+                                                      'Enter your reflection',
+                                                  hintStyle: TextStyle(
+                                                      color: ColorManager.black,
+                                                      fontSize: FontSize.s20,
+                                                      fontWeight:
+                                                          FontWeightManager
+                                                              .bold2),
+                                                ),
+                                                style: TextStyle(
                                                     color: ColorManager.black,
                                                     fontSize: FontSize.s20,
                                                     fontWeight:
                                                         FontWeightManager
                                                             .bold2),
-                                              ),
-                                              style: TextStyle(
-                                                  color: ColorManager.black,
-                                                  fontSize: FontSize.s20,
-                                                  fontWeight:
-                                                      FontWeightManager.bold2),
-                                              // onChanged: (value) {
-                                              //   // reflectionData.reflection = value;
-                                              // },
-                                            ),
+
+                                                // onChanged: (value) {
+                                                //   // reflectionData.reflection = value;
+                                                // },
+
+                                                // update automatically on changes without needing a button
+                                                onChanged: (newValue) => value
+                                                    .document(value
+                                                        .docs[index].documentID)
+                                                    .updateData(
+                                                        {'text': newValue})),
                                           ),
                                         ),
                                       ),
@@ -121,7 +129,13 @@ class _EditReflectionState extends State<EditReflection> {
                                   ],
                                 );
                               }),
-                          //SAVE BUTTON
+                          //SAVE BUTTON to reload the page
+                          //how to code a save button that reloads page on
+
+                          // ElevatedButton(
+                          //     onPressed: (context) => Navigator.pop(context),
+                          //     child: const Text("save")
+                          //     )
                         );
                       },
                       error: (Object error, StackTrace err) {
