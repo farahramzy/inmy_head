@@ -2,19 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:inmy_head/model/user_model.dart';
 
 class ReflectionModel {
-  String? question;
+  // String? question;
 
-  ReflectionModel({this.question});
+  // ReflectionModel({this.question});
 
-  ReflectionModel.fromJson(Map<String, dynamic> json) {
-    question = json['question'];
-  }
+  // ReflectionModel.fromJson(Map<String, dynamic> json) {
+  //   question = json['question'];
+  // }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['question'] = question;
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = <String, dynamic>{};
+  //   data['question'] = question;
+  //   return data;
+  // }
 
   Future addReflection(String userId, List<String> reflectionList) async {
     FirebaseFirestore.instance.collection('reflection').add({
