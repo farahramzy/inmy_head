@@ -42,12 +42,18 @@ Future createUserWithEmailAndPassword(String email, String password) async {
       .user;
 
   addUserDetails(newUser!.uid, 'usernameHere', email.trim(), password.trim(),
-      'phoneNumberHere', 'imageUrlHere','user');
+      'phoneNumberHere', 'imageUrlHere', 'user');
 }
 
 /// **************************ADD USER DETAILS*********************************/
-Future addUserDetails(String userId, String userName, String userEmail,
-    String userPassword, String userPhoneNumber, String userImage,String userRole) async {
+Future addUserDetails(
+    String userId,
+    String userName,
+    String userEmail,
+    String userPassword,
+    String userPhoneNumber,
+    String userImage,
+    String userRole) async {
   //2. ADD USER DOC IN "USERS" COLLECTION AND UPDATE THE USER ID***************/
   await FirebaseFirestore.instance.collection('users').doc(userId).set({
     'id': userId,

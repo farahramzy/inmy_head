@@ -7,3 +7,10 @@ final worryQuestionsProviderRepository =
 
 final worryQuestionsProvider =
     StreamProvider(((ref) => ref.watch(worryQuestionsProviderRepository)));
+
+//////////GET USER WORRY DATA//////////
+Stream worryData = WorryQuestions().getWorryUserData();
+final worryDataProviderRepository = StateProvider<Stream>((ref) => worryData);
+
+final worryDataProvider =
+    StreamProvider(((ref) => ref.watch(worryDataProviderRepository)));
