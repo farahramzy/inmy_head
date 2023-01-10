@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/constants.dart';
+import '../data/repositories/user_provider.dart';
 import '../widgets/build_header.dart';
 import '../widgets/build_menu_item.dart';
 import '../widgets/selected_item.dart';
@@ -29,17 +31,44 @@ class NavigationDrawer extends StatelessWidget {
                       title: title,
                       onClicked: () => selectedItem(context, 8),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, 'userProfile');
+                    Consumer(
+                      builder: (_, ref, __) {
+                        return ref.watch(userDataProvider).when(
+                          data: (value) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, 'userProfile');
+                              },
+                              child: Hero(
+                                tag: 'profilePicture',
+                                child: CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage:
+                                      NetworkImage(value.get('Image')),
+                                ),
+                              ),
+                            );
+                          },
+                          error: (Object error, StackTrace err) {
+                            return const Text("Error loading your name");
+                          },
+                          loading: () {
+                            return const CircularProgressIndicator();
+                          },
+                        );
                       },
-                      child: const Hero(
-                        tag: 'profilePicture',
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage("images/reflect.png"),
-                        ),
-                      ),
                     ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.pushNamed(context, 'userProfile');
+                    //   },
+                    //   child: const Hero(
+                    //     tag: 'profilePicture',
+                    //     child: CircleAvatar(
+                    //       backgroundImage: AssetImage("images/reflect.png"),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
