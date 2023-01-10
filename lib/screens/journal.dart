@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/data/journal_data.dart';
 import 'package:inmy_head/firebase_options.dart';
 import '../constants/constants.dart';
+import '../data/repositories/user_provider.dart';
 import '../widgets/journal/lets_reflect_listview.dart';
 import '../widgets/journal/screen_text.dart';
 import '../widgets/journal/tab_view.dart';
@@ -13,7 +15,7 @@ import 'drawer.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
  
 
-  print("Handling a background message: ${message.messageId}");
+  // print("Handling a background message: ${message.messageId}");
 }
 
 
@@ -37,11 +39,11 @@ void notification() async {
   //   sound: true,
   // );
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
+    // print('Got a message whilst in the foreground!');
+    // print('Message data: ${message.data}');
 
     if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
+      // print('Message also contained a notification: ${message.notification}');
     }
   });
   runApp(const Journal());
@@ -68,9 +70,10 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.only(top: 20, left: 20),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
                       onPressed: () {
@@ -79,23 +82,24 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
                       icon: const Icon(Icons.menu, size: FontSize.s40),
                       color: ColorManager.black,
                     ),
-                    /////////////////////ES2AL FARAH KHALED////////////////////////////
-                    Expanded(child: Container()),
-                    /////////////////////ES2AL FARAH KHALED////////////////////////////
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, 'editProfile');
+                    Consumer(
+                      builder: (_, ref, __) {
+                        return ref.watch(userDataProvider).when(
+                          data: (value) {
+                            return CircleAvatar(
+                              radius: 25,
+                              backgroundImage: NetworkImage(value.get('Image')),
+                            );
+                          },
+                          error: (Object error, StackTrace err) {
+                            return const Text("Error loading your name");
+                          },
+                          loading: () {
+                            return const CircularProgressIndicator();
+                          },
+                        );
                       },
-                      child: Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(19),
-                          color: ColorManager.purple3.withOpacity(0.5),
-                        ),
-                      ),
-                    )
+                    ),
                   ],
                 ),
               ),
