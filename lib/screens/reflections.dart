@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:inmy_head/model/add_reflection.dart';
 import 'package:inmy_head/model/user_model.dart';
 import 'package:inmy_head/widgets/add_reflection_listview.dart';
-// import 'package:inmy_head/reflections/reflections2.dart';
 import '../constants/constants.dart';
+import '../model/reflections_model.dart';
 import 'drawer.dart';
 import '../data/reflection_data.dart';
 
@@ -18,7 +17,7 @@ class Reflections extends StatefulWidget {
 class _ReflectionsState extends State<Reflections> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final reflectionData = Reflectionata();
-  final addReflection = AddReflection();
+  final addReflection = ReflectionModel();
   List<TextEditingController> controllerList = [
     TextEditingController(),
     TextEditingController(),
@@ -90,7 +89,7 @@ class _ReflectionsState extends State<Reflections> {
                   width: 100, //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: ColorManager.darkPurple,
+                        backgroundColor: ColorManager.darkPurple,
                         side: BorderSide(
                             width: 3, color: ColorManager.darkPurple),
                         shape: RoundedRectangleBorder(

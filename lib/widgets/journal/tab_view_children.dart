@@ -2,9 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/journal_data.dart';
+import '../../data/repositories/gratitude_questions_provider.dart';
 import '../../data/repositories/mood_tracker_provider.dart';
-import '../../model/mood_tracker_model.dart';
+import '../../data/repositories/reflection_questions_provider.dart';
+import '../../data/repositories/worry_questions_provider.dart';
 import 'custom_listview.dart';
+import 'custom_listview_mood.dart';
 
 class TabViewChildren extends StatefulWidget {
   const TabViewChildren(
@@ -16,17 +19,9 @@ class TabViewChildren extends StatefulWidget {
   State<TabViewChildren> createState() => _TabViewChildrenState();
 }
 
-Stream moodTrackerData = MoodTrackers().getMoodTracker();
-final moodTrackerProviderRepository =
-    StateProvider<Stream>((ref) => moodTrackerData);
-
-final moodTrackerProvider =
-    StreamProvider(((ref) => ref.watch(moodTrackerProviderRepository)));
-
 class _TabViewChildrenState extends State<TabViewChildren> {
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       padding: const EdgeInsets.only(left: 20, top: 10),
       height: 300,
@@ -57,21 +52,136 @@ class _TabViewChildrenState extends State<TabViewChildren> {
               );
             },
           ),
-          CustomListView(
-            icon: const Icon(Icons.face),
-            textList: widget.journalData.list,
-            time: null,
+
+          Consumer(
+            builder: (_, ref, __) {
+              return ref.watch(reflectionDataProvider).when(
+                data: (value) {
+                  List<String> listReflectionFirstData = [];
+                  List<List<String>> cardsDataList = [];
+
+                  value.docs.forEach((element) {
+                    List<dynamic>? reflectionData = element.get('ans');
+                    if (reflectionData != null && reflectionData.isNotEmpty) {
+                      List<String> listReflectionData = [];
+                      listReflectionFirstData.add(reflectionData.first);
+
+                      for (var element in reflectionData) {
+                        if (element is String) {
+                          listReflectionData.add(element);
+                        }
+                      }
+                      cardsDataList.add(listReflectionData);
+                    } else {
+                      listReflectionFirstData
+                          .add('No data provided in your reflection list');
+                    }
+                  });
+                  return CustomListView(
+                    icon: const Icon(Icons.face),
+                    textListData: cardsDataList,
+                    time: null,
+                    onTap: () {},
+                  );
+                },
+                error: (Object error, StackTrace err) {
+                  return const Center(
+                    child: Text("Error loading your reflections..."),
+                  );
+                },
+                loading: () {
+                  return const Center(child: CircularProgressIndicator());
+                },
+              );
+            },
           ),
-          CustomListView(
-            icon: const Icon(Icons.auto_awesome),
-            textList: widget.journalData.list1,
-            time: null,
+          ////////////////////
+          Consumer(
+            builder: (_, ref, __) {
+              return ref.watch(gratitudeDataProvider).when(
+                data: (value) {
+                  List<String> listGratitudeFirstData = [];
+                  List<List<String>> cardsDataList = [];
+
+                  value.docs.forEach((element) {
+                    List<dynamic>? gratitudenData = element.get('ans');
+                    if (gratitudenData != null && gratitudenData.isNotEmpty) {
+                      List<String> listGratitudeData = [];
+                      listGratitudeFirstData.add(gratitudenData.first);
+
+                      for (var element in gratitudenData) {
+                        if (element is String) {
+                          listGratitudeData.add(element);
+                        }
+                      }
+                      cardsDataList.add(listGratitudeData);
+                    } else {
+                      listGratitudeFirstData
+                          .add('No data provided in your gratitude list');
+                    }
+                  });
+                  return CustomListView(
+                    icon: const Icon(Icons.face),
+                    textListData: cardsDataList,
+                    time: null,
+                    onTap: () {},
+                  );
+                },
+                error: (Object error, StackTrace err) {
+                  return const Center(
+                    child: Text("Error loading your reflections..."),
+                  );
+                },
+                loading: () {
+                  return const Center(child: CircularProgressIndicator());
+                },
+              );
+            },
           ),
-          CustomListView(
-            icon: const Icon(Icons.do_disturb_alt),
-            textList: widget.journalData.list2,
-            time: null,
+          ////////////////////
+          Consumer(
+            builder: (_, ref, __) {
+              return ref.watch(worryDataProvider).when(
+                data: (value) {
+                  List<String> listWorryFirstData = [];
+                  List<List<String>> cardsDataList = [];
+
+                  value.docs.forEach((element) {
+                    List<dynamic>? worryData = element.get('ans');
+                    if (worryData != null && worryData.isNotEmpty) {
+                      List<String> listWorryData = [];
+                      listWorryFirstData.add(worryData.first);
+
+                      for (var element in worryData) {
+                        if (element is String) {
+                          listWorryData.add(element);
+                        }
+                      }
+                      cardsDataList.add(listWorryData);
+                    } else {
+                      listWorryFirstData
+                          .add('No data provided in your gratitude list');
+                    }
+                  });
+                  return CustomListView(
+                    icon: const Icon(Icons.face),
+                    textListData: cardsDataList,
+                    time: null,
+                    onTap: () {},
+                  );
+                },
+                error: (Object error, StackTrace err) {
+                  return const Center(
+                    child: Text("Error loading your reflections..."),
+                  );
+                },
+                loading: () {
+                  return const Center(child: CircularProgressIndicator());
+                },
+              );
+            },
           ),
+          //////////////////////////////
           Consumer(
             builder: (_, ref, __) {
               return ref.watch(moodTrackerProvider).when(
@@ -88,7 +198,7 @@ class _TabViewChildrenState extends State<TabViewChildren> {
                     listTime.add(
                         '${time.day}:${time.month}:${time.year} -- ${time.hour}:${time.minute}:${time.second}');
                   });
-                  return CustomListView(
+                  return CustomListViewForMood(
                     icon: const Icon(Icons.add_reaction),
                     textList: listText,
                     time: listTime,
