@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../model/reflection_questions_model.dart';
+import 'package:inmy_head/model/gratitude_questions_model.dart';
 
-Stream gratitudeQuestions = ReflectionQuestions().getReflectionQuestions();
+Stream gratitudeQuestions = GratitudeQuestions().getGratitudeQuestions();
 final gratitudeQuestionsProviderRepository =
     StateProvider<Stream>((ref) => gratitudeQuestions);
 
