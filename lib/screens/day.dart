@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../widgets/homepage_buttons.dart';
 import 'drawer.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Day extends StatefulWidget {
   const Day({super.key});
@@ -43,14 +44,14 @@ class _DayState extends State<Day> {
                         _globalKey.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                     IconButton(
                       onPressed: () {
                         Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                   ],
                 ),

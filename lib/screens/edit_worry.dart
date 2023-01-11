@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../data/reflection_data.dart';
 import '../data/repositories/worry_questions_provider.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class EditWorry extends StatefulWidget {
   const EditWorry({super.key});
@@ -37,14 +38,14 @@ class _EditWorryState extends State<EditWorry> {
                         _globalKeys.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                     IconButton(
                       onPressed: () {
                         Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                   ],
                 ),
@@ -53,7 +54,7 @@ class _EditWorryState extends State<EditWorry> {
                   child: Text(
                     'Edit Worry',
                     style: TextStyle(
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                         fontSize: FontSize.s40,
                         fontWeight: FontWeightManager.bold),
                   ),
@@ -98,14 +99,16 @@ class _EditWorryState extends State<EditWorry> {
                                                 hintText:
                                                     'Enter your reflection',
                                                 hintStyle: TextStyle(
-                                                    color: ColorManager.black,
+                                                    color: ColorManager
+                                                        .secondryColor,
                                                     fontSize: FontSize.s20,
                                                     fontWeight:
                                                         FontWeightManager
                                                             .bold2),
                                               ),
                                               style: TextStyle(
-                                                  color: ColorManager.black,
+                                                  color: ColorManager
+                                                      .secondryColor,
                                                   fontSize: FontSize.s20,
                                                   fontWeight:
                                                       FontWeightManager.bold2),

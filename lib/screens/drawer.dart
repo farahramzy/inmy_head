@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../constants/constants.dart';
 import '../data/repositories/user_provider.dart';
+import '../constants/color_constants.dart';
 import '../widgets/build_header.dart';
 import '../widgets/build_menu_item.dart';
 import '../widgets/selected_item.dart';
@@ -17,7 +17,7 @@ class NavigationDrawer extends StatelessWidget {
     return SafeArea(
       child: Drawer(
         child: Material(
-          color: ColorManager.darkPurple,
+          color: ColorManager.primaryColor,
           child: ListView(
             padding: padding,
             children: [
@@ -93,7 +93,7 @@ class NavigationDrawer extends StatelessWidget {
               buildMenuItem(
                 text: 'Mood tracker',
                 icon: Icons.check_box_rounded,
-                iconColor: ColorManager.green,
+                iconColor: Colors.green,
                 onClicked: () => selectedItem(context, 3),
               ),
               const SizedBox(height: 15),
@@ -105,7 +105,7 @@ class NavigationDrawer extends StatelessWidget {
               buildMenuItem(
                 text: 'Home',
                 icon: Icons.home,
-                iconColor: ColorManager.pinkShadow600,
+                iconColor: Colors.pink.shade600,
                 onClicked: () => selectedItem(context, 12),
               ),
               // buildMenuItem(
@@ -140,7 +140,7 @@ class NavigationDrawer extends StatelessWidget {
               buildMenuItem(
                 text: 'Sign Out',
                 icon: Icons.logout_rounded,
-                iconColor: ColorManager.red,
+                iconColor: Colors.red,
                 onClicked: () => selectedItem(context, 13),
               ),
             ],

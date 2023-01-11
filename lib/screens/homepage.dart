@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
+import '../constants/color_constants.dart';
 import '../widgets/homepage_buttons.dart';
 import 'drawer.dart';
 
@@ -129,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                     width: 250,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: ColorManager.darkPurple,
+                      color: ColorManager.primaryColor,
                       borderRadius: const BorderRadius.all(
                         Radius.circular(16),
                       ),

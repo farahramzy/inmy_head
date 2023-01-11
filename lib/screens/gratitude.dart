@@ -1,10 +1,10 @@
 import 'dart:async';
-
+import 'package:inmy_head/constants/font_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/model/add_gratitude.dart';
 import 'package:inmy_head/model/user_model.dart';
 import 'package:inmy_head/widgets/add_gratitude_listview.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../data/gratitude_data.dart';
 import 'drawer.dart';
 
@@ -51,14 +51,14 @@ class _GratitudeState extends State<Gratitude> {
                           _globalKey.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                     ],
                   ),
@@ -89,9 +89,9 @@ class _GratitudeState extends State<Gratitude> {
                   width: 100, //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorManager.darkPurple,
+                        backgroundColor: ColorManager.primaryColor,
                         side: BorderSide(
-                            width: 3, color: ColorManager.darkPurple),
+                            width: 3, color: ColorManager.primaryColor),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.all(10)),

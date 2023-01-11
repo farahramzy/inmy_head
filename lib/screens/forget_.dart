@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/login_.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Forgetpass extends StatefulWidget {
   const Forgetpass({super.key});
@@ -32,7 +33,7 @@ class _ForgetpassState extends State<Forgetpass> {
               text: TextSpan(
                 text: 'Create new password for your',
                 style: TextStyle(
-                    color: ColorManager.black,
+                    color: ColorManager.secondryColor,
                     fontSize: FontSize.s20,
                     fontWeight: FontWeightManager.bold),
               ),
@@ -41,7 +42,7 @@ class _ForgetpassState extends State<Forgetpass> {
               text: TextSpan(
                 text: 'account here',
                 style: TextStyle(
-                    color: ColorManager.black,
+                    color: ColorManager.secondryColor,
                     fontSize: FontSize.s20,
                     fontWeight: FontWeightManager.bold),
               ),

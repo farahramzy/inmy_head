@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import 'drawer.dart';
 import '../widgets/admin_box.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Admin extends StatefulWidget {
   const Admin({super.key});
@@ -37,14 +38,14 @@ class _AdminState extends State<Admin> {
                           _globalKey.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                     ],
                   ),
@@ -54,7 +55,7 @@ class _AdminState extends State<Admin> {
                   child: Text(
                     'Edit Questions?',
                     style: TextStyle(
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                         fontSize: FontSize.s40,
                         fontWeight: FontWeightManager.bold),
                   ),
@@ -64,9 +65,9 @@ class _AdminState extends State<Admin> {
                   child: Container(
                     height: 350,
                     width: 350,
-                    decoration: BoxDecoration(
-                        color: ColorManager.lightBlue,
-                        borderRadius: const BorderRadius.all(
+                    decoration: const BoxDecoration(
+                        color: Color(0xffD1E5FF),
+                        borderRadius: BorderRadius.all(
                           Radius.circular(40.0),
                         )),
                     alignment: Alignment.center,

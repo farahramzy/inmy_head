@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants/constants.dart';
+import 'package:inmy_head/constants/color_constants.dart';
 import 'drawer.dart';
 import '../widgets/affirmations_box.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Affirmations extends StatelessWidget {
   const Affirmations({super.key});
@@ -37,14 +38,14 @@ class Affirmations extends StatelessWidget {
                         _globalKey.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                     IconButton(
                       onPressed: () {
                         Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                   ],
                 ),

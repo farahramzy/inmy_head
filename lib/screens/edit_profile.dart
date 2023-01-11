@@ -3,12 +3,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../data/repositories/user_provider.dart';
 import '../model/user_model.dart';
 import 'drawer.dart';
 import '../widgets/edit_profile_widget.dart';
 import '../widgets/user_profile_widget.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class EditProfile extends ConsumerStatefulWidget {
   const EditProfile({super.key});
@@ -86,14 +87,14 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                         _globalKey.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                     IconButton(
                       onPressed: () {
                         Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                   ],
                 ),
@@ -129,14 +130,16 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ProfileText(
-                              profileText: 'Name', color: ColorManager.black),
+                              profileText: 'Name',
+                              color: ColorManager.secondryColor),
                           const SizedBox(height: 5.0),
                           EditFormField(
                             formFieldText: "Your Name",
                             controller: nameController,
                           ),
                           ProfileText(
-                              profileText: 'Email', color: ColorManager.black),
+                              profileText: 'Email',
+                              color: ColorManager.secondryColor),
                           const SizedBox(height: 5.0),
                           EditFormField(
                             formFieldText: 'Your Email',
@@ -144,7 +147,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                           ),
                           ProfileText(
                               profileText: 'Phone Number',
-                              color: ColorManager.black),
+                              color: ColorManager.secondryColor),
                           const SizedBox(height: 5.0),
                           EditFormField(
                             formFieldText: 'Your Phone Number',
@@ -156,7 +159,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                         width: 100.0,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorManager.darkPurple,
+                            backgroundColor: ColorManager.primaryColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             padding: const EdgeInsets.all(8),

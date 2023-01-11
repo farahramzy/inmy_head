@@ -4,20 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/data/journal_data.dart';
 import 'package:inmy_head/firebase_options.dart';
-import '../constants/constants.dart';
 import '../data/repositories/user_provider.dart';
+import '../constants/color_constants.dart';
 import '../widgets/journal/lets_reflect_listview.dart';
 import '../widgets/journal/screen_text.dart';
 import '../widgets/journal/tab_view.dart';
 import '../widgets/journal/username_text.dart';
 import 'drawer.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
- 
-
   // print("Handling a background message: ${message.messageId}");
+  print("Handling a background message: ${message.messageId}");
 }
-
 
 void notification() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +26,6 @@ void notification() async {
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
 
   // NotificationSettings settings = await messaging.requestPermission(
   //   alert: true,
@@ -80,7 +78,7 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
                         _globalKey.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                     Consumer(
                       builder: (_, ref, __) {
