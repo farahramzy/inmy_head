@@ -1,9 +1,9 @@
 import 'dart:async';
-
+import 'package:inmy_head/constants/font_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/model/user_model.dart';
 import 'package:inmy_head/widgets/add_reflection_listview.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../model/reflections_model.dart';
 import 'drawer.dart';
 import '../data/reflection_data.dart';
@@ -51,14 +51,14 @@ class _ReflectionsState extends State<Reflections> {
                           _globalKey.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                     ],
                   ),
@@ -68,7 +68,7 @@ class _ReflectionsState extends State<Reflections> {
                   child: Text(
                     'Reflections',
                     style: TextStyle(
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                       fontSize: FontSize.s40,
                       fontWeight: FontWeightManager.bold,
                       shadows: const [
@@ -90,9 +90,9 @@ class _ReflectionsState extends State<Reflections> {
                   width: 100, //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorManager.darkPurple,
+                        backgroundColor: ColorManager.primaryColor,
                         side: BorderSide(
-                            width: 3, color: ColorManager.darkPurple),
+                            width: 3, color: ColorManager.primaryColor),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.all(10)),

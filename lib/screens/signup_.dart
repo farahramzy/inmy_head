@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
-
+import 'package:inmy_head/constants/font_constants.dart';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/admin.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../model/user_model.dart';
 import '../widgets/signup_tf.dart';
 import 'package:image_picker/image_picker.dart';
@@ -130,7 +130,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
               text: TextSpan(
                 text: 'Already have one? ',
                 style: TextStyle(
-                    color: ColorManager.black,
+                    color: ColorManager.secondryColor,
                     fontSize: FontSize.s20,
                     fontWeight: FontWeightManager.bold),
               ),
@@ -143,12 +143,12 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 );
               },
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   children: [
                     TextSpan(
                       text: 'Log in here',
                       style: TextStyle(
-                          color: ColorManager.lightblue,
+                          color: Color.fromRGBO(33, 150, 243, 1),
                           fontSize: FontSize.s15),
                     ),
                   ],

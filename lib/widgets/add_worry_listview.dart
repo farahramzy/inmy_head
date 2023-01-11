@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/data/repositories/user_provider.dart';
 import 'package:inmy_head/data/repositories/worry_questions_provider.dart';
-
-import '../constants/constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
+import '../constants/color_constants.dart';
 import '../data/worry_data.dart';
 
 class WorryListView extends StatelessWidget {

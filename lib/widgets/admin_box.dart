@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class AdminBox extends StatelessWidget {
   final String text;
@@ -17,10 +18,10 @@ class AdminBox extends StatelessWidget {
         width: 220, //width of button
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: ColorManager.darkPurple,
+                primary: ColorManager.primaryColor,
                 side: BorderSide(
                     width: 7,
-                    color: ColorManager.darkPurple), //border width and color
+                    color: ColorManager.primaryColor), //border width and color
                 // elevation: 3, //elevation of button
                 shape: RoundedRectangleBorder(
                     //to set border radius to button

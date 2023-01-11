@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../data/repositories/user_provider.dart';
 import '../widgets/user_profile_widget.dart';
 import 'drawer.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class UserProfile extends ConsumerStatefulWidget {
   const UserProfile({super.key});
@@ -37,14 +38,14 @@ class _UserProfileState extends ConsumerState<UserProfile> {
                         _globalKeys.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                     IconButton(
                       onPressed: () {
                         Navigator.pushNamed(context, 'journal');
                       },
                       icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      color: ColorManager.black,
+                      color: ColorManager.secondryColor,
                     ),
                   ],
                 ),

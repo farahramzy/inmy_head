@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants/constants.dart';
+import 'package:inmy_head/constants/color_constants.dart';
 import '../widgets/buttons_welcome.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -8,6 +9,7 @@ class Welcome extends StatefulWidget {
   @override
   State<Welcome> createState() => _WelcomeState();
 }
+
 const double width = 90;
 const double height = 60;
 
@@ -20,7 +22,7 @@ class _WelcomeState extends State<Welcome> {
           children: [
             Positioned(
               child: Container(
-                  height: MediaQuery.of(context).size.height / 1.5,
+                height: MediaQuery.of(context).size.height / 1.5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
@@ -31,7 +33,7 @@ class _WelcomeState extends State<Welcome> {
             ),
             Positioned(
               child: Container(
-                  height: MediaQuery.of(context).size.height / 0.5,
+                height: MediaQuery.of(context).size.height / 0.5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
@@ -54,7 +56,7 @@ class _WelcomeState extends State<Welcome> {
               text: 'Sign Up',
               top: MediaQuery.of(context).size.height / 1.2,
               left: MediaQuery.of(context).size.width / 5,
-              colorButton: ColorManager.purple4,
+              colorButton: const Color(0xFF837eb1),
               colorText: ColorManager.white,
               welcomeButton2: () {
                 Navigator.pushNamed(context, 'signup');

@@ -7,9 +7,10 @@ import 'package:inmy_head/data/worry_data.dart';
 import 'package:inmy_head/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:inmy_head/model/add_worry.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
 import '../widgets/add_worry_listview.dart';
 import 'drawer.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Worry extends StatefulWidget {
   const Worry({super.key});
@@ -53,14 +54,14 @@ class _WorrysState extends State<Worry> {
                           _globalKey.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, 'journal');
                         },
                         icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.black,
+                        color: ColorManager.secondryColor,
                       ),
                     ],
                   ),
@@ -90,9 +91,9 @@ class _WorrysState extends State<Worry> {
                   width: 100, //width of button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorManager.darkPurple,
+                        backgroundColor: ColorManager.primaryColor,
                         side: BorderSide(
-                            width: 3, color: ColorManager.darkPurple),
+                            width: 3, color: ColorManager.primaryColor),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.all(10)),
