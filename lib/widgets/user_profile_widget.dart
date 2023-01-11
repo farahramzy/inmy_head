@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../constants/constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
+import '../constants/color_constants.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String profileName;
@@ -15,7 +15,7 @@ class ProfileHeader extends StatelessWidget {
         style: TextStyle(
             letterSpacing: 1,
             fontSize: FontSize.s40,
-            color: ColorManager.darkPurple,
+            color: ColorManager.primaryColor,
             fontWeight: FontWeightManager.bold));
   }
 }

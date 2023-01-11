@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constants/constants.dart';
+import '../../constants/color_constants.dart';
 
 class LetsReflect extends StatelessWidget {
   const LetsReflect({
@@ -29,7 +29,7 @@ class LetsReflect extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              color: ColorManager.black,
+              color: ColorManager.secondryColor,
             ),
           ),
         ),

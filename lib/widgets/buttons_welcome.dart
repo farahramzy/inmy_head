@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants/constants.dart';
+import 'package:inmy_head/constants/color_constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class WelcomeButton extends StatelessWidget {
   final String text;
@@ -24,17 +25,15 @@ class WelcomeButton extends StatelessWidget {
     return Positioned(
       top: top,
       left: left,
-      height: 50, 
-      width: 250, 
+      height: 50,
+      width: 250,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             backgroundColor: colorButton,
-            side: BorderSide(
-                width: 3, color: colorButton), 
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20)),
-            padding: const EdgeInsets.all(10) 
-            ),
+            side: BorderSide(width: 3, color: colorButton),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            padding: const EdgeInsets.all(10)),
         onPressed: welcomeButton2,
         child: Text(
           text,

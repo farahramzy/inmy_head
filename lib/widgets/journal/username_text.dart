@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../constants/constants.dart';
+import '../../constants/color_constants.dart';
 import '../../data/repositories/user_provider.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class UserNameText extends StatelessWidget {
   const UserNameText({

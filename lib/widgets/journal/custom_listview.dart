@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import '../../constants/constants.dart';
+import '../../constants/color_constants.dart';
 
 class CustomListView extends StatefulWidget {
   const CustomListView({
@@ -57,7 +57,7 @@ class _CustomListViewState extends State<CustomListView> {
                 style: TextStyle(
                   color: index == selectedIndex
                       ? Colors.white
-                      : ColorManager.black,
+                      : ColorManager.secondryColor,
                 ),
               ),
               trailing: widget.time == null

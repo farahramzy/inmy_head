@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/gratitude.dart';
-import '../constants/constants.dart';
+import '../constants/color_constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class HomePageButtons extends StatefulWidget {
   final String text;
@@ -25,7 +26,7 @@ class _HomePageButtonsState extends State<HomePageButtons> {
               height: 60,
               width: 250,
               decoration: BoxDecoration(
-                color: ColorManager.black,
+                color: ColorManager.secondryColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(16),
                 ),
@@ -38,7 +39,7 @@ class _HomePageButtonsState extends State<HomePageButtons> {
               height: 60,
               width: 250,
               decoration: BoxDecoration(
-                color: ColorManager.darkPurple,
+                color: ColorManager.primaryColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(16),
                 ),

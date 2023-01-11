@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constants/constants.dart';
+import '../../constants/color_constants.dart';
 
 class JournalButton extends StatefulWidget {
   final String text;
@@ -23,7 +23,7 @@ class _JournalButtonState extends State<JournalButton> {
               height: 60,
               width: 250,
               decoration: BoxDecoration(
-                color: ColorManager.darkPurple,
+                color: ColorManager.primaryColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(16),
                 ),

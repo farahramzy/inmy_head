@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants/constants.dart';
+import 'package:inmy_head/constants/color_constants.dart';
+import 'package:inmy_head/constants/font_constants.dart';
 
 class Gratitudebutton extends StatelessWidget {
   final String text;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/widgets/journal/tab_view_children.dart';
-import '../../constants/constants.dart';
+import '../../constants/color_constants.dart';
 import '../../data/journal_data.dart';
 
 class TabView extends StatefulWidget {
@@ -28,7 +28,7 @@ class _TabViewState extends State<TabView> with TickerProviderStateMixin {
           child: TabBar(
             labelPadding: const EdgeInsets.only(left: 20, right: 20),
             controller: tabController,
-            labelColor: ColorManager.black,
+            labelColor: ColorManager.secondryColor,
             unselectedLabelColor: ColorManager.grey,
             isScrollable: true,
             indicatorColor: ColorManager.purple2,
