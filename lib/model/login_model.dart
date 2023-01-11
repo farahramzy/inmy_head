@@ -1,16 +1,29 @@
+import 'dart:convert';
+
 class LoginModel {
-  String username = 'Farah';
-  String password = '12345';
+  String email;
+  String password;
+  LoginModel({
+    required this.email,
+    required this.password,
+  });
 
-  save() {
-    print('saving user data');
-    print('$username $password');
-    if (username.isNotEmpty) {
-      print(username);
-    }
-
-    if (password.isNotEmpty) {
-      print(password);
-    }
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'email': email,
+      'password': password,
+    };
   }
+
+  factory LoginModel.fromMap(Map<String, dynamic> map) {
+    return LoginModel(
+      email: map['email'] as String,
+      password: map['password'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory LoginModel.fromJson(String source) =>
+      LoginModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

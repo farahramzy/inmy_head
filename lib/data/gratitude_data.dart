@@ -1,9 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:inmy_head/data/user_data.dart';
+
 class GratitudeData {
-  List<String>? gratitudeList = [
-    'Today I am grateful for...',
-    'What was the best part of your day?',
-    'What made you laugh or smile today?',
-    "Write about a beautiful thing you saw.",
-    'What is your favorite moment today?',
-  ];
+  Future addGratitude(String userId, List<String> gratitudeList) async {
+    FirebaseFirestore.instance.collection('gratitude').add({
+      'userid': userId,
+      'ans': gratitudeList,
+    });
+  }
+
+  Stream<QuerySnapshot> getGratitudeQuestions() {
+    return FirebaseFirestore.instance
+        .collection('Gratitude Question')
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getGratitudeUserData() {
+    return FirebaseFirestore.instance
+        .collection('gratitude')
+        .where('userid', isEqualTo: userId)
+        .snapshots();
+  }
 }

@@ -5,8 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/color_constants.dart';
 import '../data/mood_tracker_data.dart';
 import '../data/repositories/user_provider.dart';
-import '../model/mood_tracker_model.dart';
-import '../model/user_model.dart';
+import '../data/user_data.dart';
 import 'drawer.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
@@ -23,7 +22,7 @@ class _MoodTrackerState extends State<MoodTracker> {
   static double minVal = 0;
   static double maxVal = 4;
   static int valueChange = 0;
-  final moodTracker = MoodTrackers();
+  final moodTracker = MoodTrackerData();
 
   @override
   Widget build(BuildContext context) {

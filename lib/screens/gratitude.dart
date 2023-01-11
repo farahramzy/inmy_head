@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'package:inmy_head/constants/font_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:inmy_head/model/add_gratitude.dart';
-import 'package:inmy_head/model/user_model.dart';
-import 'package:inmy_head/widgets/add_gratitude_listview.dart';
+import 'package:inmy_head/widgets/gratitude/add_gratitude_listview.dart';
 import '../constants/color_constants.dart';
 import '../data/gratitude_data.dart';
+import '../data/user_data.dart';
 import 'drawer.dart';
 
 class Gratitude extends StatefulWidget {
@@ -17,8 +16,7 @@ class Gratitude extends StatefulWidget {
 
 class _GratitudeState extends State<Gratitude> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  final gratitudeData = GratitudeData();
-  final addGratitude = AddGratitude();
+  final addGratitude = GratitudeData();
   List<TextEditingController> controllerList = [
     TextEditingController(),
     TextEditingController(),
@@ -81,9 +79,9 @@ class _GratitudeState extends State<Gratitude> {
                   ),
                 ),
                 const SizedBox(height: 60.0),
-                add_gratitude_listview(
-                    controllerList: controllerList,
-                    gratitudeData: gratitudeData),
+                AddGratitudeListView(
+                  controllerList: controllerList,
+                ),
                 SizedBox(
                   height: 40, //height of button
                   width: 100, //width of button

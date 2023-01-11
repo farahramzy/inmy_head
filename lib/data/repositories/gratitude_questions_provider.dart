@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:inmy_head/model/gratitude_questions_model.dart';
 
-Stream gratitudeQuestions = GratitudeQuestions().getGratitudeQuestions();
+import '../gratitude_data.dart';
+
+Stream gratitudeQuestions = GratitudeData().getGratitudeQuestions();
 final gratitudeQuestionsProviderRepository =
     StateProvider<Stream>((ref) => gratitudeQuestions);
 
@@ -9,7 +10,7 @@ final gratitudeQuestionsProvider =
     StreamProvider(((ref) => ref.watch(gratitudeQuestionsProviderRepository)));
 
 //////////GET USER GRATITUDE DATA//////////
-Stream gratitudeData = GratitudeQuestions().getGratitudeUserData();
+Stream gratitudeData = GratitudeData().getGratitudeUserData();
 final gratitudeDataProviderRepository =
     StateProvider<Stream>((ref) => gratitudeData);
 

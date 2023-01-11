@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:inmy_head/model/worry_questions_model.dart';
+import '../worry_data.dart';
 
-Stream worryQuestions = WorryQuestions().getWorryQuestions();
+Stream worryQuestions = WorryData().getWorryQuestions();
 final worryQuestionsProviderRepository =
     StateProvider<Stream>((ref) => worryQuestions);
 
@@ -9,7 +9,7 @@ final worryQuestionsProvider =
     StreamProvider(((ref) => ref.watch(worryQuestionsProviderRepository)));
 
 //////////GET USER WORRY DATA//////////
-Stream worryData = WorryQuestions().getWorryUserData();
+Stream worryData = WorryData().getWorryUserData();
 final worryDataProviderRepository = StateProvider<Stream>((ref) => worryData);
 
 final worryDataProvider =

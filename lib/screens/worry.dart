@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:inmy_head/data/worry_data.dart';
 import 'package:inmy_head/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:inmy_head/model/add_worry.dart';
 import '../constants/color_constants.dart';
-import '../widgets/add_worry_listview.dart';
+import '../data/user_data.dart';
+import '../widgets/worry/add_worry_listview.dart';
 import 'drawer.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
@@ -21,7 +21,6 @@ class Worry extends StatefulWidget {
 class _WorrysState extends State<Worry> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final worryData = WorryData();
-  final addWorry = AddWorry();
   List<TextEditingController> controllerList = [
     TextEditingController(),
     TextEditingController(),
@@ -98,7 +97,7 @@ class _WorrysState extends State<Worry> {
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.all(10)),
                     onPressed: () {
-                      addWorry.addWorry(
+                      worryData.addWorry(
                           userId, controllerList.map((e) => e.text).toList());
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

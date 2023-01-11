@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import '../constants/color_constants.dart';
 import '../data/repositories/user_provider.dart';
-import '../model/user_model.dart';
+import '../data/user_data.dart';
 import 'drawer.dart';
 import '../widgets/edit_profile_widget.dart';
 import '../widgets/user_profile_widget.dart';
@@ -20,6 +20,7 @@ class EditProfile extends ConsumerStatefulWidget {
 
 class _EditProfileState extends ConsumerState<EditProfile> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final userData = UserData();
 
   File? _image;
   late TextEditingController nameController;
@@ -165,19 +166,21 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                             padding: const EdgeInsets.all(8),
                           ),
                           onPressed: () {
-                            updateUserDetails(
+                            userData
+                                .updateUserDetails(
                                     nameController.text,
                                     emailController.text,
                                     phoneController.text,
                                     downloadURL)
                                 .then(
-                              (value) =>
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Your Data has been Updated'),
-                                ),
-                              ),
-                            );
+                                  (value) => ScaffoldMessenger.of(context)
+                                      .showSnackBar(
+                                    const SnackBar(
+                                      content:
+                                          Text('Your Data has been Updated'),
+                                    ),
+                                  ),
+                                );
                             Navigator.pushNamed(context, 'userProfile');
                             nameController.clear();
                             emailController.clear();

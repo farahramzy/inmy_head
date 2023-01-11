@@ -9,7 +9,7 @@ class Affirmations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -17,7 +17,7 @@ class Affirmations extends StatelessWidget {
         fit: BoxFit.cover,
       )),
       child: Scaffold(
-        key: _globalKey,
+        key: globalKey,
         drawer: const NavigationDrawer(),
         backgroundColor: const Color.fromARGB(196, 187, 160, 222),
         // backgroundColor: ColorManager.beige,
@@ -35,7 +35,7 @@ class Affirmations extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        _globalKey.currentState?.openDrawer();
+                        globalKey.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
                       color: ColorManager.secondryColor,

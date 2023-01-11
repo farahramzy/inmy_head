@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/repositories/user_provider.dart';
 import '../constants/color_constants.dart';
-import '../widgets/build_header.dart';
-import '../widgets/build_menu_item.dart';
-import '../widgets/selected_item.dart';
+import '../widgets/drawer/build_header.dart';
+import '../widgets/drawer/build_menu_item.dart';
+import '../widgets/drawer/selected_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({super.key});

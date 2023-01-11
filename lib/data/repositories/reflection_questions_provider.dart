@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../model/reflections_model.dart';
+import '../reflection_data.dart';
 
-Stream reflectionQuestions = ReflectionModel().getReflectionQuestions();
+Stream reflectionQuestions = Reflectionata().getReflectionQuestions();
 final reflectionQuestionsProviderRepository =
     StateProvider<Stream>((ref) => reflectionQuestions);
 
@@ -9,7 +9,7 @@ final reflectionQuestionsProvider =
     StreamProvider(((ref) => ref.watch(reflectionQuestionsProviderRepository)));
 
 //////////GET USER REFLECTION DATA//////////
-Stream reflectionData = ReflectionModel().getReflectionUserData();
+Stream reflectionData = Reflectionata().getReflectionUserData();
 final reflectionDataProviderRepository =
     StateProvider<Stream>((ref) => reflectionData);
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../constants/color_constants.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
 class ScreenText extends StatelessWidget {

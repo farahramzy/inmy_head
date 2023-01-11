@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 class JournalData {
   var image = {
     "signup.png": "Blessings",
@@ -20,40 +18,36 @@ class JournalData {
     "100.png": "day",
   };
 
-  List<String> list = [
-    "Reflection",
-    "Reflection",
-    "Reflection",
-    "Reflection",
-    "Reflection",
-    "Reflection",
-  ];
-
-  List<String> list1 = [
-    "Blessing",
-    "Blessing",
-    "Blessing",
-    "Blessing",
-    "Blessing",
-    "Blessing",
-  ];
-
-  List<String> list2 = [
-    "Worry",
-    "Worry",
-    "Worry",
-    "Worry",
-    "Worry",
-    "Worry",
-  ];
-  List<String> list3 = [
-    "Mood",
-    "Mood",
-    "Mood",
-    "Mood",
-    "Mood",
-    "Mood",
-  ];
-  //how to create a map in flutter?
-
+  // List<String> list = [
+  //   "Reflection",
+  //   "Reflection",
+  //   "Reflection",
+  //   "Reflection",
+  //   "Reflection",
+  //   "Reflection",
+  // ];
+  // List<String> list1 = [
+  //   "Blessing",
+  //   "Blessing",
+  //   "Blessing",
+  //   "Blessing",
+  //   "Blessing",
+  //   "Blessing",
+  // ];
+  // List<String> list2 = [
+  //   "Worry",
+  //   "Worry",
+  //   "Worry",
+  //   "Worry",
+  //   "Worry",
+  //   "Worry",
+  // ];
+  // List<String> list3 = [
+  //   "Mood",
+  //   "Mood",
+  //   "Mood",
+  //   "Mood",
+  //   "Mood",
+  //   "Mood",
+  // ];
 }

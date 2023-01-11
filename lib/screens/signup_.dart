@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:inmy_head/data/user_data.dart';
 import 'package:inmy_head/screens/admin.dart';
 import '../constants/color_constants.dart';
-import '../model/user_model.dart';
 import '../widgets/signup_tf.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -94,16 +94,15 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
       //Success: get the download URL for the image
       downloadURL = await referenceImageToUpload.getDownloadURL();
     } catch (e) {
-      // ignore: avoid_print
       print(e);
     }
 
     setState(() {
       _image = File(selectedImage!.path);
     });
-    // print('Image Path: $_image');
   }
 
+  final userData = UserData();
   @override
   Widget build(BuildContext context) {
     String? name;
@@ -222,9 +221,10 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                 ),
                 onPressed: () async {
                   try {
-                    await createUserWithEmailAndPassword(email!, password!);
+                    await userData.createUserWithEmailAndPassword(
+                        email!, password!);
 
-                    addUserDetails(userId, name!, email!, password!,
+                    userData.addUserDetails(userId, name!, email!, password!,
                         phoneNumber!, downloadURL, 'user');
                     // ignore: use_build_context_synchronously
                     Navigator.pushNamed(context, 'journal');

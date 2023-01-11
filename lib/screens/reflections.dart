@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'package:inmy_head/constants/font_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:inmy_head/model/user_model.dart';
-import 'package:inmy_head/widgets/add_reflection_listview.dart';
+import 'package:inmy_head/widgets/reflection/add_reflection_listview.dart';
 import '../constants/color_constants.dart';
-import '../model/reflections_model.dart';
+import '../data/user_data.dart';
 import 'drawer.dart';
 import '../data/reflection_data.dart';
 
@@ -17,7 +16,6 @@ class Reflections extends StatefulWidget {
 class _ReflectionsState extends State<Reflections> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final reflectionData = Reflectionata();
-  final addReflection = ReflectionModel();
   List<TextEditingController> controllerList = [
     TextEditingController(),
     TextEditingController(),
@@ -83,8 +81,8 @@ class _ReflectionsState extends State<Reflections> {
                 ),
                 const SizedBox(height: 60.0),
                 AddReflectionListView(
-                    controllerList: controllerList,
-                    reflectionData: reflectionData),
+                  controllerList: controllerList,
+                ),
                 SizedBox(
                   height: 40, //height of button
                   width: 100, //width of button
@@ -97,7 +95,7 @@ class _ReflectionsState extends State<Reflections> {
                             borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.all(10)),
                     onPressed: () {
-                      addReflection.addReflection(
+                      reflectionData.addReflection(
                           userId, controllerList.map((e) => e.text).toList());
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

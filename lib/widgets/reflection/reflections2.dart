@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/constants/color_constants.dart';
 import 'package:inmy_head/constants/font_constants.dart';
-import '../screens/homepage.dart';
+import '../../screens/homepage.dart';
 
 class TextPage extends StatelessWidget {
   final String text;
@@ -121,7 +121,7 @@ class Button extends StatelessWidget {
       alignment: const FractionalOffset(0.45, 0.90),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              primary: ColorManager.darkblue,
+              backgroundColor: ColorManager.darkblue,
               side: BorderSide(width: 3, color: ColorManager.darkblue),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
@@ -141,15 +141,3 @@ class Button extends StatelessWidget {
     );
   }
 }
-
-
-// It only shows Image from assets
-// class ImagePage extends StatelessWidget {
-//   final String image;
-//   const ImagePage({required this.image});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Image.asset(image);
-//   }
-// }

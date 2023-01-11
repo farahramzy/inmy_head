@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:inmy_head/constants/color_constants.dart';
-import 'package:inmy_head/data/reflection_data.dart';
-import 'package:inmy_head/data/repositories/reflection_questions_provider.dart';
+import 'package:inmy_head/data/repositories/gratitude_questions_provider.dart';
 import 'package:inmy_head/constants/font_constants.dart';
+import '../../constants/color_constants.dart';
 
-class AddReflectionListView extends StatelessWidget {
-  const AddReflectionListView({
+class AddGratitudeListView extends StatelessWidget {
+  const AddGratitudeListView({
     Key? key,
     required this.controllerList,
-    required this.reflectionData,
   }) : super(key: key);
 
-  final Reflectionata reflectionData;
   final List<TextEditingController> controllerList;
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Consumer(builder: (_, ref, __) {
-        return ref.watch(reflectionQuestionsProvider).when(
+        return ref.watch(gratitudeQuestionsProvider).when(
           data: (value) {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -46,15 +43,14 @@ class AddReflectionListView extends StatelessWidget {
                                 child: Text(
                                   value.docs[index].get('text'),
                                   style: TextStyle(
-                                    color: ColorManager.white,
-                                    fontSize: FontSize.s20,
-                                    fontWeight: FontWeightManager.bold2,
-                                  ),
+                                      color: ColorManager.white,
+                                      fontSize: FontSize.s20,
+                                      fontWeight: FontWeightManager.bold2),
                                 ),
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 15,
                             ),
                             Padding(
                               padding: const EdgeInsets.all(20),
@@ -63,7 +59,8 @@ class AddReflectionListView extends StatelessWidget {
                                 maxLines: 9,
                                 decoration: InputDecoration(
                                   fillColor: ColorManager.white,
-                                  labelText: 'Take a few moments reflect...',
+                                  labelText:
+                                      'Take a few moments to be grateful',
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
                                     color: ColorManager.white,

@@ -87,7 +87,7 @@ class _ForgetpassState extends State<Forgetpass> {
               width: 220, //width of button
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: ColorManager.purple2,
+                    backgroundColor: ColorManager.purple2,
                     //background color of button
                     side: BorderSide(width: 3, color: ColorManager.purple2),
                     shape: RoundedRectangleBorder(

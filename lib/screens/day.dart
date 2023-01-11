@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../constants/color_constants.dart';
-import '../widgets/homepage_buttons.dart';
 import 'drawer.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
@@ -12,10 +11,9 @@ class Day extends StatefulWidget {
 }
 
 class _DayState extends State<Day> {
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -23,7 +21,7 @@ class _DayState extends State<Day> {
         fit: BoxFit.cover,
       )),
       child: Scaffold(
-        key: _globalKey,
+        key: globalKey,
         drawer: const NavigationDrawer(),
         backgroundColor: ColorManager.beige,
         // backgroundColor: ColorManager.beige,
@@ -41,7 +39,7 @@ class _DayState extends State<Day> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        _globalKey.currentState?.openDrawer();
+                        globalKey.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu, size: FontSize.s40),
                       color: ColorManager.secondryColor,

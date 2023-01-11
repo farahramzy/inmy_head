@@ -14,27 +14,23 @@ class AdminBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 40, //height of button
-        width: 220, //width of button
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                primary: ColorManager.primaryColor,
-                side: BorderSide(
-                    width: 7,
-                    color: ColorManager.primaryColor), //border width and color
-                // elevation: 3, //elevation of button
-                shape: RoundedRectangleBorder(
-                    //to set border radius to button
-                    borderRadius: BorderRadius.circular(20)),
-                padding:
-                    const EdgeInsets.all(10) //content padding inside button
-                ),
-            onPressed: button,
-            child: Text(
-              text,
-              textAlign: TextAlign.right,
-              style: const TextStyle(
-                  fontWeight: FontWeightManager.bold, fontSize: FontSize.s15),
-            )));
+      height: 40,
+      width: 220,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: ColorManager.primaryColor,
+            side: BorderSide(width: 7, color: ColorManager.primaryColor),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            padding: const EdgeInsets.all(10)),
+        onPressed: button,
+        child: Text(
+          text,
+          textAlign: TextAlign.right,
+          style: const TextStyle(
+              fontWeight: FontWeightManager.bold, fontSize: FontSize.s15),
+        ),
+      ),
+    );
   }
 }

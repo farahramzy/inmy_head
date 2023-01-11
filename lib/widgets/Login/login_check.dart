@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../constants/color_constants.dart';
 import '../../data/repositories/user_provider.dart';
-import '../../model/user_model.dart';
+import '../../data/user_data.dart';
 
 class LoginCheck extends StatelessWidget {
   const LoginCheck({
@@ -37,7 +37,7 @@ class LoginCheck extends StatelessWidget {
         ),
         onPressed: () async {
           try {
-            await signInWithEmailAndPassword(
+            await userData.signInWithEmailAndPassword(
                 emailController.text, passwordController.text);
             ref.read(userDataProviderRepository.notifier).state =
                 userData.getUserDetails();

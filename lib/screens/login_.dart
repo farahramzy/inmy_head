@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/screens/signup_.dart';
 import '../constants/color_constants.dart';
-import '../model/user_model.dart';
+import '../data/user_data.dart';
 import '../widgets/Login/login_check.dart';
 import '../widgets/Login/login_textformfield.dart';
 import 'forget_.dart';
-import '../model/login_model.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
 class LoginC extends ConsumerStatefulWidget {
@@ -32,7 +31,6 @@ class _LoginCState extends ConsumerState<LoginC> {
     super.dispose();
   }
 
-  final loginModel = LoginModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

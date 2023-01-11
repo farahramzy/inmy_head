@@ -1,5 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:inmy_head/constants/color_constants.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
 class Gratitudebutton extends StatelessWidget {
@@ -8,7 +9,7 @@ class Gratitudebutton extends StatelessWidget {
   final double left;
   final Color colorText;
   final Color colorButton;
-  final VoidCallback? Gratitudebutton2;
+  final VoidCallback? gratitudeButton2;
 
   const Gratitudebutton(
       {Key? key,
@@ -17,7 +18,7 @@ class Gratitudebutton extends StatelessWidget {
       required this.left,
       required this.colorText,
       required this.colorButton,
-      required this.Gratitudebutton2,
+      required this.gratitudeButton2,
       required Null Function() GratitudeButton2})
       : super(key: key);
 
@@ -30,7 +31,7 @@ class Gratitudebutton extends StatelessWidget {
       width: 250, //width of button
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: colorButton,
+            backgroundColor: colorButton,
             //background color of button
             side: BorderSide(
                 width: 3, color: colorButton), //border width and color
@@ -40,7 +41,7 @@ class Gratitudebutton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20)),
             padding: const EdgeInsets.all(10) //content padding inside button
             ),
-        onPressed: Gratitudebutton2,
+        onPressed: gratitudeButton2,
         child: Text(
           text,
           textAlign: TextAlign.right,
