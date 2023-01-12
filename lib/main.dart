@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inmy_head/screens/admin.dart';
+import 'package:inmy_head/screens/blog_page.dart';
 import 'package:inmy_head/screens/edit_gratitude.dart';
 import 'package:inmy_head/screens/edit_reflect.dart';
 import 'package:inmy_head/screens/day.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         'editReflect': (context) => const EditReflection(),
         'editWorry': (context) => const EditWorry(),
         'editGratitude': (context) => const EditGratitude(),
+        'blog': (context) => BlogPage(),
       },
     );
   }

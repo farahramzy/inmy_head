@@ -129,6 +129,21 @@ class _EditReflectionState extends State<EditReflection> {
                                         ),
                                       ),
                                     ),
+                                    // Expanded(
+                                    // child:
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            // perform desired action when button is pressed
+                                          },
+                                          child: const Text('Save'),
+                                        ),
+                                      ),
+                                    ),
+                                    // )
                                   ],
                                 );
                               }),
@@ -139,6 +154,8 @@ class _EditReflectionState extends State<EditReflection> {
                           //     onPressed: (context) => Navigator.pop(context),
                           //     child: const Text("save")
                           //     )
+
+                          //how make a button?
                         );
                       },
                       error: (Object error, StackTrace err) {
