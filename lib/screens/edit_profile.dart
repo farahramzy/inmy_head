@@ -181,6 +181,19 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                                     ),
                                   ),
                                 );
+                                userData
+                                .updateEmail(
+                                    emailController.text,
+                                    )
+                                .then(
+                                  (value) => ScaffoldMessenger.of(context)
+                                      .showSnackBar(
+                                    const SnackBar(
+                                      content:
+                                          Text('Your Data has been Updated'),
+                                    ),
+                                  ),
+                                );
                             Navigator.pushNamed(context, 'journal');
                             nameController.clear();
                             emailController.clear();

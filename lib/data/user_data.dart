@@ -81,7 +81,7 @@ class UserData {
   }
 
   /// **************************UPDATE USER DETAILS******************************/
-  Future updateUserDetails(String userName, String userEmail,
+  Future updateUserDetails(String userName, String userEmail, 
       String userPhoneNumber, String userImage) async {
     // print('TRYING TO UPDATE USER DETAILS WITH ID: $userId');
 
@@ -94,6 +94,42 @@ class UserData {
         'Phone Number': int.parse(userPhoneNumber.trim()),
         'Image': userImage,
       },
+      
     );
   }
+  Future<bool> updateEmail(String? newEmail) async {
+  // Add your function code here!
+  if ((FirebaseAuth.instance.currentUser != null) && (newEmail != null)) {
+    try {
+      await FirebaseAuth.instance.currentUser!.updateEmail(newEmail);
+      //await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+      return false;
+    }
+    print('Email updated');
+    return true;
+  } else {
+    print('Email not updated');
+    return false;
+  }
+}
+// Future<bool> updatePassword(String? newPassword) async {
+//   // Add your function code here!
+//   if ((FirebaseAuth.instance.currentUser != null) && (newPassword != null)) {
+//     try {
+//       await FirebaseAuth.instance.currentUser!.updatePassword(newPassword);
+//       //await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+//     } on FirebaseAuthException catch (e) {
+//       print(e.message);
+//       return false;
+//     }
+//     print('Password updated');
+//     return true;
+//   } else {
+//     print('Password not updated');
+//     return false;
+//   }
+// }
+
 }
