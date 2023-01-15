@@ -27,7 +27,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -60,7 +59,7 @@ class MyApp extends StatelessWidget {
         'editReflect': (context) => const EditReflection(),
         'editWorry': (context) => const EditWorry(),
         'editGratitude': (context) => const EditGratitude(),
-        'blog': (context) => BlogPage(),
+        'blog': (context) => const BlogPage(),
       },
     );
   }

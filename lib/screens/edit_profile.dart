@@ -181,7 +181,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                                     ),
                                   ),
                                 );
-                            Navigator.pushNamed(context, 'userProfile');
+                            Navigator.pushNamed(context, 'journal');
                             nameController.clear();
                             emailController.clear();
                             phoneController.clear();

@@ -10,7 +10,17 @@ String userId = user.uid;
 /// *********************CONNECTION WITH FIREBASE******************************/
 
 class UserData {
-  Future<Object> getUserDetails() async {
+  Stream<DocumentSnapshot> getUserDetails() {
+    final user = FirebaseAuth.instance.currentUser!;
+    String userIds = user.uid;
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(userIds)
+        .snapshots();
+  }
+
+  /// **************************GET USER ROLE**********************************/
+  Future<Object> getUserRole() async {
     final user = FirebaseAuth.instance.currentUser!;
     String userIds = user.uid;
     final DocumentSnapshot documentSnapshot =
@@ -18,7 +28,7 @@ class UserData {
     return documentSnapshot;
   }
 
-  /// **************************SIGN IN******************************************/
+  /// **************************SIGN IN****************************************/
   Future signInWithEmailAndPassword(String email, String password) async {
     final User? user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email.trim(),

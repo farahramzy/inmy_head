@@ -41,7 +41,9 @@ class LoginCheck extends StatelessWidget {
                 emailController.text, passwordController.text);
             ref.read(userDataProviderRepository.notifier).state =
                 userData.getUserDetails();
-            final value = await ref.read(userDataProviderRepository);
+            ref.read(userRoleProviderRepository.notifier).state =
+                userData.getUserRole();
+            final value = await ref.read(userRoleProviderRepository);
             String userRole = value.get('userRole');
             if (userRole == 'admin') {
               Navigator.pushNamed(context, 'admin');

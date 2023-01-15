@@ -90,10 +90,11 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
                             );
                           },
                           error: (Object error, StackTrace err) {
-                            return const Text("Error loading your name");
+                            return const Text("Error loading your Image");
                           },
                           loading: () {
-                            return const CircularProgressIndicator();
+                            return const Center(
+                                child: CircularProgressIndicator());
                           },
                         );
                       },
