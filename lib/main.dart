@@ -20,8 +20,13 @@ import 'screens/edit_profile.dart';
 import 'screens/gratitude.dart';
 import 'screens/mood_tracker_screen.dart';
 import 'screens/user_profile.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
+  // add these lines
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const ProviderScope(child: MyApp()));
