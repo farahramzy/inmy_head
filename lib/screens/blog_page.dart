@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:inmy_head/data/repositories/blog_provider.dart';
 
 class BlogPage extends StatefulWidget {
@@ -22,6 +23,25 @@ class _BlogPageState extends State<BlogPage> {
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                color: Colors.grey[200],
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.book_online,
+                    size: 20,
+                  ),
+                  color: Colors.grey,
+                  onPressed: () {},
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(horizontal: 16),
@@ -39,7 +59,7 @@ class _BlogPageState extends State<BlogPage> {
                           padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text((document.data() as Map)['title'],
-                                style: const TextStyle(
+                                style: GoogleFonts.notoSerif(
                                     fontSize: 32,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold)),
@@ -94,18 +114,25 @@ class _BlogPageState extends State<BlogPage> {
                           child: Image.network(
                               (document.data() as Map)['image_url']),
                         ),
+
                         const SizedBox(
                           height: 16,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text((document.data() as Map)['subtitle'],
-                              style: Theme.of(context).textTheme.subtitle1),
+                              style: GoogleFonts.notoSerif(
+                                fontSize: 22,
+                                color: Colors.black,
+                              )),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text((document.data() as Map)['content'],
-                              style: Theme.of(context).textTheme.bodyText2),
+                              style: GoogleFonts.notoSerif(
+                                fontSize: 12,
+                                color: Colors.black,
+                              )),
                         ),
                         const Divider(
                           color: Colors.grey, // divider color
