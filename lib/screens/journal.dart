@@ -103,7 +103,7 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               const UserNameText(),
               const Center(

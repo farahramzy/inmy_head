@@ -46,7 +46,7 @@ class _EditWorryState extends State<EditWorry> {
                         ),
                         IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, 'welcome');
+                            Navigator.pushNamed(context, 'admin');
                           },
                           icon:
                               const Icon(Icons.close_sharp, size: FontSize.s40),

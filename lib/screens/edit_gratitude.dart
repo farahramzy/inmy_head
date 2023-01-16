@@ -44,7 +44,7 @@ class _EditGratitudeState extends State<EditGratitude> {
                         ),
                         IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, 'welcome');
+                            Navigator.pushNamed(context, 'admin');
                           },
                           icon:
                               const Icon(Icons.close_sharp, size: FontSize.s40),
