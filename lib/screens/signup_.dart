@@ -162,7 +162,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
               child: CircleAvatar(
                 radius: 40,
                 backgroundImage: _image == null
-                    ? const AssetImage('images/300.png')
+                    ? const AssetImage('images/2.png')
                     : FileImage(_image!) as ImageProvider,
               ),
             ),
@@ -206,7 +206,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
               },
               child: const Text('Pick Your Birthdate'),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
             SizedBox(
               height: 40,
               width: 220,

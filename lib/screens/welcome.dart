@@ -17,6 +17,7 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorManager.beige,
       body: SafeArea(
         child: Stack(
           children: [
@@ -26,7 +27,7 @@ class _WelcomeState extends State<Welcome> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage('images/welcome.png'),
+                    image: AssetImage('images/logo.png'),
                   ),
                 ),
               ),
