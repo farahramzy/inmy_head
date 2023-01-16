@@ -14,7 +14,7 @@ class JournalData {
   var images = {
     "new.png": 'homePage',
     "blog.png": "blog",
-    "300.png": "day",
+    "blog2.png": "day",
     "100.png": "day",
   };
 

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:inmy_head/data/repositories/blog_provider.dart';
+import 'package:share/share.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({super.key});
@@ -59,7 +60,7 @@ class _BlogPageState extends State<BlogPage> {
                           padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text((document.data() as Map)['title'],
-                                style: GoogleFonts.notoSerif(
+                                style: GoogleFonts.roboto(
                                     fontSize: 32,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold)),
@@ -121,16 +122,17 @@ class _BlogPageState extends State<BlogPage> {
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text((document.data() as Map)['subtitle'],
-                              style: GoogleFonts.notoSerif(
+                              style: GoogleFonts.roboto(
                                 fontSize: 22,
-                                color: Colors.black,
+                                color: Color.fromARGB(255, 76, 73, 73),
+                                fontWeight: FontWeight.bold,
                               )),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text((document.data() as Map)['content'],
-                              style: GoogleFonts.notoSerif(
-                                fontSize: 12,
+                              style: GoogleFonts.roboto(
+                                fontSize: 15,
                                 color: Colors.black,
                               )),
                         ),
@@ -145,40 +147,40 @@ class _BlogPageState extends State<BlogPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Container(
-                                    color: Colors.grey[200],
-                                    child: IconButton(
-                                      icon: const Icon(
-                                        Icons.bookmark_outline,
-                                        size: 20,
-                                      ),
-                                      color: Colors.grey,
-                                      onPressed: () {},
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Container(
-                                    color: Colors.grey[200],
-                                    child: IconButton(
-                                      icon: const Icon(
-                                        Icons.favorite_outline,
-                                        size: 20,
-                                      ),
-                                      color: Colors.grey,
-                                      onPressed: () {},
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: ClipRRect(
+                              //     borderRadius: BorderRadius.circular(8),
+                              //     child: Container(
+                              //       color: Colors.grey[200],
+                              //       child: IconButton(
+                              //         icon: const Icon(
+                              //           Icons.bookmark_outline,
+                              //           size: 20,
+                              //         ),
+                              //         color: Colors.grey,
+                              //         onPressed: () {},
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: ClipRRect(
+                              //     borderRadius: BorderRadius.circular(8),
+                              //     child: Container(
+                              //       color: Colors.grey[200],
+                              //       child: IconButton(
+                              //         icon: const Icon(
+                              //           Icons.favorite_outline,
+                              //           size: 20,
+                              //         ),
+                              //         color: Colors.grey,
+                              //         onPressed: () {},
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: ClipRRect(
@@ -191,7 +193,10 @@ class _BlogPageState extends State<BlogPage> {
                                         size: 20,
                                       ),
                                       color: Colors.grey,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Share.share(
+                                            "https://play.google.com/store/apps/details?id=bassem.inmyhead");
+                                      },
                                     ),
                                   ),
                                 ),
