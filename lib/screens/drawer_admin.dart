@@ -58,17 +58,6 @@ class NavigationDrawer1 extends StatelessWidget {
                         );
                       },
                     ),
-                    // GestureDetector(
-                    //   onTap: () {
-                    //     Navigator.pushNamed(context, 'userProfile');
-                    //   },
-                    //   child: const Hero(
-                    //     tag: 'profilePicture',
-                    //     child: CircleAvatar(
-                    //       backgroundImage: AssetImage("images/reflect.png"),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
@@ -90,53 +79,6 @@ class NavigationDrawer1 extends StatelessWidget {
                 iconColor: ColorManager.white,
                 onClicked: () => selectedItem(context, 2),
               ),
-              // buildMenuItem(
-              //   text: 'Mood tracker',
-              //   icon: Icons.check_box_rounded,
-              //   iconColor: Colors.green,
-              //   onClicked: () => selectedItem(context, 3),
-              // ),
-              // const SizedBox(height: 15),
-              // Divider(color: ColorManager.white),
-              // buildHeader(
-              //   title: title2,
-              //   onClicked: () => selectedItem(context, 8),
-              // ),
-              // buildMenuItem(
-              //   text: 'Home',
-              //   icon: Icons.home,
-              //   iconColor: Colors.pink.shade600,
-              //   onClicked: () => selectedItem(context, 12),
-              // ),
-              // // buildMenuItem(
-              // //   text: 'Your worries',
-              // //   icon: Icons.mood,
-              // //   iconColor: ColorManager.yellowShdow600,
-              // //   // onClicked: () => selectedItem(context, 5),
-              // // ),
-              // // buildMenuItem(
-              // //   text: 'Your gratitude journal',
-              // //   icon: Icons.menu_book,
-              // //   iconColor: ColorManager.red,
-              // //   // onClicked: () => selectedItem(context, 6),
-              // // ),
-              // // buildMenuItem(
-              // //   text: 'Your moods',
-              // //   icon: Icons.favorite_border,
-              // //   iconColor: ColorManager.white,
-              // //   // onClicked: () => selectedItem(context, 7),
-              // // ),
-              // Divider(color: ColorManager.white),
-              // buildMenuItem(
-              //   text: 'Affirmations',
-              //   icon: Icons.star_border,
-              //   iconColor: ColorManager.beigYellow,
-              //   onClicked: () => selectedItem(context, 9),
-              // ),
-              // Divider(color: ColorManager.white),
-              // const SizedBox(
-              //   height: 110,
-              // ),
               buildMenuItem(
                 text: 'Sign Out',
                 icon: Icons.logout_rounded,

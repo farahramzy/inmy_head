@@ -41,13 +41,6 @@ class _AdminState extends State<Admin> {
                         icon: const Icon(Icons.menu, size: FontSize.s40),
                         color: ColorManager.secondryColor,
                       ),
-                      // IconButton(
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, 'journal');
-                      //   },
-                      //   icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                      //   color: ColorManager.secondryColor,
-                      // ),
                     ],
                   ),
                 ),
