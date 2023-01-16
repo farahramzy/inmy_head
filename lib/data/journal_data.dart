@@ -13,7 +13,7 @@ class JournalData {
   };
   var images = {
     "new.png": 'homePage',
-    "200.png": "blog",
+    "blog.png": "blog",
     "300.png": "day",
     "100.png": "day",
   };
