@@ -59,6 +59,13 @@ class MyApp extends StatelessWidget {
         'editReflect': (context) => const EditReflection(),
         'editWorry': (context) => const EditWorry(),
         'editGratitude': (context) => const EditGratitude(),
+        // 'blog': (context) => BlogPage(
+        //       author: '',
+        //       date: '',
+        //       image: '',
+        //       title: '',
+        //     ),
+
         'blog': (context) => const BlogPage(),
       },
     );
