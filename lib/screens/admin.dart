@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:inmy_head/screens/drawer_admin.dart';
 import '../constants/color_constants.dart';
-import 'drawer.dart';
+import 'drawer_admin.dart';
 import '../widgets/admin_box.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
@@ -16,7 +17,7 @@ class _AdminState extends State<Admin> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
-      drawer: const NavigationDrawer(),
+      drawer: const NavigationDrawer1(),
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -40,13 +41,13 @@ class _AdminState extends State<Admin> {
                         icon: const Icon(Icons.menu, size: FontSize.s40),
                         color: ColorManager.secondryColor,
                       ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'journal');
-                        },
-                        icon: const Icon(Icons.close_sharp, size: FontSize.s40),
-                        color: ColorManager.secondryColor,
-                      ),
+                      // IconButton(
+                      //   onPressed: () {
+                      //     Navigator.pushNamed(context, 'journal');
+                      //   },
+                      //   icon: const Icon(Icons.close_sharp, size: FontSize.s40),
+                      //   color: ColorManager.secondryColor,
+                      // ),
                     ],
                   ),
                 ),

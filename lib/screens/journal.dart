@@ -107,7 +107,7 @@ class _JournalState extends State<Journal> with TickerProviderStateMixin {
               ),
               const UserNameText(),
               const Center(
-                child: ScreenText(text: 'Your Happy days'),
+                child: ScreenText(text: 'Get Inside your Head'),
               ),
               const SizedBox(
                 height: 15,
