@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,8 +15,21 @@ class BlogPage extends StatefulWidget {
 }
 
 class BlogPageState extends State<BlogPage> {
+  var list1 = ['blog', 'blog1'];
+  late String randomBlog;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    randomBlog = list1[Random().nextInt(list1.length)];
+  }
+
   @override
   Widget build(BuildContext context) {
+    // setState(() {
+    //   var list1 = ['blog', 'blog1'];
+    //   randomBlog = list1[Random().nextInt(list1.length)];
+    // });
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -48,7 +64,8 @@ class BlogPageState extends State<BlogPage> {
           builder: (_, ref, __) {
             return ref.watch(blogProvider).when(
               data: (data) {
-                final document = data.docs.first;
+                print('test ${data.get('title')}');
+                final document = data.data();
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -57,7 +74,8 @@ class BlogPageState extends State<BlogPage> {
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Center(
-                            child: Text((document.data() as Map)['title'],
+                            // child: Text((document.data() as Map)['title'],
+                            child: Text(document['title'],
                                 style: GoogleFonts.roboto(
                                     fontSize: 32,
                                     color: Colors.black,
@@ -91,7 +109,9 @@ class BlogPageState extends State<BlogPage> {
                                   width: 5,
                                 ),
                                 Text(
-                                  (document.data() as Map)['date'],
+                                  // (document.data() as Map)['date'],
+                                  document['date'],
+
                                   style: const TextStyle(color: Colors.grey),
                                 ),
                               ],
@@ -111,7 +131,8 @@ class BlogPageState extends State<BlogPage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Image.network(
-                              (document.data() as Map)['image_url']),
+                              // (document.data() as Map)['image_url']),
+                              document['image_url']),
                         ),
 
                         const SizedBox(
@@ -119,7 +140,8 @@ class BlogPageState extends State<BlogPage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Text((document.data() as Map)['subtitle'],
+                          // child: Text((document.data() as Map)['subtitle'],
+                          child: Text(document['subtitle'],
                               style: GoogleFonts.roboto(
                                 fontSize: 22,
                                 color: const Color.fromARGB(255, 76, 73, 73),
@@ -128,7 +150,8 @@ class BlogPageState extends State<BlogPage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Text((document.data() as Map)['content'],
+                          // child: Text((document.data() as Map)['content'],
+                          child: Text(document['content'],
                               style: GoogleFonts.roboto(
                                 fontSize: 15,
                                 color: Colors.black,

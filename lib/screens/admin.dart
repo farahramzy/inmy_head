@@ -15,6 +15,21 @@ class _AdminState extends State<Admin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: const Text('upload blogs'),
+      //   centerTitle: true,
+      //   actions: [
+      //     InkWell(
+      //         onTap: () {
+      //           Navigator.push(
+      //               context,
+      //               MaterialPageRoute(
+      //                   builder: (context) => const AddPostScreen()));
+      //         },
+      //         child: const Icon(Icons.add)),
+      //   ],
+      // ),
       key: _globalKey,
       drawer: const NavigationDrawer1(),
       body: SafeArea(
@@ -39,6 +54,15 @@ class _AdminState extends State<Admin> {
                         icon: const Icon(Icons.menu, size: FontSize.s40),
                         color: ColorManager.secondryColor,
                       ),
+                      // InkWell(
+                      //     onTap: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) =>
+                      //                   const AddPostScreen()));
+                      //     },
+                      //     child: const Icon(Icons.add)),
                     ],
                   ),
                 ),
