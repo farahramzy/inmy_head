@@ -30,7 +30,7 @@ class _TabViewChildrenState extends State<TabViewChildren> {
         controller: widget.tabController,
         children: [
           ListView.builder(
-            itemCount: 4,
+            itemCount: 3,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               return Material(

@@ -14,8 +14,8 @@ class JournalData {
   var images = {
     "new.png": 'homePage',
     "blog.png": "blog",
-    "blog2.png": "day",
-    "100.png": "day",
+    "blog2.png": "blog",
+    // "100.png": "blog",
   };
 
   // List<String> list = [

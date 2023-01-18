@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/drawer_admin.dart';
 import '../constants/color_constants.dart';
+import 'add_post.dart';
 import 'drawer_admin.dart';
 import '../widgets/admin_box.dart';
 import 'package:inmy_head/constants/font_constants.dart';
@@ -16,6 +17,21 @@ class _AdminState extends State<Admin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: const Text('upload blogs'),
+      //   centerTitle: true,
+      //   actions: [
+      //     InkWell(
+      //         onTap: () {
+      //           Navigator.push(
+      //               context,
+      //               MaterialPageRoute(
+      //                   builder: (context) => const AddPostScreen()));
+      //         },
+      //         child: const Icon(Icons.add)),
+      //   ],
+      // ),
       key: _globalKey,
       drawer: const NavigationDrawer1(),
       body: SafeArea(
@@ -41,6 +57,15 @@ class _AdminState extends State<Admin> {
                         icon: const Icon(Icons.menu, size: FontSize.s40),
                         color: ColorManager.secondryColor,
                       ),
+                      // InkWell(
+                      //     onTap: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) =>
+                      //                   const AddPostScreen()));
+                      //     },
+                      //     child: const Icon(Icons.add)),
                     ],
                   ),
                 ),
