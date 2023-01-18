@@ -13,12 +13,13 @@ import 'package:image_picker/image_picker.dart';
 
 class SignUpC extends StatefulWidget {
   const SignUpC({super.key});
- // final String? restorationId;
+  // final String? restorationId;
   @override
   State<SignUpC> createState() => _SignUpCState();
 }
 
-class _SignUpCState extends State<SignUpC>  {
+class _SignUpCState extends State<SignUpC> {
+  @override
   File? _image;
   String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
   String downloadURL = '';
@@ -55,7 +56,6 @@ class _SignUpCState extends State<SignUpC>  {
     String? password;
     String? phoneNumber;
     DateTime? d;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -145,18 +145,27 @@ class _SignUpCState extends State<SignUpC>  {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-                OutlinedButton(
-                    onPressed: () {
-                    DatePicker.showDatePicker(context,
+            OutlinedButton(
+                onPressed: () {
+                  DatePicker.showDatePicker(
+                    context,
                     showTitleActions: true,
-                    //minTime: DateTime(2000, 1, 1),
-                    //maxTime: DateTime(2022, 12, 31),
-                    onChanged: (date) {print('change $date'); d = date ;},
-                    onConfirm: (date) {print('confirm $date');d = date ;},
-                    currentTime: DateTime.now(), locale: LocaleType.en);},
-                    child: const Text('Birthday Date')
-                    ),
-            const SizedBox(height: 30),
+                    minTime: DateTime(2000, 1, 1),
+                    maxTime: DateTime(2022, 12, 31),
+                    onChanged: (date) {
+                      print('change $date');
+                      d = date;
+                    },
+                    onConfirm: (date) {
+                      print('confirm $date');
+                      d = date;
+                    },
+                  );
+                },
+                child: const Text(
+                  'Birthday Date',
+                )),
+            const SizedBox(height: 10),
             SizedBox(
               height: 40,
               width: 220,
@@ -174,8 +183,16 @@ class _SignUpCState extends State<SignUpC>  {
                     await userData.createUserWithEmailAndPassword(
                         email!, password!);
 
-                    userData.addUserDetails(userId, name!, email!, password!,
-                        phoneNumber!,d.toString(), downloadURL, 'user');
+                    userData.addUserDetails(
+                        userId,
+                        name!,
+                        email!,
+                        password!,
+                        phoneNumber!,
+                        '${d!.day.toString()}: ${d!.month.toString()}: ${d!.year.toString()}',
+                        downloadURL,
+                        'user');
+
                     // ignore: use_build_context_synchronously
                     Navigator.pushNamed(context, 'journal');
                   } on FirebaseAuthException catch (e) {
