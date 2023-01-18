@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,69 +12,13 @@ import '../widgets/signup_tf.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SignUpC extends StatefulWidget {
-  const SignUpC({super.key, this.restorationId});
-  final String? restorationId;
+  const SignUpC({super.key});
+ // final String? restorationId;
   @override
   State<SignUpC> createState() => _SignUpCState();
 }
 
-class _SignUpCState extends State<SignUpC> with RestorationMixin {
-  @override
-  String? get restorationId => widget.restorationId;
-
-  final RestorableDateTime _selectedDate =
-      RestorableDateTime(DateTime(2021, 7, 25));
-  late final RestorableRouteFuture<DateTime?> _restorableDatePickerRouteFuture =
-      RestorableRouteFuture<DateTime?>(
-    onComplete: _selectDate,
-    onPresent: (NavigatorState navigator, Object? arguments) {
-      return navigator.restorablePush(
-        _datePickerRoute,
-        arguments: _selectedDate.value.millisecondsSinceEpoch,
-      );
-    },
-  );
-  static Route<DateTime> _datePickerRoute(
-    BuildContext context,
-    Object? arguments,
-  ) {
-    return DialogRoute<DateTime>(
-      context: context,
-      builder: (BuildContext context) {
-        return DatePickerDialog(
-          restorationId: 'date_picker_dialog',
-          initialEntryMode: DatePickerEntryMode.calendarOnly,
-          initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
-          firstDate: DateTime(2021),
-          lastDate: DateTime(2022),
-        );
-      },
-    );
-  }
-
-  @override
-  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-    registerForRestoration(_selectedDate, 'selected_date');
-    registerForRestoration(
-        _restorableDatePickerRouteFuture, 'date_picker_route_future');
-  }
-
-  void _selectDate(DateTime? newSelectedDate) {
-    if (newSelectedDate != null) {
-      setState(
-        () {
-          _selectedDate.value = newSelectedDate;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                  'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),
-            ),
-          );
-        },
-      );
-    }
-  }
-
+class _SignUpCState extends State<SignUpC>  {
   File? _image;
   String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
   String downloadURL = '';
@@ -109,6 +54,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
     String? email;
     String? password;
     String? phoneNumber;
+    DateTime? d;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -199,14 +145,18 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            OutlinedButton(
-              //BIRTHDATE
-              onPressed: () {
-                _restorableDatePickerRouteFuture.present();
-              },
-              child: const Text('Pick Your Birthdate'),
-            ),
-            const SizedBox(height: 10),
+                OutlinedButton(
+                    onPressed: () {
+                    DatePicker.showDatePicker(context,
+                    showTitleActions: true,
+                    //minTime: DateTime(2000, 1, 1),
+                    //maxTime: DateTime(2022, 12, 31),
+                    onChanged: (date) {print('change $date'); d = date ;},
+                    onConfirm: (date) {print('confirm $date');d = date ;},
+                    currentTime: DateTime.now(), locale: LocaleType.en);},
+                    child: const Text('Birthday Date')
+                    ),
+            const SizedBox(height: 30),
             SizedBox(
               height: 40,
               width: 220,
@@ -225,7 +175,7 @@ class _SignUpCState extends State<SignUpC> with RestorationMixin {
                         email!, password!);
 
                     userData.addUserDetails(userId, name!, email!, password!,
-                        phoneNumber!, downloadURL, 'user');
+                        phoneNumber!,d.toString(), downloadURL, 'user');
                     // ignore: use_build_context_synchronously
                     Navigator.pushNamed(context, 'journal');
                   } on FirebaseAuthException catch (e) {
