@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart' as fStorage;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,29 +28,27 @@ class _EditProfileState extends ConsumerState<EditProfile> {
   late TextEditingController emailController;
   late TextEditingController phoneController;
   String? imageController;
+
   String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
   String downloadURL = '';
   Future getImage() async {
     XFile? selectedImage;
     selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-
     //Get a refrence to storage root
     Reference referenceRoot = FirebaseStorage.instance.ref();
     Reference referenceDirImage = referenceRoot.child('images');
-
     //Create a reference for the image to be stored
     Reference referenceImageToUpload = referenceDirImage.child(uniqueFileName);
-
     try {
       //Store the file in the storage
       await referenceImageToUpload.putFile(File(selectedImage!.path));
       //Success: get the download URL for the image
       downloadURL = await referenceImageToUpload.getDownloadURL();
+      setState(() {});
     } catch (e) {
       // ignore: avoid_print
       print(e);
     }
-
     setState(() {
       _image = File(selectedImage!.path);
     });
@@ -60,6 +59,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
     super.initState();
     final watchValue = ref.read(userDataProvider).value;
     imageController = watchValue.get('Image');
+    downloadURL = imageController!;
     nameController = TextEditingController(text: watchValue.get('Name'));
     emailController = TextEditingController(text: watchValue.get('Email'));
     phoneController =
@@ -68,8 +68,6 @@ class _EditProfileState extends ConsumerState<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    // print(ref.read(userDataProvider).value.get('Name'));
-
     return Scaffold(
       backgroundColor: ColorManager.white,
       key: _globalKey,
@@ -111,14 +109,14 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                         child: ProfileHeader(profileName: 'Edit Profile'),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          getImage();
+                        onTap: () async {
+                          await getImage();
+                          // updateImageInFirestore();
                         },
-                        child: imageController != null &&
-                                imageController!.isNotEmpty
+                        child: downloadURL.isNotEmpty
                             ? CircleAvatar(
                                 radius: 40,
-                                backgroundImage: NetworkImage(imageController!))
+                                backgroundImage: NetworkImage(downloadURL))
                             : CircleAvatar(
                                 radius: 40,
                                 backgroundImage: _image == null
@@ -181,11 +179,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                                     ),
                                   ),
                                 );
-                                userData
-                                .updateEmail(
-                                    emailController.text,
-                                    )
-                                .then(
+                            userData.updateEmail(emailController.text).then(
                                   (value) => ScaffoldMessenger.of(context)
                                       .showSnackBar(
                                     const SnackBar(

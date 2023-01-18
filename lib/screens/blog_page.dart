@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:inmy_head/data/repositories/blog_provider.dart';
@@ -10,10 +8,10 @@ class BlogPage extends StatefulWidget {
   const BlogPage({super.key});
 
   @override
-  _BlogPageState createState() => _BlogPageState();
+  BlogPageState createState() => BlogPageState();
 }
 
-class _BlogPageState extends State<BlogPage> {
+class BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,7 +122,7 @@ class _BlogPageState extends State<BlogPage> {
                           child: Text((document.data() as Map)['subtitle'],
                               style: GoogleFonts.roboto(
                                 fontSize: 22,
-                                color: Color.fromARGB(255, 76, 73, 73),
+                                color: const Color.fromARGB(255, 76, 73, 73),
                                 fontWeight: FontWeight.bold,
                               )),
                         ),
@@ -210,8 +208,8 @@ class _BlogPageState extends State<BlogPage> {
                 );
               },
               error: (Object error, StackTrace err) {
-                print(err.toString());
-                return const Text("Error loading your questions");
+                // print(err.toString());
+                return const Text("Error loading your blogs");
               },
               loading: () {
                 return const Center(child: CircularProgressIndicator());
