@@ -7,7 +7,7 @@ class SignUp {
   String password;
   String phoneNumber;
   String image;
-  String dateOfBirth;
+  DateTime dateOfBirth;
   SignUp({
     required this.name,
     required this.email,
@@ -24,7 +24,7 @@ class SignUp {
       'password': password,
       'phoneNumber': phoneNumber,
       'image': image,
-      'dateOfBirth': dateOfBirth,
+      'Birthday Date': dateOfBirth,
     };
   }
 
@@ -35,11 +35,21 @@ class SignUp {
       password: map['password'] as String,
       phoneNumber: map['phoneNumber'] as String,
       image: map['image'] as String,
-      dateOfBirth: map['dateOfBirth'] as String,
+      dateOfBirth: map['dateOfBirth'] ,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory SignUp.fromJson(String source) => SignUp.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  SignUp copy({ required DateTime? dateOfBirth})=>
+      SignUp(
+        name: name,
+        email: email,
+        password: password,
+        dateOfBirth: dateOfBirth!, 
+        image: image,
+        phoneNumber: phoneNumber, 
+      );
 }
