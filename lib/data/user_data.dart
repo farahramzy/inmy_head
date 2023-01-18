@@ -50,7 +50,7 @@ class UserData {
         .user;
 
     addUserDetails(newUser!.uid, 'usernameHere', email.trim(), password.trim(),
-        'phoneNumberHere', 'imageUrlHere', 'user');
+        'phoneNumberHere','selectedDT', 'imageUrlHere', 'user');
   }
 
   /// **************************ADD USER DETAILS*********************************/
@@ -60,6 +60,7 @@ class UserData {
       String userEmail,
       String userPassword,
       String userPhoneNumber,
+      String selectedDT,
       String userImage,
       String userRole) async {
     //2. ADD USER DOC IN "USERS" COLLECTION AND UPDATE THE USER ID***************/
@@ -69,6 +70,7 @@ class UserData {
       'Email': userEmail,
       'Password': userPassword,
       'Phone Number': int.parse(userPhoneNumber),
+      'date_time': int.parse(selectedDT),
       'Image': userImage,
       'userRole': userRole
     });
@@ -104,32 +106,11 @@ class UserData {
       await FirebaseAuth.instance.currentUser!.updateEmail(newEmail);
       //await FirebaseAuth.instance.currentUser!.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
-      print(e.message);
       return false;
     }
-    print('Email updated');
     return true;
   } else {
-    print('Email not updated');
     return false;
   }
 }
-// Future<bool> updatePassword(String? newPassword) async {
-//   // Add your function code here!
-//   if ((FirebaseAuth.instance.currentUser != null) && (newPassword != null)) {
-//     try {
-//       await FirebaseAuth.instance.currentUser!.updatePassword(newPassword);
-//       //await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-//     } on FirebaseAuthException catch (e) {
-//       print(e.message);
-//       return false;
-//     }
-//     print('Password updated');
-//     return true;
-//   } else {
-//     print('Password not updated');
-//     return false;
-//   }
-// }
-
 }
