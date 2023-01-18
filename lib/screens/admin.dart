@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/drawer_admin.dart';
 import '../constants/color_constants.dart';
-import 'add_post.dart';
 import 'drawer_admin.dart';
 import '../widgets/admin_box.dart';
 import 'package:inmy_head/constants/font_constants.dart';
