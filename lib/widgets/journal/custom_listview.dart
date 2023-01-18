@@ -37,12 +37,25 @@ class _CustomListViewState extends State<CustomListView> {
         for (var element in widget.textListData[index]
             .getRange(1, widget.textListData[index].length)) {
           tilesList.add(
-            Container(
-              color: ColorManager.purple1,
-              child: ListTile(
-                title: Text(
-                  element,
-                  style: TextStyle(color: ColorManager.white),
+            ListTile(
+              title: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: const Color.fromARGB(
+                      255, 150, 112, 216),
+                  // border: Border.all(
+                  //   width: 5, //#757575 #BDBDBD #455A64
+                  //   color: Color.fromARGB(255, 110, 119, 123),
+                  // ),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                  child: Text(
+                    element,
+                    style: TextStyle(color: ColorManager.secondryColor),
+                  ),
                 ),
               ),
             ),
