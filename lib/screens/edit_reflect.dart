@@ -77,7 +77,6 @@ class _EditReflectionState extends State<EditReflection> {
                                 shrinkWrap: true,
                                 itemCount: value.docs.length,
                                 itemBuilder: (context, index) {
-                                  ///////Tik Tik
                                   String newText =
                                       value.docs[index].get('text');
                                   return Column(
@@ -123,14 +122,6 @@ class _EditReflectionState extends State<EditReflection> {
                                                       fontWeight:
                                                           FontWeightManager
                                                               .bold2),
-
-                                                  // onChanged: (value) {
-                                                  //   // reflectionData.reflection = value;
-                                                  // },
-
-                                                  // update automatically on changes without needing a button
-
-                                                  // Tik Tik
                                                   onChanged: (newVal) {
                                                     newText = newVal;
                                                   }),
@@ -144,8 +135,6 @@ class _EditReflectionState extends State<EditReflection> {
                                           padding: const EdgeInsets.all(16.0),
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              print(value.docs[index].id);
-                                              print(newText);
                                               FirebaseFirestore.instance
                                                   .collection(
                                                       "Reflection Question")
@@ -159,21 +148,9 @@ class _EditReflectionState extends State<EditReflection> {
                                     ],
                                   );
                                 }),
-
-                            // )
-                            //SAVE BUTTON to reload the page
-                            //how to code a save button that reloads page on
-
-                            // ElevatedButton(
-                            //     onPressed: (context) => Navigator.pop(context),
-                            //     child: const Text("save")
-                            //     )
-
-                            //how make a button?
                           );
                         },
                         error: (Object error, StackTrace err) {
-                          print(err.toString());
                           return const Text("Error loading your questions");
                         },
                         loading: () {

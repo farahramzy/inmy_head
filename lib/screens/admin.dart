@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inmy_head/screens/drawer_admin.dart';
 import '../constants/color_constants.dart';
-import 'drawer_admin.dart';
 import '../widgets/admin_box.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
@@ -27,7 +26,6 @@ class _AdminState extends State<Admin> {
             backgroundColor: Colors.transparent,
             //
             body: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15.0),

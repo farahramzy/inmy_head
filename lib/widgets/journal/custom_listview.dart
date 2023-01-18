@@ -42,12 +42,7 @@ class _CustomListViewState extends State<CustomListView> {
                 height: 70,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: const Color.fromARGB(
-                      255, 150, 112, 216),
-                  // border: Border.all(
-                  //   width: 5, //#757575 #BDBDBD #455A64
-                  //   color: Color.fromARGB(255, 110, 119, 123),
-                  // ),
+                  color: const Color.fromARGB(255, 150, 112, 216),
                 ),
                 child: Padding(
                   padding:

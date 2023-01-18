@@ -13,36 +13,16 @@ import '../widgets/journal/username_text.dart';
 import 'drawer.dart';
 import 'package:inmy_head/constants/font_constants.dart';
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // print("Handling a background message: ${message.messageId}");
-  print("Handling a background message: ${message.messageId}");
-}
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
 
 void notification() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  //FirebaseMessaging messaging = FirebaseMessaging.instance;
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  // NotificationSettings settings = await messaging.requestPermission(
-  //   alert: true,
-  //   announcement: false,
-  //   badge: true,
-  //   carPlay: false,
-  //   criticalAlert: false,
-  //   provisional: false,
-  //   sound: true,
-  // );
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    // print('Got a message whilst in the foreground!');
-    // print('Message data: ${message.data}');
-
-    if (message.notification != null) {
-      // print('Message also contained a notification: ${message.notification}');
-    }
+    if (message.notification != null) {}
   });
   runApp(const Journal());
 }

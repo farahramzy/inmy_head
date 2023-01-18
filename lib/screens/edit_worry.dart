@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,8 +7,6 @@ import 'package:inmy_head/data/worry_data.dart';
 import '../constants/color_constants.dart';
 import '../data/repositories/worry_questions_provider.dart';
 import 'package:inmy_head/constants/font_constants.dart';
-
-import '../data/worry_data.dart';
 
 class EditWorry extends StatefulWidget {
   const EditWorry({super.key});
@@ -79,7 +79,6 @@ class _EditWorryState extends State<EditWorry> {
                                 shrinkWrap: true,
                                 itemCount: value.docs.length,
                                 itemBuilder: (context, index) {
-                                  ///////Tik Tik
                                   String newText =
                                       value.docs[index].get('text');
                                   return Column(
@@ -125,14 +124,6 @@ class _EditWorryState extends State<EditWorry> {
                                                       fontWeight:
                                                           FontWeightManager
                                                               .bold2),
-
-                                                  // onChanged: (value) {
-                                                  //   // WorryData.Worry = value;
-                                                  // },
-
-                                                  // update automatically on changes without needing a button
-
-                                                  // Tik Tik
                                                   onChanged: (newVal) {
                                                     newText = newVal;
                                                   }),
@@ -146,8 +137,6 @@ class _EditWorryState extends State<EditWorry> {
                                           padding: const EdgeInsets.all(16.0),
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              print(value.docs[index].id);
-                                              print(newText);
                                               FirebaseFirestore.instance
                                                   .collection("Worry Question")
                                                   .doc(value.docs[index].id)
@@ -160,21 +149,9 @@ class _EditWorryState extends State<EditWorry> {
                                     ],
                                   );
                                 }),
-
-                            // )
-                            //SAVE BUTTON to reload the page
-                            //how to code a save button that reloads page on
-
-                            // ElevatedButton(
-                            //     onPressed: (context) => Navigator.pop(context),
-                            //     child: const Text("save")
-                            //     )
-
-                            //how make a button?
                           );
                         },
                         error: (Object error, StackTrace err) {
-                          print(err.toString());
                           return const Text("Error loading your questions");
                         },
                         loading: () {

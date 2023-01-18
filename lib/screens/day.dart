@@ -77,7 +77,7 @@ class _DayState extends State<Day> {
                 ),
               ),
               const SizedBox(
-                height: 40, // <-- SEE HERE
+                height: 40,
               ),
             ],
           ),

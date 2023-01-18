@@ -119,7 +119,6 @@ class _LoginCState extends ConsumerState<LoginC> {
             const SizedBox(
               height: 50,
             ),
-            //Checks whether the logged in user is an Admin or a User.
             LoginCheck(
                 emailController: emailController,
                 passwordController: passwordController,

@@ -61,9 +61,11 @@ class _TabViewChildrenState extends State<TabViewChildren> {
                   List<List<String>> cardsDataList = [];
 
                   value.docs.forEach((element) {
+
                     List<dynamic>? reflectionData = element.get('ans');
                     if (reflectionData != null && reflectionData.isNotEmpty) {
                       List<String> listReflectionData = [];
+
                       listReflectionFirstData.add(reflectionData.first);
 
                       for (var element in reflectionData) {
@@ -129,7 +131,7 @@ class _TabViewChildrenState extends State<TabViewChildren> {
                 },
                 error: (Object error, StackTrace err) {
                   return const Center(
-                    child: Text("Error loading your reflections..."),
+                    child: Text("Error loading your gratitude..."),
                   );
                 },
                 loading: () {
@@ -150,6 +152,7 @@ class _TabViewChildrenState extends State<TabViewChildren> {
                     List<dynamic>? worryData = element.get('ans');
                     if (worryData != null && worryData.isNotEmpty) {
                       List<String> listWorryData = [];
+
                       listWorryFirstData.add(worryData.first);
 
                       for (var element in worryData) {
@@ -160,7 +163,7 @@ class _TabViewChildrenState extends State<TabViewChildren> {
                       cardsDataList.add(listWorryData);
                     } else {
                       listWorryFirstData
-                          .add('No data provided in your gratitude list');
+                          .add('No data provided in your worry list');
                     }
                   });
                   return CustomListView(
@@ -172,7 +175,7 @@ class _TabViewChildrenState extends State<TabViewChildren> {
                 },
                 error: (Object error, StackTrace err) {
                   return const Center(
-                    child: Text("Error loading your reflections..."),
+                    child: Text("Error loading your worries..."),
                   );
                 },
                 loading: () {
@@ -186,8 +189,6 @@ class _TabViewChildrenState extends State<TabViewChildren> {
             builder: (_, ref, __) {
               return ref.watch(moodTrackerProvider).when(
                 data: (value) {
-                  // print(value.docs);
-                  // print(object)
                   List<String> listText = [];
                   List<String> listTime = [];
                   value.docs.forEach((element) {

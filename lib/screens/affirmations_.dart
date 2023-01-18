@@ -20,7 +20,6 @@ class Affirmations extends StatelessWidget {
         key: globalKey,
         drawer: const NavigationDrawer(),
         backgroundColor: const Color.fromARGB(196, 187, 160, 222),
-        // backgroundColor: ColorManager.beige,
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -51,7 +50,7 @@ class Affirmations extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 50, // <-- SEE HERE
+                height: 50,
               ),
               const Text(
                 'POSITIVE AFFIRMATIONS',
@@ -62,15 +61,15 @@ class Affirmations extends StatelessWidget {
                     fontSize: FontSize.s40),
               ),
               const SizedBox(
-                height: 40, // <-- SEE HERE
+                height: 40,
               ),
               const AffirmationBox(text: "affirmation1"),
               const SizedBox(
-                height: 20, // <-- SEE HERE
+                height: 20,
               ),
               const AffirmationBox(text: "affirmation2"),
               const SizedBox(
-                height: 20, // <-- SEE HERE
+                height: 20,
               ),
               const AffirmationBox(text: "affirmation3"),
             ],

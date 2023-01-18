@@ -86,8 +86,8 @@ class _WorrysState extends State<Worry> {
                 WorryListView(
                     controllerList: controllerList, worryData: worryData),
                 SizedBox(
-                  height: 40, //height of button
-                  width: 100, //width of button
+                  height: 40,
+                  width: 100,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorManager.primaryColor,

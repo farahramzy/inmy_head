@@ -26,15 +26,6 @@ class MoodTrackerData {
     });
   }
 
-  // Future getMoodTracker() async {
-  //   final QuerySnapshot moodTracker = await FirebaseFirestore.instance
-  //       .collection('Mood Tracker')
-  //       .where('id', isEqualTo: userId)
-  //       .orderBy('time', descending: false)
-  //       .get();
-  //   return moodTracker;
-  // }
-
   Stream<QuerySnapshot> getMoodTracker() {
     return FirebaseFirestore.instance
         .collection('Mood Tracker')

@@ -12,7 +12,6 @@ class NavigationDrawer1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const title = 'In my head';
-    const title2 = 'Journal';
 
     return SafeArea(
       child: Drawer(

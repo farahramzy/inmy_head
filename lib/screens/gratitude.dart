@@ -83,8 +83,8 @@ class _GratitudeState extends State<Gratitude> {
                   controllerList: controllerList,
                 ),
                 SizedBox(
-                  height: 40, //height of button
-                  width: 100, //width of button
+                  height: 40,
+                  width: 100,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorManager.primaryColor,

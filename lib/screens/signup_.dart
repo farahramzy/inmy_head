@@ -19,7 +19,6 @@ class SignUpC extends StatefulWidget {
 }
 
 class _SignUpCState extends State<SignUpC> {
-  @override
   File? _image;
   String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
   String downloadURL = '';
@@ -153,11 +152,9 @@ class _SignUpCState extends State<SignUpC> {
                     minTime: DateTime(2000, 1, 1),
                     maxTime: DateTime(2022, 12, 31),
                     onChanged: (date) {
-                      print('change $date');
                       d = date;
                     },
                     onConfirm: (date) {
-                      print('confirm $date');
                       d = date;
                     },
                   );
@@ -189,7 +186,7 @@ class _SignUpCState extends State<SignUpC> {
                         email!,
                         password!,
                         phoneNumber!,
-                        '${d!.day.toString()}: ${d!.month.toString()}: ${d!.year.toString()}',
+                        '${d!.day.toString()}-${d!.month.toString()}-${d!.year.toString()}',
                         downloadURL,
                         'user');
 

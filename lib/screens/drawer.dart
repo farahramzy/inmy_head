@@ -58,17 +58,6 @@ class NavigationDrawer extends StatelessWidget {
                         );
                       },
                     ),
-                    // GestureDetector(
-                    //   onTap: () {
-                    //     Navigator.pushNamed(context, 'userProfile');
-                    //   },
-                    //   child: const Hero(
-                    //     tag: 'profilePicture',
-                    //     child: CircleAvatar(
-                    //       backgroundImage: AssetImage("images/reflect.png"),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
@@ -108,24 +97,6 @@ class NavigationDrawer extends StatelessWidget {
                 iconColor: Colors.pink.shade600,
                 onClicked: () => selectedItem(context, 12),
               ),
-              // buildMenuItem(
-              //   text: 'Your worries',
-              //   icon: Icons.mood,
-              //   iconColor: ColorManager.yellowShdow600,
-              //   // onClicked: () => selectedItem(context, 5),
-              // ),
-              // buildMenuItem(
-              //   text: 'Your gratitude journal',
-              //   icon: Icons.menu_book,
-              //   iconColor: ColorManager.red,
-              //   // onClicked: () => selectedItem(context, 6),
-              // ),
-              // buildMenuItem(
-              //   text: 'Your moods',
-              //   icon: Icons.favorite_border,
-              //   iconColor: ColorManager.white,
-              //   // onClicked: () => selectedItem(context, 7),
-              // ),
               Divider(color: ColorManager.white),
               buildMenuItem(
                 text: 'Affirmations',

@@ -9,7 +9,6 @@ class LetsReflect extends StatelessWidget {
     required this.screenPath,
   }) : super(key: key);
 
-  // final JournalData journalData;
   final String text;
   final String imagePath;
   final String screenPath;

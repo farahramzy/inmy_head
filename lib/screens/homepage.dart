@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
                   image: DecorationImage(
                     image: AssetImage(
                       'images/orangeBackground.png',
-                      // width: 180, height: 180
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -186,7 +185,6 @@ class _HomePageState extends State<HomePage> {
                         style: ElevatedButton.styleFrom(
                             minimumSize: const Size(240, 52))),
                     child: Column(
-                      // mainAxisSize: MainAxisSize.min,
                       children: [
                         HomePageButtons(
                           'Log a worry',

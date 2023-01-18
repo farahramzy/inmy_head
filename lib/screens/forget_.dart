@@ -18,7 +18,7 @@ class _ForgetpassState extends State<Forgetpass> {
         child: Column(
           children: <Widget>[
             const SizedBox(
-              height: 70, // <-- SEE HERE
+              height: 70,
             ),
             const Text(
               'Forgot  \n Password',
@@ -27,7 +27,7 @@ class _ForgetpassState extends State<Forgetpass> {
                   fontWeight: FontWeightManager.w800, fontSize: FontSize.s40),
             ),
             const SizedBox(
-              height: 10, // <-- SEE HERE
+              height: 10,
             ),
             RichText(
               text: TextSpan(
@@ -83,8 +83,8 @@ class _ForgetpassState extends State<Forgetpass> {
               height: 30.0,
             ),
             SizedBox(
-              height: 40, //height of button
-              width: 220, //width of button
+              height: 40,
+              width: 220,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorManager.purple2,

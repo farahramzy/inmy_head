@@ -17,37 +17,4 @@ class JournalData {
     "blog2.png": "day",
     "100.png": "day",
   };
-
-  // List<String> list = [
-  //   "Reflection",
-  //   "Reflection",
-  //   "Reflection",
-  //   "Reflection",
-  //   "Reflection",
-  //   "Reflection",
-  // ];
-  // List<String> list1 = [
-  //   "Blessing",
-  //   "Blessing",
-  //   "Blessing",
-  //   "Blessing",
-  //   "Blessing",
-  //   "Blessing",
-  // ];
-  // List<String> list2 = [
-  //   "Worry",
-  //   "Worry",
-  //   "Worry",
-  //   "Worry",
-  //   "Worry",
-  //   "Worry",
-  // ];
-  // List<String> list3 = [
-  //   "Mood",
-  //   "Mood",
-  //   "Mood",
-  //   "Mood",
-  //   "Mood",
-  //   "Mood",
-  // ];
 }
