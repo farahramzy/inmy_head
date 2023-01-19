@@ -14,7 +14,7 @@ class LoginTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350,
+      width: 370,
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
         textAlign: TextAlign.center,

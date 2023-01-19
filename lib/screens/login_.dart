@@ -97,25 +97,25 @@ class _LoginCState extends ConsumerState<LoginC> {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Forgetpass()),
-                );
-              },
-              child: Align(
-                alignment: const FractionalOffset(0.9, 0.9),
-                child: Text(
-                  'Forgot password?',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      color: ColorManager.secondryColor,
-                      fontWeight: FontWeight.normal,
-                      fontSize: FontSize.s15),
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const Forgetpass()),
+            //     );
+            //   },
+            //   child: Align(
+            //     alignment: const FractionalOffset(0.9, 0.9),
+            //     child: Text(
+            //       'Forgot password?',
+            //       textAlign: TextAlign.right,
+            //       style: TextStyle(
+            //           color: ColorManager.secondryColor,
+            //           fontWeight: FontWeight.normal,
+            //           fontSize: FontSize.s15),
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 50,
             ),
