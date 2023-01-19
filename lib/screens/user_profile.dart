@@ -105,8 +105,8 @@ class _UserProfileState extends ConsumerState<UserProfile> {
                           ProfileText(
                               profileText: 'Birthdate',
                               color: ColorManager.darkblue),
-                          const ProfileData(
-                            profileData: '22/7/2001',
+                          ProfileData(
+                            profileData: "${value.get('date_time')}",
                           ),
                         ],
                       ),
