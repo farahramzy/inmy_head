@@ -17,9 +17,9 @@ class BlogPage extends StatefulWidget {
 class BlogPageState extends State<BlogPage> {
   var list1 = ['blog', 'blog1'];
   late String randomBlog;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     randomBlog = list1[Random().nextInt(list1.length)];
   }
